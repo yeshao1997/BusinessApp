@@ -1,0 +1,49 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> 
+    <script type="text/javascript">
+   		document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   			plus.navigator.setStatusBarBackground("#000000");
+   		});
+   		mui.init();
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/login.css" />
+</head>
+
+<body>
+	<div class="bg" id="bg">
+		<img src="img/backround.png" width="100%" height="100%"/>
+	</div>
+	<div class="title">轻纺商圈</div>
+	<form class="login-input">
+		<div class="login-account">
+			<div class="login-account-img">
+				<img id="account-head" src="img/people.png"/>
+				<input id="account-input" type="text" placeholder="用户名/邮箱"/>
+			</div>
+		</div>
+		<div class="login-password">
+			<div class="login-password-img">
+				<img id="password-head" src="img/lock.png"/>
+				<input id="password-input" type="password" placeholder="密码"/>
+			</div>
+		</div>
+	</form>
+	<div id="forgot-password">
+		<a href="javascript:void(0);">忘记密码？</a>
+	</div>
+	<div id="submit">
+		<button onclick="login()">登录</button>
+	</div>
+	<script>
+		$('#bg').height($(window).height());
+	</script>
+	<script type="text/javascript" src="js/login.js"></script>	
+</body>
+</html>
