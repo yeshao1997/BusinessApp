@@ -1,0 +1,27 @@
+{
+	"index.html": {
+		"resources": [
+			"img/backround.png",
+			"img/login-top.png",
+			"img/login-top2.png",
+			"img/login-top3.png",
+			"img/login-head.png",
+			"img/login-lock.png",
+			"img/{U.png",
+			"img/{U.png",
+			"img/people.png",
+			"img/unlock.png",
+			"img/test.png",
+			"img/people(1).png",
+			"img/lock(1).png",
+			"img/lock.png",
+			"css/mui.min.css",
+			"css/index.css",
+			"js/mui.min.js",
+			"css/login.css",
+			"js/login.js",
+			"js/jquery-3.2.1.min.js"
+		],
+		"refer": []
+	}
+}
