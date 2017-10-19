@@ -37,7 +37,10 @@
 			"css/loginTest.css",
 			"js/base/mui.min.js",
 			"js/base/jquery-3.2.1.min.js",
-			"css/base/mui.min.css"
+			"css/base/mui.min.css",
+			"img/login/lock.png",
+			"img/login/people.png",
+			"img/login/backround.png"
 		]
 	}
 }
