@@ -23,5 +23,21 @@
 			"js/jquery-3.2.1.min.js"
 		],
 		"refer": []
+	},
+	"login.html": {
+		"resources": [
+			"img/people.png",
+			"img/backround.png",
+			"css/login.css",
+			"js/mui.min.js",
+			"js/login.js",
+			"img/lock.png",
+			"css/mui.min.css",
+			"js/jquery-3.2.1.min.js",
+			"css/loginTest.css",
+			"js/base/mui.min.js",
+			"js/base/jquery-3.2.1.min.js",
+			"css/base/mui.min.css"
+		]
 	}
 }
