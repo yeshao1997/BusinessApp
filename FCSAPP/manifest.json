@@ -1,7 +1,7 @@
 {
     "@platforms": ["android", "iPhone", "iPad"],
-    "id": "H5616AE53",/*应用的标识，创建应用时自动生成，勿手动修改*/
-    "name": "FASAPP",/*应用名称，程序桌面图标名称*/
+    "id": "H54FFCBEA",/*应用的标识，创建应用时自动生成，勿手动修改*/
+    "name": "TestDemo",/*应用名称，程序桌面图标名称*/
     "version": {
         "name": "1.0",/*应用版本名称*/
         "code": ""
@@ -207,24 +207,13 @@
 		"pages": {
 			"index.html": {
 				"resources": [
-					"img/backround.png",
-					"img/login-top.png",
-					"img/login-top2.png",
-					"img/login-top3.png",
-					"img/login-head.png",
-					"img/login-lock.png",
-					"img/登录.png",
 					"img/people.png",
-					"img/unlock.png",
-					"img/test.png",
-					"img/people(1).png",
-					"img/lock(1).png",
-					"img/lock.png",
-					"css/mui.min.css",
-					"css/index.css",
-					"js/mui.min.js",
+					"img/backround.png",
 					"css/login.css",
 					"js/login.js",
+					"img/lock.png",
+					"js/mui.min.js",
+					"css/mui.min.css",
 					"js/jquery-3.2.1.min.js"
 				],
 				"refer": [],
@@ -232,28 +221,72 @@
 			},
 			"login.html": {
 				"resources": [
-					"img/people.png",
-					"img/backround.png",
-					"css/login.css",
-					"js/mui.min.js",
-					"js/login.js",
-					"img/lock.png",
-					"css/mui.min.css",
-					"js/jquery-3.2.1.min.js",
-					"css/loginTest.css",
-					"js/base/mui.min.js",
-					"js/base/jquery-3.2.1.min.js",
-					"css/base/mui.min.css",
 					"img/login/lock.png",
+					"js/base/mui.min.js",
 					"img/login/people.png",
-					"img/login/backround.png"
+					"css/login.css",
+					"css/base/mui.min.css",
+					"js/login.js",
+					"img/login/backround.png",
+					"js/base/jquery-3.2.1.min.js",
+					"index.html",
+					"common/base/nav.html",
+					"common/base/temp.html",
+					"html/base/base.html"
 				],
 				"refer": [],
+				"priority": 0
+			},
+			"common/base/nav.html": {
+				"resources": [
+					"font/mui.ttf",
+					"common/1.html"
+				],
+				"refer": [
+					"common/2.html",
+					"common/3.html"
+				],
+				"priority": 0
+			},
+			"common/base/temp.html": {
+				"resources": [
+					"font/mui.ttf",
+					"css/base/mui.min.css",
+					"common/1.html"
+				],
+				"refer": [
+					"common/2.html",
+					"common/3.html"
+				],
+				"priority": 0
+			},
+			"html/base/base.html": {
+				"resources": [
+					"font/mui.ttf",
+					"html/homePage.html",
+					"css/base/mui.min.css",
+					"font/iconfont.ttf",
+					"css/iconfont.css",
+					"html/home/homePage.html",
+					"login.html"
+				],
+				"refer": [
+					"html/costumePage.html",
+					"html/clothPage.html",
+					"html/dataPage.html",
+					"html/workPage.html",
+					"html/work/workPage.html",
+					"html/cloth/clothPage.html",
+					"html/costume/costumePage.html",
+					"html/user/userPage.html"
+				],
 				"priority": 0
 			}
 		},
 		"idle": {
-			"resources": []
+			"resources": [
+				"img/unlock.png"
+			]
 		}
 	}
 }
