@@ -20,15 +20,15 @@
 	<form class="login-form">
 		<div class="mui-input-row" id="login-account">
 			<img id="account-image" src="img/login/people.png"/>
-			<input id='account-input' class="mui-input-clear mui-input" type="text"placeholder="用户名/邮箱">
+			<input id='account-input' class="mui-input-clear mui-input" type="text"placeholder="用户名/邮箱" onkeyup="value=value.replace(/\s+/g,'')">
 		</div>
 		<div class="mui-input-row" id="login-password">
 			<img id="password-image" src="img/login/lock.png"/>
-			<input id='password-input' class="mui-input-clear mui-input" type="password" placeholder="请输入密码">
+			<input id='password-input' class="mui-input-clear mui-input" type="password" placeholder="请输入密码" onKeyUp="value=value.replace(/[\W]/g,'')">
 		</div>
 	</form>
 	
-	<button id='submit' class="mui-btn mui-btn-block mui-btn-primary" onclick="login()">登录</button>
+	<button id='submit' class="mui-btn mui-btn-block mui-btn-primary" onclick="formatConfirm()">登录</button>
 	
 	<div class="link-area" id="link-area">
 		<a id='register'>注册账号</a> 
@@ -36,7 +36,7 @@
 	</div>
 	
 	<div id='skip-login'>
-		<a>跳过登录>></a>
+		<a href="index.html">跳过登录>></a>
 	</div>
 	<!-- html end-->
 	
