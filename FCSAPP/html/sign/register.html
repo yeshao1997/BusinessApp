@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <!-- css start-->
+    <link rel="stylesheet" href="../../css/base/mui.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/sign/register.css"/>
+    <!-- css end-->
+</head>
+<body >
+	<!-- html start-->	
+	<div class="bg" id="bg">
+		<img src="../../img/base/backround.png" width="100%" height="100%"/>
+	</div>
+	<span class="mui-icon mui-icon-back" id="back-login" onclick="back_login()"></span>
+	<div class="title">注 册</div>
+	<form class="register-form">
+		<div class="mui-input-row" id="register-account">
+			<label style="width: 38%; color: #ef812a;">账&nbsp&nbsp&nbsp&nbsp&nbsp号</label>
+			<input id='register-account-input' class="mui-input-clear mui-input" 
+				type="text" maxlength="7" placeholder="用户名/邮箱" onkeyup="value=value.replace(/\s+/g,'')">
+		</div>
+		<div class="mui-input-row" id="register-password">
+			<label style="width: 38%; color: #ef812a;">密&nbsp&nbsp&nbsp&nbsp&nbsp码</label>
+			<input id='register-password-input' class="mui-input-clear mui-input" 
+				type="password" placeholder="请输入密码" onKeyUp="value=value.replace(/[\W]/g,'')">
+		</div>
+		<div class="mui-input-row" id="register-password-confirm">
+			<label style="width: 38%; color: #ef812a;">确认密码</label>
+			<input id='register-password-confirm-input' class="mui-input-clear mui-input" 
+				type="password" placeholder="请确认密码" onKeyUp="value=value.replace(/[\W]/g,'')">
+		</div>
+		<div class="mui-input-row" id="register-verification">
+			<p id="prompt-text">滑动验证</p>
+			<div class="code-box" id="code-box">
+				<p></p>
+				<span>>>></span>
+			</div>
+		</div>
+		
+		<div id="register-type-form">
+			<div class="mui-input-row mui-radio mui-left" id="coommon-radio">
+				<label style="color: #ffffff; opacity: 0.8;">用户</label>
+				<input name="register-type" type="radio" checked="true">
+			</div>
+			<div class="mui-input-row mui-radio mui-left" id="design-radio">
+				<label style="color: #ffffff; opacity: 0.8;">设计师</label>
+				<input name="register-type" type="radio" >
+			</div>
+		</div>
+		
+	</form>
+	<button id='submit' class="mui-btn mui-btn-block mui-btn-primary" onclick="">注册</button>
+	<!-- html end-->
+	
+	<!-- javascript start-->
+    <script type="text/javascript" src="../../js/base/mui.min.js" ></script>
+    <script type="text/javascript" src="../../js/base/jquery-3.2.1.min.js" ></script>
+	<script>
+		document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   			plus.navigator.setStatusBarBackground("#000000");
+   		});
+   		mui.init();
+   		//防止键盘挤压背景图片
+		var originalHeight=document.documentElement.clientHeight || document.body.clientHeight;
+		window.onresize=function(){
+		    //软键盘弹起与隐藏  都会引起窗口的高度发生变化
+		    var  resizeHeight=document.documentElement.clientHeight || document.body.clientHeight;
+		    //resizeHeight<originalHeight证明窗口被挤压了
+		    if(resizeHeight*1<originalHeight*1){
+	            plus.webview.currentWebview().setStyle({
+	                height:originalHeight
+	            });
+		    }
+		}
+		
+		//滑动验证
+		window.addEventListener('load',function(){
+			var code = "",codeFn = new moveCode(code);
+		});
+	</script>
+	<script type="text/javascript" src="../../js/sign/register.js" ></script>
+	<!-- javascript end-->
+</body>
+</html>

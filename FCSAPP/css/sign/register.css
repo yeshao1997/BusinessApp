@@ -1,0 +1,153 @@
+/*radio选中后颜色*/
+.mui-radio input[type=radio]:checked:before{color:#ef812a}
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/*背景图片*/
+.bg{
+	position: fixed; 
+	left:0px;
+	top:0px; 
+	width:100%; 
+	height:100%;
+	z-index:-1;
+}
+
+/*返回登录界面*/
+#back-login{
+	color: #ffffff;
+	margin-left: 20px;
+	margin-top: 45px;
+	float: initial;
+}
+
+/*标题*/
+.title{
+	color: white;
+	font-size: 44px;
+	text-align: center;
+	margin-top: 15px;
+}
+
+/*登录账号输入*/
+#register-account{
+	width: 260px;
+	height: 40px;
+	margin:0 auto;
+	margin-top: 60px;
+	background-color: white;
+	border-radius:8px;
+}
+
+#register-account-input{
+	font-size: 18px;
+	width: 62%;
+	float: right;
+}
+/*登录密码输入*/
+#register-password{
+	width: 260px;
+	height: 40px;
+	margin:0 auto;
+	margin-top: 15px;
+	background-color: white;
+	border-radius:8px;
+}
+#register-password-input{
+	font-size: 18px;
+	width: 62%;
+	float: right;
+	border: 0px;
+}
+/*确认登录密码*/
+#register-password-confirm{
+	width: 260px;
+	height: 40px;
+	margin:0 auto;
+	margin-top: 15px;
+	background-color: white;
+	border-radius:8px;
+}
+#register-password-confirm-input{
+	font-size: 18px;
+	width: 62%;
+	float: right;
+	border: 0px;
+}
+/*验证码*/
+#register-verification{
+	width: 260px;
+	height: 40px;
+	margin:0 auto;
+	margin-top: 15px;
+	background-color: white;
+	border-radius:8px;
+}
+#prompt-text{
+	width: 260px;
+	float: right;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.code-box{
+    height: 40px;
+    background: rgba(0, 0, 0, 0.16);
+	box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+}
+.code-box p,.code-box span{
+	display:block;
+	position: absolute;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 8px;
+}
+.code-box span{
+	width: 32%;
+	background-color:#FFFFFF;
+	font-size: 18px;
+	color: #ef812a;
+}
+.code-box p{
+	background-color: #FFFF99;
+	overflow: hidden;
+	color: #FFFFFF;
+	text-indent: -20px;
+	transition: background 1s ease-in;
+}
+
+/*身份选择*/
+#register-type-form{
+	width: 260px;
+	height: 40px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+#coommon-radio{
+	float: left;
+	clear: none;
+}
+#design-radio{
+	float: right;
+	clear: none;
+}
+
+/*提交按钮*/
+#submit{
+	width: 260px;
+	height: 40px;
+	margin: 0 auto;
+	margin-top: 100px;
+	padding-top: 7px;
+	background: #ef812a;
+	font-size: 18px;
+	color: white;
+	border: none;
+	border-radius:8px;
+	outline: none;
+}

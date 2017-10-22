@@ -1,0 +1,23 @@
+
+@font-face {font-family: "iconfont";
+  src:url('../font/iconfont.ttf') format('truetype') /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-clothing:before { content: "\e655"; }
+
+.icon-gird:before { content: "\e672"; }
+
+.icon-my:before { content: "\e690"; }
+
+.icon-home:before { content: "\e696"; }
+
+.icon-pic:before { content: "\e6aa"; }
+
