@@ -22,9 +22,9 @@ body{
 /*标题*/
 .title{
 	color: white;
-	font-size: 48px;
+	font-size: 44px;
 	text-align: center;
-	margin-top: 80px;
+	margin-top: 15px;
 }
 
 /*登录账号输入*/
@@ -32,24 +32,22 @@ body{
 	width: 260px;
 	height: 40px;
 	margin:0 auto;
-	margin-top: 100px;
+	margin-top: 60px;
 	background-color: white;
 	border-radius:8px;
 }
 #forget-vercation-input{
 	font-size: 18px;
-	width: 68%;
+	width: 62%;
 	float: right;
-	border: 0px;
 }
-
 
 /*提交按钮*/
 #submit{
 	width: 260px;
 	height: 40px;
 	margin: 0 auto;
-	margin-top: 160px;
+	margin-top: 305px;
 	padding-top: 7px;
 	background: #ef812a;
 	font-size: 18px;

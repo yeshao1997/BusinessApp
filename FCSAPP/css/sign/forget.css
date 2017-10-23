@@ -1,0 +1,104 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/*背景图片*/
+.bg{
+	position: fixed; 
+	left:0px;
+	top:0px; 
+	width:100%; 
+	height:100%;
+	z-index:-1;
+}
+
+/*返回登录界面*/
+#back-login{
+	color: #ffffff;
+	margin-left: 20px;
+	margin-top: 45px;
+	float: initial;
+}
+
+/*标题*/
+.title{
+	color: white;
+	font-size: 44px;
+	text-align: center;
+	margin-top: 15px;
+}
+
+/*邮箱输入*/
+#forget-mail{
+	width: 260px;
+	height: 40px;
+	margin:0 auto;
+	margin-top: 60px;
+	background-color: white;
+	border-radius:8px;
+}
+
+#forget-mail-input{
+	font-size: 18px;
+	width: 62%;
+	float: right;
+}
+
+/*验证码*/
+#forget-verification{
+	width: 260px;
+	height: 40px;
+	margin:0 auto;
+	margin-top: 15px;
+	background-color: white;
+	border-radius:8px;
+}
+#prompt-text{
+	width: 260px;
+	float: right;
+	text-align: center;
+	margin-top: 10px;
+}
+.code-box{
+    height: 40px;
+    background: rgba(0, 0, 0, 0.16);
+	box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+}
+.code-box p,.code-box span{
+	display:block;
+	position: absolute;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 8px;
+}
+.code-box span{
+	width: 32%;
+	background-color:#FFFFFF;
+	font-size: 18px;
+	color: #ef812a;
+}
+.code-box p{
+	background-color: #FFFF99;
+	overflow: hidden;
+	color: #FFFFFF;
+	text-indent: -20px;
+	transition: background 1s ease-in;
+}
+
+/*提交按钮*/
+#submit{
+	width: 260px;
+	height: 40px;
+	margin: 0 auto;
+	margin-top: 250px;
+	padding-top: 7px;
+	background: #ef812a;
+	font-size: 18px;
+	color: white;
+	border: none;
+	border-radius:8px;
+	outline: none;
+}
