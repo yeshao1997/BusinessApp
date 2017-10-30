@@ -1,3 +1,19 @@
+function openPage(page){
+	if(page == "register"){
+		mui.openWindow({
+		    url:'register.html'
+		});
+	}else if(page == "forget"){
+		mui.openWindow({
+		    url:'forget.html'
+		});
+	}else if(page == "homePage"){
+		mui.openWindow({
+		    url:'../base/base.html'
+		});
+	}
+}
+
 //执行登录前数据格式检测
 function formatConfirm(){
 	var account = $("#account-input").val();
@@ -25,27 +41,34 @@ function login(){
         },
         type: "POST", 
         timeout:3000,
-        error: erryFunction,
-        success: succFunction
+        beforeSend: function(){
+        	$("#submit").attr('disabled',"true");
+        },
+        success: succFunction,
+        complete: function () {
+			$("#submit").removeAttr("disabled");
+	    },
+        error: function(){
+        	mui.toast("登录失败，网络错误");
+        }
       });
 }
 
 //登录错误时执行方法    
 function erryFunction(xhr,type,errorThrown){
 	//异常处理；
-	mui.toast("请求错误");
+	mui.toast("登录失败，网络错误");
 }
 
 //登录成功时执行方法
 function succFunction(data){
 	var resultJson = JSON.parse(JSON.stringify( data ));
-	var loginResult = resultJson.obj;
-	if(loginResult){
-  		mui.toast(resultJson.msg);
+	var loginCode = resultJson.code;
+	if(loginCode == 1){
 		mui.openWindow({
-			url:'index.html',
+			url:'../base/base.html',
 			extras:{
-				
+				userId: resultJson.obj
 			}
 		})
 	}else{

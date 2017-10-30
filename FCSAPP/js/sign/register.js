@@ -1,5 +1,93 @@
-function back_login(){
-	mui.back();
+var moveConfirm = false;
+var ws = null;
+
+function openPage(page){
+	if(page == "back"){
+		mui.back();
+	}
+}
+
+function confirmCode(){
+	var code = $("#register-vercation-input").val();
+	var mail = $("#register-mail-input").val();
+	var url = 'http://172.16.41.126:8080/CodeController/confirmMailCode';
+  	mui.ajax(url, {
+        data: {
+          'mail':mail,
+          'code': code,
+          'type': 1
+        },
+        type: "POST",
+        timeout: 3000,
+        beforeSend: function(){
+        	$("#submit").attr('disabled',"true");
+        },complete: function () {
+			$("#submit").removeAttr("disabled");
+	    },
+        error: function(){
+        	mui.toast("注册失败，网络错误");
+        },
+        success: function(data){
+        	var resultJson = JSON.parse(JSON.stringify( data ));
+			var registerCode = resultJson.code;
+			if(registerCode == 1){
+				register();
+			}else{
+				mui.toast(resultJson.msg);
+			}
+        }
+    });
+}
+
+//判断用户类型进行注册
+function register(){
+	var register_type = $("input[name='register-type']:checked").val();
+	var account = $("#register-account-input").val();
+	var password = $("#register-password-input").val();
+	var mail = $("#register-mail-input").val();
+	if(register_type == 1 && moveConfirm){
+		var url = 'http://172.16.41.126:8080/AccountController/registerUser';
+      	mui.ajax(url, {
+	        data: {
+	          'account': account,
+	          'password': password,
+	          'mail': mail,
+	          'type': 1
+	        },
+	        type: "POST",
+	        timeout: 3000,
+	        beforeSend: function(){
+	        	$("#submit").attr('disabled',"true");
+	        },complete: function () {
+				$("#submit").removeAttr("disabled");
+		    },
+	        error: function(){
+	        	mui.toast("注册失败，网络错误");
+	        },
+	        success: function(data){
+	        	var resultJson = JSON.parse(JSON.stringify( data ));
+				var registerCode = resultJson.code;
+				if(registerCode == 1){
+					mui.openWindow({
+						url:'register3.html'
+			   		});
+				}else{
+					mui.toast(resultJson.msg);
+				}
+	        }
+	    });
+	}else if(register_type == 2 && moveConfirm){
+   		mui.openWindow({
+		    url:'register2.html',
+		    extras:{
+		        account:account,
+		        password:password,
+		        mail:mail
+		    }
+		});
+	}else{
+		mui.toast("验证未完成，请重新验证信息");
+	}
 }
 
 //滑动验证
@@ -33,10 +121,12 @@ function moveCode(code){
 	}
 	
 	//注册信息验证
-	function registerConfirm(){
+	function messageConfirm(){
+		moveConfirm = false;
 		var account = $("#register-account-input").val();
 		var password = $("#register-password-input").val();
 		var password_confirm = $("#register-password-confirm-input").val();
+		var mail = $("#register-mail-input").val();
 		
 		if(account == ""){
 			mui.toast("用户名不能为空");
@@ -56,11 +146,16 @@ function moveCode(code){
 		}else if(password != password_confirm){
 			mui.toast("两次输入密码不相同");
 			removeFn(false);
-		}else{
-			var url = 'http://172.16.41.126:8080/AccountController/existUsername';
+		}else if(mail ==""){
+			mui.toast("邮箱地址不能为空");
+			removeFn(false);
+		}
+		else{
+			var url = 'http://172.16.41.126:8080/AccountController/registerConfirm';
 	      	mui.ajax(url, {
 		        data: {
-		          'account': account
+		          'account': account,
+		          'mail':mail
 		        },
 		        type: "POST",
 		        timeout: 3000,
@@ -70,11 +165,12 @@ function moveCode(code){
 		        },
 		        success: function(data){
 		        	var resultJson = JSON.parse(JSON.stringify( data ));
-					var loginResult = resultJson.obj;
-					if(loginResult){
+					var registerCode = resultJson.code;
+					if(registerCode == 1){
+						mui.toast(resultJson.msg);
 						removeFn(true);
 					}else{
-						mui.toast("用户名已存在");
+						mui.toast(resultJson.msg);
 						removeFn(false);
 					}
 		        }
@@ -107,12 +203,13 @@ function moveCode(code){
 		if(endX > evenWidth * 0.7 && confirm){			
 			progress.innerText = '验证成功';
 			progress.style.width = evenWidth+deviation+'px';
-			evenBox.style.left = evenWidth+'px';			
-			codeInput.value = fn.codeVluae;
+			evenBox.style.left = evenWidth+'px';
 			evenBox.onmousedown = null;
+			moveConfirm = true;
 		}else{
 			progress.style.width = '0px';
 			evenBox.style.left = '0px';
+			moveConfirm = false;
 		}
 	}
 
@@ -125,7 +222,7 @@ function moveCode(code){
 				endX;
 
 		evenBox.addEventListener(boxEven['1'],moveFn,false);
-		evenBox.addEventListener(boxEven['2'],registerConfirm,false);
+		evenBox.addEventListener(boxEven['2'],messageConfirm,false);
 	},false);
 	
 	fn.setCode = function(code){
@@ -145,7 +242,3 @@ function moveCode(code){
 
 	return fn;
 }
-
-
-
-

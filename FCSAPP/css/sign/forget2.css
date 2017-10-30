@@ -27,8 +27,8 @@ body{
 	margin-top: 15px;
 }
 
-/*登录账号输入*/
-#forget-vercation{
+/*更新密码输入*/
+#update-password{
 	width: 260px;
 	height: 40px;
 	margin:0 auto;
@@ -36,10 +36,69 @@ body{
 	background-color: white;
 	border-radius:8px;
 }
-#forget-vercation-input{
+#update-password-input{
 	font-size: 18px;
 	width: 62%;
 	float: right;
+	border: 0px;
+}
+/*确认更新密码*/
+#update-password-confirm{
+	width: 260px;
+	height: 40px;
+	margin:0 auto;
+	margin-top: 15px;
+	background-color: white;
+	border-radius:8px;
+}
+#update-password-confirm-input{
+	font-size: 18px;
+	width: 62%;
+	float: right;
+	border: 0px;
+}
+
+/*验证码*/
+#update-verification{
+	width: 260px;
+	height: 40px;
+	margin:0 auto;
+	margin-top: 15px;
+	background-color: white;
+	border-radius:8px;
+}
+#prompt-text{
+	width: 260px;
+	float: right;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.code-box{
+    height: 40px;
+    background: rgba(0, 0, 0, 0.16);
+	box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+}
+.code-box p,.code-box span{
+	display:block;
+	position: absolute;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 8px;
+}
+.code-box span{
+	width: 32%;
+	background-color:#FFFFFF;
+	font-size: 18px;
+	color: #ef812a;
+}
+.code-box p{
+	background-color: #FFFF99;
+	overflow: hidden;
+	color: #FFFFFF;
+	text-indent: -20px;
+	transition: background 1s ease-in;
 }
 
 /*提交按钮*/
@@ -47,7 +106,7 @@ body{
 	width: 260px;
 	height: 40px;
 	margin: 0 auto;
-	margin-top: 305px;
+	margin-top: 195px;
 	padding-top: 7px;
 	background: #ef812a;
 	font-size: 18px;
@@ -56,7 +115,6 @@ body{
 	border-radius:8px;
 	outline: none;
 }
-
 
 
 

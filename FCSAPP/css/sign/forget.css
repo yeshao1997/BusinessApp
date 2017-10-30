@@ -42,7 +42,22 @@
 
 #forget-mail-input{
 	font-size: 18px;
-	width: 62%;
+	width: 68%;
+	float: right;
+}
+
+/*邮箱验证码输入*/
+#forget-vercation{
+	width: 260px;
+	height: 40px;
+	margin:0 auto;
+	margin-top: 15px;
+	background-color: white;
+	border-radius:8px;
+}
+#forget-vercation-input{
+	font-size: 18px;
+	width: 68%;
 	float: right;
 }
 

@@ -1,8 +1,12 @@
-function back_login(){
-	mui.back();
+var moveConfirm = false;
+
+function openPage(page){
+	if(page == "back"){
+		mui.back();
+	}
 }
 
-//滑动验证
+//滑动发送邮箱验证码
 function moveCode(code){
 	var fn = {codeVluae : code};
 	var box = document.querySelector("#code-box"),
@@ -33,14 +37,15 @@ function moveCode(code){
 	}
 	
 	//注册信息验证
-	function registerConfirm(){
+	function messageConfirm(){
+		moveConfirm = false;
 		var mail = $("#forget-mail-input").val();
 		
 		if(mail == ""){
 			mui.toast("邮箱不能为空");
 			removeFn(false);
 		}else{
-			var url = 'http://172.16.41.126:8080/AccountController/existMail';
+			var url = 'http://172.16.41.126:8080/AccountController/sendMail';
 	      	mui.ajax(url, {
 		        data: {
 		          'mail': mail
@@ -53,11 +58,12 @@ function moveCode(code){
 		        },
 		        success: function(data){
 		        	var resultJson = JSON.parse(JSON.stringify( data ));
-					var loginResult = resultJson.obj;
-					if(loginResult){
+					var loginCode = resultJson.code;
+					if(loginCode == 1){
 						removeFn(true);
+						mui.toast(resultJson.msg);
 					}else{
-						mui.toast("邮箱未绑定账号");
+						mui.toast(resultJson.msg);
 						removeFn(false);
 					}
 		        }
@@ -88,14 +94,15 @@ function moveCode(code){
 		document.removeEventListener(boxEven['1'],moveFn,false);
 
 		if(endX > evenWidth * 0.7 && confirm){			
-			progress.innerText = '验证成功';
+			progress.innerText = '发送成功';
 			progress.style.width = evenWidth+deviation+'px';
-			evenBox.style.left = evenWidth+'px';			
-			codeInput.value = fn.codeVluae;
+			evenBox.style.left = evenWidth+'px';
 			evenBox.onmousedown = null;
+			moveConfirm = true;
 		}else{
 			progress.style.width = '0px';
 			evenBox.style.left = '0px';
+			moveConfirm = false;
 		}
 	}
 
@@ -108,7 +115,7 @@ function moveCode(code){
 				endX;
 
 		evenBox.addEventListener(boxEven['1'],moveFn,false);
-		evenBox.addEventListener(boxEven['2'],registerConfirm,false);
+		evenBox.addEventListener(boxEven['2'],messageConfirm,false);
 	},false);
 	
 	fn.setCode = function(code){
@@ -130,10 +137,45 @@ function moveCode(code){
 }
 
 function forgetConfirm(){
-	mui.openWindow({
-		url:'forget2.html',
-		extras:{
-			
-		}
-	})
+	var code = $("#forget-vercation-input").val();
+	if(!moveConfirm){
+        mui.toast("验证未完成，请重新验证信息");
+	}else if(code == ""){
+		mui.toast("验证码不能为空");
+	}else{
+		var mail = $("#forget-mail-input").val();
+		var url = 'http://172.16.41.126:8080/CodeController/confirmMailCode';
+	    mui.ajax(url, {
+	        data: {
+	          'mail':mail,
+	          'code': code,
+	          'type': 2
+	        },
+	        type: "POST", 
+	        timeout:3000,
+	        beforeSend: function(){
+	        	$("#submit").attr('disabled',"true");
+	        },complete: function () {
+				$("#submit").removeAttr("disabled");
+		    },
+	        error: function(){
+	        	mui.toast("验证失败，网络错误");
+	        },
+	        success: function(data){
+	        	var resultJson = JSON.parse(JSON.stringify( data ));
+				var userId = resultJson.obj;
+				if(resultJson.code == 1){
+					mui.openWindow({
+					    url:'forget2.html',
+					    extras:{
+					        userId:userId
+					    }
+					});
+				}else{
+					mui.toast(resultJson.msg);
+				}
+	        }
+	    });
+	}
+	
 }

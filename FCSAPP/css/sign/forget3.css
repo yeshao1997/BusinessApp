@@ -1,0 +1,32 @@
+/*背景图片*/
+.bg{
+	position: fixed; 
+	left:0px;
+	top:0px; 
+	width:100%; 
+	height:100%;
+	z-index:-1;
+}
+
+/*标题*/
+.title{
+	color: white;
+	font-size: 44px;
+	text-align: center;
+	margin-top: 84px;
+}
+
+/*提交按钮*/
+#submit{
+	width: 260px;
+	height: 40px;
+	margin: 0 auto;
+	margin-top: 405px;
+	padding-top: 7px;
+	background: #ef812a;
+	font-size: 18px;
+	color: white;
+	border: none;
+	border-radius:8px;
+	outline: none;
+}

@@ -6,7 +6,8 @@
     <title></title>
     <!-- css start-->
     <link rel="stylesheet" href="../../css/base/mui.min.css" />
-    <link rel="stylesheet" href="../../css/sign/forget.css" />   	
+    <link rel="stylesheet" href="../../css/base/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/sign/register2.css"/>
     <!-- css end-->
 </head>
 
@@ -16,37 +17,20 @@
 		<img src="../../img/base/backround.png" width="100%" height="100%"/>
 	</div>
 	<span class="mui-icon mui-icon-back" id="back-login" onclick="openPage('back')"></span>
-	<div class="title">找回密码</div>
-	<form class="forget-form">
-		<div class="mui-input-row" id="forget-mail">
-			<label style="width: 32%; color: #ef812a;">邮 箱</label>
-			<input id='forget-mail-input' class="mui-input-clear mui-input" 
-				type="email" placeholder="输入绑定邮箱">
-		</div>
-		<div class="mui-input-row" id="forget-verification">
-			<p id="prompt-text">滑动发送</p>
-			<div class="code-box" id="code-box">
-				<p></p>
-				<span>>>></span>
-			</div>
-		</div>
-		<div class="mui-input-row" id="forget-vercation">
-			<label style="width: 32%; color: #ef812a;">验证码</label>
-			<input id='forget-vercation-input' class="mui-input-clear mui-input" 
-				type="text" placeholder="请输入邮箱验证码"/>
-		</div>
-	</form>
-	<button id='submit' class="mui-btn mui-btn-block mui-btn-primary" onclick="forgetConfirm()">确定</button>
+	<div class="title">设计标签</div>
+	<div id="tagContent">
+	</div>
+	<button id='submit' class="mui-btn mui-btn-block mui-btn-primary" onclick="registerDesigner()">注册</button>
 	<!-- html end-->
 	
 	<!-- javascript start-->
-	<script type="text/javascript" src="../../js/base/jquery-3.2.1.min.js" ></script>
 	<script type="text/javascript" src="../../js/base/mui.min.js" ></script>
+    <script type="text/javascript" src="../../js/base/jquery-3.2.1.min.js" ></script>
 	<script>
 		document.addEventListener('plusready', function(){
    			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
    			plus.navigator.setStatusBarBackground("#000000");
-   		});
+		});
    		mui.init();
    		//防止键盘挤压背景图片
 		var originalHeight=document.documentElement.clientHeight || document.body.clientHeight;
@@ -60,13 +44,8 @@
 	            });
 		    }
 		}
-		
-		//滑动验证
-		window.addEventListener('load',function(){
-			var code = "",codeFn = new moveCode(code);
-		});
 	</script>
-	<script type="text/javascript" src="../../js/sign/forget.js" ></script>
+	<script type="text/javascript" src="../../js/sign/register2.js" ></script>
 	<!-- javascript end-->
 </body>
 </html>

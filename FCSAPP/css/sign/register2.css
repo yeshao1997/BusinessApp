@@ -1,0 +1,61 @@
+/*背景图片*/
+.bg{
+	position: fixed; 
+	left:0px;
+	top:0px; 
+	width:100%; 
+	height:100%;
+	z-index:-1;
+}
+
+/*返回注册界面*/
+#back-login{
+	color: #ffffff;
+	margin-left: 20px;
+	margin-top: 45px;
+	float: initial;
+}
+
+/*标题*/
+.title{
+	color: white;
+	font-size: 44px;
+	text-align: center;
+	margin-top: 15px;
+}
+
+#tagContent{
+	width: 360px;
+	height: 360px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+#tagContent button{
+	width: 130px;
+	height: 40px;
+	margin-left: 35px;
+	margin-top: 20px;
+	margin-bottom: 0px;
+	padding: 0px;
+	background-color: #2f3337;
+	font-size: 16px;
+	display: initial;
+	border-radius:8px;
+	border-color: #77ade4;
+}
+
+/*提交按钮*/
+#submit{
+	width: 260px;
+	height: 40px;
+	margin: 0 auto;
+	margin-top: 45px;
+	padding-top: 7px;
+	background: #ef812a;
+	font-size: 18px;
+	color: white;
+	border: none;
+	border-radius:8px;
+	outline: none;
+}

@@ -78,6 +78,38 @@
 	float: right;
 	border: 0px;
 }
+
+/*邮箱输入*/
+#register-mail{
+	width: 260px;
+	height: 40px;
+	margin:0 auto;
+	margin-top: 15px;
+	background-color: white;
+	border-radius:8px;
+}
+
+#register-mail-input{
+	font-size: 18px;
+	width: 62%;
+	float: right;
+}
+
+/*邮箱验证码输入*/
+#register-vercation{
+	width: 260px;
+	height: 40px;
+	margin:0 auto;
+	margin-top: 15px;
+	background-color: white;
+	border-radius:8px;
+}
+#register-vercation-input{
+	font-size: 18px;
+	width: 62%;
+	float: right;
+}
+
 /*验证码*/
 #register-verification{
 	width: 260px;
