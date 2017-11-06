@@ -1,0 +1,112 @@
+#header{
+	height: 75px;
+	background-color:#4d3b3c ;
+	position: relative;
+}
+
+#back{
+	height: 25px;
+	width: 25px;
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 8px;
+	color: white;
+}
+#title{
+	height: 25px;
+	width: 80px;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 8px;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+}
+
+#mail-content{
+	height: 70px;
+	position: relative;
+}
+
+#mail-tag{
+	width: 35px;
+	height: 35px;
+	position: absolute;
+	left: 10px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+}
+
+#mail-input{
+	width: 230px;
+	font-size: 18px;
+	position: absolute;
+	left: 65px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+}
+
+#confirmMail{
+	width: 100px;
+	height: 40px;
+	position: absolute;
+	right: 10px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	background-color: cornflowerblue;
+	color: white;
+	font-size: 14px;
+}
+
+#code-content{
+	height: 70px;
+	position: relative;
+}
+
+#code-tag{
+	width: 35px;
+	height: 35px;
+	position: absolute;
+	left: 10px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+}
+
+#code-input{
+	width: 230px;
+	font-size: 18px;
+	position: absolute;
+	left: 65px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+}
+
+body{
+	position: relative;
+}
+
+#submit{
+	position: fixed;
+	width: 260px;
+	height: 40px;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	bottom: 50px;
+	background: cornflowerblue;
+	font-size: 18px;
+	color: white;
+	border: none;
+}

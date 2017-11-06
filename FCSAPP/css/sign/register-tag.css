@@ -49,8 +49,7 @@
 #submit{
 	width: 260px;
 	height: 40px;
-	margin: 0 auto;
-	margin-top: 45px;
+	position: fixed;
 	padding-top: 7px;
 	background: #ef812a;
 	font-size: 18px;
@@ -58,4 +57,8 @@
 	border: none;
 	border-radius:8px;
 	outline: none;
+	left: 0px;
+	right: 0px;
+	bottom: 100px;
+	margin: auto;
 }

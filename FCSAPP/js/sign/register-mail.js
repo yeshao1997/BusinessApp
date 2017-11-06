@@ -1,18 +1,5 @@
 var moveConfirm = false;
-
-document.addEventListener('plusready', function(){
-	//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
-	plus.navigator.setStatusBarBackground("#000000");
-});
-
-//返回登录界面时，刷新登录界面
-mui.init({  
-    beforeback: function() { 
-	    var list = plus.webview.currentWebview().opener();  
-	    mui.fire(list, 'refresh');  
-	    return true;  
-    }  
-}); 
+var account,password,type,mail;
 
 //防止键盘挤压背景图片
 var originalHeight=document.documentElement.clientHeight || document.body.clientHeight;
@@ -27,11 +14,18 @@ window.onresize=function(){
     }
 }
 
+//获取上个界面传递的值
+mui.plusReady(function () {
+    var self = plus.webview.currentWebview();
+	account = self.account;
+	password = self.password;
+	type = self.type;
+})
+
 //初始化滑动验证
 window.addEventListener('load',function(){
 	var code = "",codeFn = new moveCode(code);
 });
-
 
 function openPage(page){
 	if(page == "back"){
@@ -39,7 +33,87 @@ function openPage(page){
 	}
 }
 
-//滑动发送邮箱验证码
+
+function confirmCode(){
+	var code = $("#register-vercation-input").val();
+	if(!moveConfirm){
+        mui.toast("验证未完成，请重新验证信息");
+	}else if(code == ""){
+		mui.toast("验证码不能为空");
+	}else if(code.length != 4){
+		mui.toast("请输入4位数验证码");
+	}else{
+		var url = 'http://172.16.41.126:8080/CodeController/confirmMailCode';
+	    mui.ajax(url, {
+	        data: {
+	          'mail':mail,
+	          'code': code,
+	          'type': 1
+	        },
+	        type: "POST", 
+	        timeout:3000,
+	        beforeSend: function(){
+	        	$("#submit").attr('disabled',"true");
+	        },complete: function () {
+				$("#submit").removeAttr("disabled");
+		    },
+	        error: function(){
+	        	mui.toast("验证失败，网络错误");
+	        },
+	        success: function(data){
+	        	var resultJson = JSON.parse(JSON.stringify( data ));
+				var userId = resultJson.obj;
+				if(resultJson.code == 1){
+					if(type == 1){
+						registerUser();
+					}else if(type == 2){
+						mui.openWindow({
+						    url:'register-tag.html',
+						    extras:{
+						        account: account,
+						        password: password,
+						        mail: mail
+						    }
+						});
+					}
+				}else{
+					mui.toast(resultJson.msg);
+				}
+	        }
+	    });
+	}
+	
+}
+
+function registerUser(){
+	var url = 'http://172.16.41.126:8080/AccountController/registerUser';
+  	mui.ajax(url, {
+        data: {
+          'account': account,
+          'password': password,
+          'mail': mail,
+          'type': type
+        },
+        type: "POST",
+        timeout: 3000,
+        error: function(){
+        	mui.toast("验证失败，网络错误");
+        },
+        success: function(data){
+        	var resultJson = JSON.parse(JSON.stringify( data ));
+			var registerCode = resultJson.code;
+			if(registerCode == 1){
+				mui.openWindow({
+				    url:'register-success.html'
+				});
+			}else{
+				mui.toast(resultJson.msg);
+			}
+        }
+    });
+}
+
+//滑动验证
 function moveCode(code){
 	var fn = {codeVluae : code};
 	var box = document.querySelector("#code-box"),
@@ -69,20 +143,21 @@ function moveCode(code){
 		return parseInt(offset);
 	}
 	
-	//注册信息验证
+	//发送邮箱验证码
 	function messageConfirm(){
 		moveConfirm = false;
-		var mail = $("#forget-mail-input").val();
+		mail = $("#register-mail-input").val();
 		
-		if(mail == ""){
-			mui.toast("邮箱不能为空");
+		if(mail ==""){
+			mui.toast("邮箱地址不能为空");
 			removeFn(false);
-		}else{
+		}
+		else{
 			var url = 'http://172.16.41.126:8080/CodeController/sendMail';
 	      	mui.ajax(url, {
 		        data: {
 		          'mail': mail,
-		          'type': 2
+		          'type': 1
 		        },
 		        type: "POST",
 		        timeout: 3000,
@@ -92,10 +167,10 @@ function moveCode(code){
 		        },
 		        success: function(data){
 		        	var resultJson = JSON.parse(JSON.stringify( data ));
-					var loginCode = resultJson.code;
-					if(loginCode == 1){
-						removeFn(true);
+					var registerCode = resultJson.code;
+					if(registerCode == 1){
 						mui.toast(resultJson.msg);
+						removeFn(true);
 					}else{
 						mui.toast(resultJson.msg);
 						removeFn(false);
@@ -128,7 +203,7 @@ function moveCode(code){
 		document.removeEventListener(boxEven['1'],moveFn,false);
 
 		if(endX > evenWidth * 0.7 && confirm){			
-			progress.innerText = '发送成功';
+			progress.innerText = '验证成功';
 			progress.style.width = evenWidth+deviation+'px';
 			evenBox.style.left = evenWidth+'px';
 			evenBox.onmousedown = null;
@@ -168,48 +243,4 @@ function moveCode(code){
 	};
 
 	return fn;
-}
-
-function forgetConfirm(){
-	var code = $("#forget-vercation-input").val();
-	if(!moveConfirm){
-        mui.toast("验证未完成，请重新验证信息");
-	}else if(code == ""){
-		mui.toast("验证码不能为空");
-	}else{
-		var mail = $("#forget-mail-input").val();
-		var url = 'http://172.16.41.126:8080/CodeController/confirmMailCode';
-	    mui.ajax(url, {
-	        data: {
-	          'mail':mail,
-	          'code': code,
-	          'type': 2
-	        },
-	        type: "POST", 
-	        timeout:3000,
-	        beforeSend: function(){
-	        	$("#submit").attr('disabled',"true");
-	        },complete: function () {
-				$("#submit").removeAttr("disabled");
-		    },
-	        error: function(){
-	        	mui.toast("验证失败，网络错误");
-	        },
-	        success: function(data){
-	        	var resultJson = JSON.parse(JSON.stringify( data ));
-				var userId = resultJson.obj;
-				if(resultJson.code == 1){
-					mui.openWindow({
-					    url:'forget-updatePassword.html',
-					    extras:{
-					        userId:userId
-					    }
-					});
-				}else{
-					mui.toast(resultJson.msg);
-				}
-	        }
-	    });
-	}
-	
 }

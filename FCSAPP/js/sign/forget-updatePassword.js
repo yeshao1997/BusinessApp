@@ -1,6 +1,32 @@
 var userId;
 var moveConfirm = false;
 
+document.addEventListener('plusready', function(){
+	//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+	plus.navigator.setStatusBarBackground("#000000");
+});
+
+mui.init();
+
+//防止键盘挤压背景图片
+var originalHeight=document.documentElement.clientHeight || document.body.clientHeight;
+window.onresize=function(){
+    //软键盘弹起与隐藏  都会引起窗口的高度发生变化
+    var  resizeHeight=document.documentElement.clientHeight || document.body.clientHeight;
+    //resizeHeight<originalHeight证明窗口被挤压了
+    if(resizeHeight*1<originalHeight*1){
+        plus.webview.currentWebview().setStyle({
+            height:originalHeight
+        });
+    }
+}
+
+//滑动验证
+window.addEventListener('load',function(){
+	var code = "",codeFn = new moveCode(code);
+});
+
+
 function openPage(page){
 	if(page == "back"){
 		mui.back();
@@ -154,7 +180,7 @@ function updatePassword(){
 	        	var resultJson = JSON.parse(JSON.stringify( data ));
 				if(resultJson.code == 1){
 					mui.openWindow({
-						url:'forget3.html'
+						url:'forget-success.html'
 			   		});
 				}else{
 					mui.toast(resultJson.msg);

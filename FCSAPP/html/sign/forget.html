@@ -20,8 +20,7 @@
 	<form class="forget-form">
 		<div class="mui-input-row" id="forget-mail">
 			<label style="width: 32%; color: #ef812a;">邮 箱</label>
-			<input id='forget-mail-input' class="mui-input-clear mui-input" 
-				type="email" placeholder="输入绑定邮箱">
+			<input id='forget-mail-input' class="mui-input-clear mui-input" type="email" placeholder="输入绑定邮箱">
 		</div>
 		<div class="mui-input-row" id="forget-verification">
 			<p id="prompt-text">滑动发送</p>
@@ -32,40 +31,16 @@
 		</div>
 		<div class="mui-input-row" id="forget-vercation">
 			<label style="width: 32%; color: #ef812a;">验证码</label>
-			<input id='forget-vercation-input' class="mui-input-clear mui-input" 
-				type="text" placeholder="请输入邮箱验证码"/>
+			<input id='forget-vercation-input' class="mui-input-clear mui-input" type="text" placeholder="请输入邮箱验证码"/>
 		</div>
 	</form>
+	
 	<button id='submit' class="mui-btn mui-btn-block mui-btn-primary" onclick="forgetConfirm()">确定</button>
 	<!-- html end-->
 	
 	<!-- javascript start-->
 	<script type="text/javascript" src="../../js/base/jquery-3.2.1.min.js" ></script>
 	<script type="text/javascript" src="../../js/base/mui.min.js" ></script>
-	<script>
-		document.addEventListener('plusready', function(){
-   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
-   			plus.navigator.setStatusBarBackground("#000000");
-   		});
-   		mui.init();
-   		//防止键盘挤压背景图片
-		var originalHeight=document.documentElement.clientHeight || document.body.clientHeight;
-		window.onresize=function(){
-		    //软键盘弹起与隐藏  都会引起窗口的高度发生变化
-		    var  resizeHeight=document.documentElement.clientHeight || document.body.clientHeight;
-		    //resizeHeight<originalHeight证明窗口被挤压了
-		    if(resizeHeight*1<originalHeight*1){
-	            plus.webview.currentWebview().setStyle({
-	                height:originalHeight
-	            });
-		    }
-		}
-		
-		//滑动验证
-		window.addEventListener('load',function(){
-			var code = "",codeFn = new moveCode(code);
-		});
-	</script>
 	<script type="text/javascript" src="../../js/sign/forget.js" ></script>
 	<!-- javascript end-->
 </body>

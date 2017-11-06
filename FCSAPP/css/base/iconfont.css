@@ -1,6 +1,6 @@
 
 @font-face {font-family: "iconfont";
-  src: url('../../font/iconfont.ttf?t=1508826695513') format('truetype'); /* iOS 4.1- */
+  src: url('../../font/iconfont.ttf?t=1509375850189') format('truetype');
 }
 
 .iconfont {
@@ -10,6 +10,18 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.icon-app:before { content: "\e605"; }
+
+.icon-cart:before { content: "\e60a"; }
+
+.icon-folder:before { content: "\e61f"; }
+
+.icon-information:before { content: "\e627"; }
+
+.icon-message:before { content: "\e631"; }
+
+.icon-person2:before { content: "\e63a"; }
 
 .icon-clothing:before { content: "\e655"; }
 

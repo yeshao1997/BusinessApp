@@ -32,23 +32,6 @@
 			<input id='register-password-confirm-input' class="mui-input-clear mui-input" 
 				type="password" placeholder="请确认密码" onKeyUp="value=value.replace(/[\W]/g,'')">
 		</div>
-		<div class="mui-input-row" id="register-mail">
-			<label style="width: 38%; color: #ef812a;">邮&nbsp&nbsp&nbsp&nbsp&nbsp箱</label>
-			<input id='register-mail-input' class="mui-input-clear mui-input" 
-				type="email" placeholder="邮箱地址">
-		</div>
-		<div class="mui-input-row" id="register-verification">
-			<p id="prompt-text">滑动发送</p>
-			<div class="code-box" id="code-box">
-				<p></p>
-				<span>>>></span>
-			</div>
-		</div>
-		<div class="mui-input-row" id="register-vercation">
-			<label style="width: 38%; color: #ef812a;">验 证 码</label>
-			<input id='register-vercation-input' class="mui-input-clear mui-input" 
-				type="text" placeholder="邮箱验证码"/>
-		</div>
 		
 		<div id="register-type-form">
 			<div class="mui-input-row mui-radio mui-left" id="coommon-radio">
@@ -62,36 +45,12 @@
 		</div>
 		
 	</form>
-	<button id='submit' class="mui-btn mui-btn-block mui-btn-primary" onclick="confirmCode()">注册</button>
+	<button id='submit' class="mui-btn mui-btn-block mui-btn-primary" onclick="next()">下一步</button>
 	<!-- html end-->
 	
 	<!-- javascript start-->
     <script type="text/javascript" src="../../js/base/mui.min.js" ></script>
     <script type="text/javascript" src="../../js/base/jquery-3.2.1.min.js" ></script>
-	<script>
-		document.addEventListener('plusready', function(){
-   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
-   			plus.navigator.setStatusBarBackground("#000000");
-   		});
-   		mui.init();
-   		//防止键盘挤压背景图片
-		var originalHeight=document.documentElement.clientHeight || document.body.clientHeight;
-		window.onresize=function(){
-		    //软键盘弹起与隐藏  都会引起窗口的高度发生变化
-		    var  resizeHeight=document.documentElement.clientHeight || document.body.clientHeight;
-		    //resizeHeight<originalHeight证明窗口被挤压了
-		    if(resizeHeight*1<originalHeight*1){
-	            plus.webview.currentWebview().setStyle({
-	                height:originalHeight
-	            });
-		    }
-		}
-		
-		//滑动验证
-		window.addEventListener('load',function(){
-			var code = "",codeFn = new moveCode(code);
-		});
-	</script>
 	<script type="text/javascript" src="../../js/sign/register.js" ></script>
 	<!-- javascript end-->
 </body>

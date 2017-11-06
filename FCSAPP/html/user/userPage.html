@@ -1,16 +1,90 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<p>5</p>
-		<p>5</p>
-		<p>5</p>
-		<p>5</p>
-		<p>5</p>
-		<p>5</p>
-		<p>5</p>
-	</body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <!-- css start-->
+    <link rel="stylesheet" href="../../css/base/mui.min.css" />
+    <link rel="stylesheet" href="../../css/base/iconfont.css" />
+    <link rel="stylesheet" href="../../css/user/userPage.css" />
+    <!-- css end-->
+</head>
+
+<body>
+	<!-- html start-->
+	<div id="userPage-header">
+		<p id="userName"></p>
+		<img id="set-up" src="../../img/user/set-up.png" onclick="openPage('setting')"/>
+		<img id="userPage-background-image" src="../../img/user/personal-background.png" />
+		<div id="portrait-content">
+			<img id="portrait" src="../../img/user/portrait.png"/>
+		</div>
+	</div>
+	
+	<div id="follow-content">
+		<div id="follow">
+			<p>关注</p>
+		</div>
+		<div id="fans">
+			<p>粉丝</p>
+		</div>
+	</div>
+	
+	<hr id="division" />
+	
+	<div class="mui-content">
+		<ul class="mui-table-view mui-grid-view mui-grid-9">
+			<li id="myCollect" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+			    <a href="#">
+			        <span class="mui-icon iconfont icon-app">
+			        </span>
+			        <div class="mui-media-body">我的收藏</div>
+			    </a>
+			</li>
+			<li id="myComment" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+			    <a href="#">
+			        <span class="mui-icon iconfont icon-message">
+			        	<!--<span class="mui-badge mui-badge-red"></span>-->
+			        </span>
+			        <div class="mui-media-body">我的评论</div>
+			    </a>
+			</li>
+			<li id="myData" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+			    <a onclick="openPage('myData')" href="#">
+			        <span class="mui-icon iconfont icon-person2"></span>
+			        <div class="mui-media-body">我的资料</div>
+			    </a>
+			</li>
+			<li id="myAlbum" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" style="display: none">
+			    <a href="#">
+			        <span class="mui-icon iconfont icon-folder"></span>
+			        <div class="mui-media-body">我的专辑</div>
+			    </a>
+			</li>
+			<li id="myBuy" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+			    <a href="#">
+			        <span class="mui-icon iconfont icon-cart"></span>
+			        <div class="mui-media-body">购买记录</div>
+			    </a>
+			</li>
+			<li id="mySell" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"  style="display: none;">
+			    <a href="#">
+			        <span class="mui-badge mui-badge-red" style="display: none;"></span>
+			        <span class="mui-icon iconfont icon-information"></span>
+			        <div class="mui-media-body">购买意向</div>
+			    </a>
+			</li>
+		</ul>
+	</div>
+	<div id="loginPage"></div>
+	<button id="tologin" onclick="toLogin()">登录/注册</button>
+	<!-- html end-->
+	
+	<!-- javascript start-->
+	<script src="../../js/base/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/base/jquery-3.2.1.min.js" ></script>
+	<script type="text/javascript" src="../../js/user/userPage.js" ></script>		
+	<!-- javascript end-->
+</body>
 </html>

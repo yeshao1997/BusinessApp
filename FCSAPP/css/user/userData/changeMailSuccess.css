@@ -1,0 +1,45 @@
+#header{
+	height: 75px;
+	background-color:#4d3b3c ;
+	position: relative;
+}
+
+#back{
+	height: 25px;
+	width: 25px;
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 8px;
+	color: white;
+}
+#title{
+	height: 25px;
+	width: 80px;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 8px;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+}
+
+#submit{
+	position: fixed;
+	width: 260px;
+	height: 40px;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	bottom: 50px;
+	background: cornflowerblue;
+	font-size: 18px;
+	color: white;
+	border: none;
+}

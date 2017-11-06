@@ -5,6 +5,26 @@ var selectTag = new Array();
 var tagArray;
 var selected = 0;
 
+document.addEventListener('plusready', function(){
+	//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+	plus.navigator.setStatusBarBackground("#000000");
+});
+
+mui.init();
+
+//防止键盘挤压背景图片
+var originalHeight=document.documentElement.clientHeight || document.body.clientHeight;
+window.onresize=function(){
+    //软键盘弹起与隐藏  都会引起窗口的高度发生变化
+    var  resizeHeight=document.documentElement.clientHeight || document.body.clientHeight;
+    //resizeHeight<originalHeight证明窗口被挤压了
+    if(resizeHeight*1<originalHeight*1){
+        plus.webview.currentWebview().setStyle({
+            height:originalHeight
+        });
+    }
+}
+
 //获取上个界面传递的值
 mui.plusReady(function () {
     var self = plus.webview.currentWebview();
@@ -104,7 +124,7 @@ function registerDesigner(){
 				var registerCode = resultJson.code;
 				if(registerCode == 1){
 					mui.openWindow({
-						url:'register3.html'
+						url:'register-success.html'
 			   		});
 				}else{
 					mui.toast(resultJson.msg);
