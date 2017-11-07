@@ -46,7 +46,8 @@ function next(){
 	}else if(password != password_confirm){
 		mui.toast("两次输入密码不相同");
 	}else{
-		var url = 'http://172.16.41.126:8080/AccountController/registerConfirm';
+		var IPPost = localStorage.getItem("IPPost");
+ 		var url = IPPost+'AccountController/registerConfirm';
       	mui.ajax(url, {
 	        data: {
 	          'account': account
@@ -61,7 +62,8 @@ function next(){
 				var registerCode = resultJson.code;
 				if(registerCode == 1){
 					mui.openWindow({
-					    url:'register-mail.html',
+					    url: 'register-mail.html',
+					    id: 'register-mail',
 					    extras:{
 					        account: account,
 					        password: password,

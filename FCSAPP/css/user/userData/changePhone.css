@@ -1,0 +1,106 @@
+#header{
+	height: 75px;
+	background-color:#4d3b3c ;
+	position: relative;
+}
+
+#back{
+	height: 25px;
+	width: 25px;
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 8px;
+	color: white;
+}
+#title{
+	height: 25px;
+	width: 80px;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 8px;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+}
+
+#phone-content{
+	height: 70px;
+	position: relative;
+}
+
+#phone-tag{
+	width: 35px;
+	height: 35px;
+	position: absolute;
+	left: 10px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+}
+
+#phone{
+	width: 230px;
+	height: 35px;
+	font-size: 20px;
+	position: absolute;
+	left: 65px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	text-align: left;
+  	line-height:35px;   
+  	overflow:hidden; 
+	text-overflow: ellipsis; 
+	display:block;
+	color: black;
+}
+
+#newPhone-content{
+	height: 70px;
+	position: relative;
+}
+
+#newPhone-tag{
+	width: 35px;
+	height: 35px;
+	position: absolute;
+	left: 10px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+}
+
+#newPhone-input{
+	width: 230px;
+	font-size: 18px;
+	position: absolute;
+	left: 65px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+}
+
+body{
+	position: relative;
+}
+
+#submit{
+	position: fixed;
+	width: 260px;
+	height: 40px;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	bottom: 50px;
+	background: cornflowerblue;
+	font-size: 18px;
+	color: white;
+	border: none;
+}

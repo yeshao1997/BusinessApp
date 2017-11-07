@@ -1,14 +1,16 @@
 function openPage(page){
 	if(page == "setting"){
 		mui.openWindow({
-		    url:'setting.html'
+		    url: 'setting.html',
+		    id: 'setting'
 		});
 	}
 	if(page == "myData"){
 		userDataPage = plus.webview.getWebviewById('userData/userData.html');
 		mui.fire(userDataPage,'refresh',{});
 		mui.openWindow({
-		    url:'userData/userData.html'
+		    url: 'userData/userData.html',
+		    id: 'userData'
 		});
 	}
 }
@@ -18,7 +20,8 @@ $(document).ready(function(){
 	if(userId != "" && userId != null){
 		$("#loginPage").css({'display':'none'});
 		$("#tologin").css({'display':'none'});
-		var url = 'http://172.16.41.126:8080/UserDataController/getUserPage';
+		var IPPost = localStorage.getItem("IPPost");
+ 		var url = IPPost+'UserDataController/getUserPage';
 	  	mui.ajax(url, {
 	        data: {
 	          'userId': userId
@@ -39,7 +42,8 @@ $(document).ready(function(){
 						$("#userName").text(userName);
 					}
 					if(userPortrait != null && userPortrait != ""){
-						userPortrait = "http://172.16.41.126:8080/image/" + userPortrait;
+						var IPPost = localStorage.getItem("IPPost");
+						userPortrait = IPPost + 'image/' + userPortrait;
 						$("#portrait").attr('src',userPortrait);
 					}
 					if(userType == "1"){
@@ -55,13 +59,18 @@ $(document).ready(function(){
 }); 
 
 function toLogin(){
-	loginPage = plus.webview.getWebviewById('../sign/login.html');
+	var wvs = plus.webview.all(); 
+	var loginPage = plus.webview.getWebviewById("login");
 	mui.fire(loginPage,'refresh',{});
-	mui.openWindow({
-	    url:'../sign/login.html'
-	}); 
-	//关闭base界面
-    plus.webview.getWebviewById('../base/base.html').close();
+	var self = plus.webview.currentWebview(); 
+	for(var i = 0, len = wvs.length; i < len; i++) {
+		if(wvs[i].id === loginPage.id || wvs[i].id === self.id || wvs[i].id === localStorage.homeWebId) {  　　  	  
+　　　		continue;  
+　　　	}else{  
+　　　　　　	wvs[i].close('none');  
+　　　	} 
+　　	}
+　　	self.close('slide-out-right');
 }
 
 //点击添加图片 
@@ -95,7 +104,8 @@ function getBase64Image(img){
 
 
 function uploadimg(data) {
-	var url = 'http://172.16.41.126:8080/UserDataController/uploadImage';
+	var IPPost = localStorage.getItem("IPPost");
+ 	var url = IPPost+'UserDataController/uploadImage';
 	userId = localStorage.getItem("userId");
     mui.ajax(url, {
         data: {

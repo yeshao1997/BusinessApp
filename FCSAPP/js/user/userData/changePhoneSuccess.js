@@ -8,23 +8,19 @@ mui.init();
 function openPage(page){
 	if(page == "myData"){
 		var userPage = plus.webview.getWebviewById("userData");
-		var changeMail = plus.webview.getWebviewById("changeMail");
-		var confirmMail = plus.webview.getWebviewById("confirmMail");
+		var changePhone = plus.webview.getWebviewById("changePhone");
 		var thisPage = plus.webview.currentWebview();
 		mui.fire(userPage,'refresh',{});
-		changeMail.close('none');
-		confirmMail.close('none');
+		changePhone.close('none');
 		thisPage.close('none');
 	}
 }
 
 mui.back=function () {
 	var userPage = plus.webview.getWebviewById("userData");
-	var changeMail = plus.webview.getWebviewById("changeMail");
-	var confirmMail = plus.webview.getWebviewById("confirmMail");
+	var changePhone = plus.webview.getWebviewById("changePhone");
 	var thisPage = plus.webview.currentWebview();
 	mui.fire(userPage,'refresh',{});
-	changeMail.close('none');
-	confirmMail.close('none');
+	changePhone.close('none');
 	thisPage.close('none');
 }

@@ -1,4 +1,4 @@
-var userMail,userPhone,userPassword;
+var userMail,userPhone,userPassword,userId;
 
 function openPage(page){
 	if(page == "back"){
@@ -7,8 +7,28 @@ function openPage(page){
 	if(page == "userMail"){
 		mui.openWindow({
 		    url:'changeMail.html',
+		    id: 'changeMail',
 		    extras:{
 		        mail: userMail
+		    }
+		});
+	}
+	if(page == "userPhone"){
+		mui.openWindow({
+		    url:'changePhone.html',
+		    id: 'changePhone',
+		    extras:{
+		        phone: userPhone,
+		        userId: userId
+		    }
+		});
+	}
+	if(page == "userPassword"){
+		mui.openWindow({
+		    url: 'changePassword.html',
+		    id: 'changePassword',
+		    extras:{
+		        userId: userId
 		    }
 		});
 	}
@@ -22,7 +42,8 @@ window.addEventListener('refresh', function(e) {
 $(document).ready(function(){
 	userId = localStorage.getItem("userId");
 	if(userId != "" && userId != null){
-		var url = 'http://172.16.41.126:8080/UserDataController/getUserDetail';
+		var IPPost = localStorage.getItem("IPPost");
+ 		var url = IPPost+'UserDataController/getUserDetail';
 	  	mui.ajax(url, {
 	        data: {
 	          'userId': userId

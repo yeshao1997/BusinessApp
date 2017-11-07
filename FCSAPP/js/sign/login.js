@@ -1,3 +1,5 @@
+var account,password;
+
 document.addEventListener('plusready', function(){
 	//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
 	plus.navigator.setStatusBarBackground("#000000");
@@ -12,24 +14,27 @@ window.addEventListener('refresh', function(e) {
 function openPage(page){
 	if(page == "register"){
 		mui.openWindow({
-		    url:'register.html'
+		    url:'register.html',
+		    id: 'register'
 		});
 	}else if(page == "forget"){
 		mui.openWindow({
-		    url:'forget.html'
+		    url:'forget.html',
+		    id: 'forget'
 		});
 	}else if(page == "homePage"){
 		localStorage.removeItem("userId");
 		mui.openWindow({
-		    url:'../base/base.html'
+		    url:'../base/base.html',
+		    id: 'base'
 		});
 	}
 }
 
 //执行登录前数据格式检测
 function formatConfirm(){
-	var account = $("#account-input").val();
-	var password = $("#password-input").val();
+	account = $("#account-input").val();
+	password = $("#password-input").val();
 	
 	if(account == ""){
 		mui.toast("请输入账号");
@@ -42,10 +47,11 @@ function formatConfirm(){
 
 //执行登录
 function login(){
-	var account = $("#account-input").val();
-	var password = $("#password-input").val();
+	account = $("#account-input").val();
+	password = $("#password-input").val();
 
- 	var url = 'http://172.16.41.126:8080/AccountController/login';
+	var IPPost = localStorage.getItem("IPPost");
+ 	var url = IPPost+'AccountController/login';
       mui.ajax(url, {
         data: {
           'account': account,
@@ -72,9 +78,12 @@ function succFunction(data){
 	var loginCode = resultJson.code;
 	if(loginCode == 1){
 		localStorage.setItem("userId",resultJson.obj);
+		localStorage.setItem("account",account);
+		localStorage.setItem("password",password);
 		mui.openWindow({
-			url:'../base/base.html'
-		})
+			url:'../base/base.html',
+			id: 'base'
+		});
 	}else{
 		mui.toast(resultJson.msg);
 	}

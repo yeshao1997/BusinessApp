@@ -27,7 +27,8 @@ function senMail(t){
 	}else if(newMail == oldMail){
 		mui.toast("新邮箱不能与旧邮箱相同");
 	}else if(issend){
-	    var url = 'http://172.16.41.126:8080/CodeController/sendMail';
+	    var IPPost = localStorage.getItem("IPPost");
+ 		var url = IPPost+'CodeController/sendMail';
 	    mui.ajax(url, {
 	        data: {
 	          'mail': newMail,
@@ -76,7 +77,8 @@ function confirmCode(){
 	}else if(code.length != 4){
 		mui.toast("请输入4位数验证码");
 	}else{
-		var url = 'http://172.16.41.126:8080/CodeController/confirmMailCode';
+		var IPPost = localStorage.getItem("IPPost");
+ 		var url = IPPost+'CodeController/confirmMailCode';
 	    mui.ajax(url, {
 	        data: {
 	          'mail': newMail,
@@ -102,7 +104,8 @@ function confirmCode(){
 }
 
 function updateMial(){
-	var url = 'http://172.16.41.126:8080/UserDataController/updateMail';
+	var IPPost = localStorage.getItem("IPPost");
+ 	var url = IPPost+'UserDataController/updateMail';
 	mui.ajax(url, {
 	        data: {
 	        
@@ -119,7 +122,8 @@ function updateMial(){
 				var registerCode = resultJson.code;
 				if(registerCode == 1){
 					mui.openWindow({
-						url: "changeMailSuccess.html"
+						url: "changeMailSuccess.html",
+						id: 'changeMailSuccess'
 					});
 				}else{
 					mui.toast(resultJson.msg);

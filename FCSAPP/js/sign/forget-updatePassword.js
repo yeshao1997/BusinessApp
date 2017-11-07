@@ -160,7 +160,8 @@ function updatePassword(){
 	if(moveConfirm){
 		var password = $("#update-password-input").val();
 	
-		var url = 'http://172.16.41.126:8080/AccountController/updatePassword';
+		var IPPost = localStorage.getItem("IPPost");
+ 		var url = IPPost+'AccountController/updatePassword';
 	  	mui.ajax(url, {
 	        data: {
 	        	'userId':userId,
@@ -180,7 +181,8 @@ function updatePassword(){
 	        	var resultJson = JSON.parse(JSON.stringify( data ));
 				if(resultJson.code == 1){
 					mui.openWindow({
-						url:'forget-success.html'
+						url:'forget-success.html',
+						id: 'forget-success'
 			   		});
 				}else{
 					mui.toast(resultJson.msg);

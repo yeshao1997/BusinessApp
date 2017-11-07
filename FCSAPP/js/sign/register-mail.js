@@ -43,7 +43,8 @@ function confirmCode(){
 	}else if(code.length != 4){
 		mui.toast("请输入4位数验证码");
 	}else{
-		var url = 'http://172.16.41.126:8080/CodeController/confirmMailCode';
+		var IPPost = localStorage.getItem("IPPost");
+ 		var url = IPPost+'CodeController/confirmMailCode';
 	    mui.ajax(url, {
 	        data: {
 	          'mail':mail,
@@ -64,11 +65,12 @@ function confirmCode(){
 	        	var resultJson = JSON.parse(JSON.stringify( data ));
 				var userId = resultJson.obj;
 				if(resultJson.code == 1){
-					if(type == 1){
+					if(type == 2){
 						registerUser();
-					}else if(type == 2){
+					}else if(type == 1){
 						mui.openWindow({
-						    url:'register-tag.html',
+						    url: 'register-tag.html',
+						    id: 'register-tag',
 						    extras:{
 						        account: account,
 						        password: password,
@@ -86,7 +88,8 @@ function confirmCode(){
 }
 
 function registerUser(){
-	var url = 'http://172.16.41.126:8080/AccountController/registerUser';
+	var IPPost = localStorage.getItem("IPPost");
+ 	var url = IPPost+'AccountController/registerUser';
   	mui.ajax(url, {
         data: {
           'account': account,
@@ -104,7 +107,8 @@ function registerUser(){
 			var registerCode = resultJson.code;
 			if(registerCode == 1){
 				mui.openWindow({
-				    url:'register-success.html'
+				    url:'register-success.html',
+				    id: 'register-success'
 				});
 			}else{
 				mui.toast(resultJson.msg);
@@ -153,7 +157,8 @@ function moveCode(code){
 			removeFn(false);
 		}
 		else{
-			var url = 'http://172.16.41.126:8080/CodeController/sendMail';
+			var IPPost = localStorage.getItem("IPPost");
+ 			var url = IPPost+'CodeController/sendMail';
 	      	mui.ajax(url, {
 		        data: {
 		          'mail': mail,

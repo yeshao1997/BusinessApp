@@ -24,7 +24,8 @@ function openPage(page){
 function senMail(t)  
 {
     if(issend){  
-	    var url = 'http://172.16.41.126:8080/CodeController/sendMail';
+	    var IPPost = localStorage.getItem("IPPost");
+ 		var url = IPPost+'CodeController/sendMail';
 	    mui.ajax(url, {
 	        data: {
 	          'mail': mail,
@@ -71,7 +72,8 @@ function confirmCode(){
 	}else if(code.length != 4){
 		mui.toast("请输入4位数验证码");
 	}else{
-		var url = 'http://172.16.41.126:8080/CodeController/confirmMailCode';
+		var IPPost = localStorage.getItem("IPPost");
+ 		var url = IPPost+'CodeController/confirmMailCode';
 	    mui.ajax(url, {
 	        data: {
 	          'mail': mail,
@@ -89,6 +91,7 @@ function confirmCode(){
 				if(registerCode == 1){
 					mui.openWindow({
 						url: "confirmMail.html",
+						id: 'confirmMail',
 					    extras:{
 					        mail: mail
 					    }

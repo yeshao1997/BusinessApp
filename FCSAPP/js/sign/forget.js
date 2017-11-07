@@ -78,7 +78,8 @@ function moveCode(code){
 			mui.toast("邮箱不能为空");
 			removeFn(false);
 		}else{
-			var url = 'http://172.16.41.126:8080/CodeController/sendMail';
+			var IPPost = localStorage.getItem("IPPost");
+ 			var url = IPPost+'CodeController/sendMail';
 	      	mui.ajax(url, {
 		        data: {
 		          'mail': mail,
@@ -178,7 +179,8 @@ function forgetConfirm(){
 		mui.toast("验证码不能为空");
 	}else{
 		var mail = $("#forget-mail-input").val();
-		var url = 'http://172.16.41.126:8080/CodeController/confirmMailCode';
+		var IPPost = localStorage.getItem("IPPost");
+ 		var url = IPPost+'CodeController/confirmMailCode';
 	    mui.ajax(url, {
 	        data: {
 	          'mail':mail,
@@ -201,6 +203,7 @@ function forgetConfirm(){
 				if(resultJson.code == 1){
 					mui.openWindow({
 					    url:'forget-updatePassword.html',
+					    id: 'forget-updatePassword',
 					    extras:{
 					        userId:userId
 					    }

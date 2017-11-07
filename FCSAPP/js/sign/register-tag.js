@@ -99,13 +99,14 @@ function registerDesigner(){
 		for(var i=0;i<selectTag.length;i++){
 			tag += ";" + tagArray[selectTag[i]-1];
 		}
-		var url = 'http://172.16.41.126:8080/AccountController/registerDesigner';
+		var IPPost = localStorage.getItem("IPPost");
+ 		var url = IPPost+'AccountController/registerDesigner';
 		mui.ajax(url, {
 		    data: {
 		      'account': account,
 		      'password': password,
 		      'mail': mail,
-		      'type': 2,
+		      'type': 1,
 		      'tag': tag
 		    },
 		    type: "POST",
@@ -124,7 +125,8 @@ function registerDesigner(){
 				var registerCode = resultJson.code;
 				if(registerCode == 1){
 					mui.openWindow({
-						url:'register-success.html'
+						url: 'register-success.html',
+						id: 'register-success'
 			   		});
 				}else{
 					mui.toast(resultJson.msg);
