@@ -1,0 +1,132 @@
+body{
+	background-color: white;
+}
+.mui-content{
+	background-color: white;
+}
+
+/*状态栏*/
+#statusBar{
+	width: 100%;
+	height: 25px;
+	position: fixed;
+	background-color: black;
+	z-index: 100;
+}
+
+/*标题*/
+#informationHead{
+	width: 100%;
+	padding-top: 40px;
+	background-color: white;
+}
+#returnImg{
+	width: 36px;
+	height: 36px;
+	position: absolute;
+	left: 14px;
+	top: 45px;
+}
+#informationHeadContent{
+	margin-left: 70px;
+	margin-right: 20px;
+}
+#topic{
+	font-size: 24px;
+	line-height:30px;
+	color: black;
+}
+#author{
+	font-size: 18px;
+	float: left;
+}
+#time{
+	font-size: 18px;
+	float: left;
+	margin-left: 20px;
+}
+
+/*内容*/
+#informationContent{
+	position: absolute;
+	margin-top: 30px;
+	text-align: center;
+	padding-bottom: 50px;
+}
+#p{
+	font-size: 22px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 20px;
+	line-height: 30px;
+	text-align: left;
+	color: #393d41;
+}
+#img{
+	width: 300px;
+}
+#imgIntr{
+	font-size: 18px;
+}
+
+/*底栏*/
+#informationFool{
+	width: 100%;
+	height: 50px;
+	position: fixed;
+	bottom: 0px;
+	display: table;
+	background-color: #f7f7f7;
+	z-index: 10;
+	box-shadow: 0 0 2px rgba(0,0,0,.85);
+	-webkit-backface-visibility: hidden;
+}
+#collectImg{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	right: 10px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+}
+#fabulousImg{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+}
+#fabulousNumber{
+	width: 40px;
+	height: 20px;
+	font-size: 16px;
+	position: absolute;
+	left: 50px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 5px;
+}
+#commentImg{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	right: 90px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+}
+#commentNumber{
+	width: 40px;
+	height: 20px;
+	font-size: 16px;
+	position: absolute;
+	right: 45px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 5px;
+}

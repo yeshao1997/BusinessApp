@@ -1,8 +1,8 @@
 var account;
 var password;
 var mail;
-var selectTag = new Array();
 var tagArray;
+var selectTag = new Array();
 var selected = 0;
 
 document.addEventListener('plusready', function(){
@@ -40,45 +40,55 @@ function openPage(page){
 }
 
 //开始构建标签
-$(document).ready(
-	buildTag()
-); 
-
-//构建标签
-function buildTag(){
-	tagArray = new Array("女装设计","男装设计",
-								"童装设计","内衣设计",
-								"休闲设计","牛仔设计",
-								"家纺设计","配饰设计",
-								"婚纱设计","箱包设计",
-								"皮草设计","陈列设计");
+$(document).ready(function () {
 	var tagContent = document.getElementById('tagContent');
-	for(var i=0;i<tagArray.length;i++){
-		var value = i+1;
-		var tag = "<button class='mui-btn mui-btn-block mui-btn-primary mui-icon iconfont icon-tag'" 
-					+" id="+'button'+i+" value="+value+">"
-					+"&nbsp&nbsp"+tagArray[i]+"</button>";
-		if(i>0 && i%2 == 0){
-			tagContent.insertAdjacentHTML('beforeend', '');
-		} 
-		tagContent.insertAdjacentHTML('beforeend', tag);
-	}
-}
+	var IPPost = localStorage.getItem("IPPost");
+	var url = IPPost+'DictDataController/getTagList';
+	mui.ajax(url, {
+	    data: {},
+	    type: "POST",
+	    timeout: 3000,
+	    traditional: true,
+	    error: function(){
+	    	mui.toast("获取标签失败，网络错误");
+	    },
+	    success: function(data){
+	    	var resultJson = JSON.parse(JSON.stringify( data ));
+			if(resultJson.code == 1){
+				tagArray = resultJson.obj;
+				var i = 0;
+				for(var key in tagArray){
+					var tag = "<button class='mui-btn mui-btn-block mui-btn-primary mui-icon iconfont icon-tag'" 
+								+" id="+'button'+tagArray[key]+" value="+tagArray[key]+" onclick=addSelect("+tagArray[key]+")>"
+								+"&nbsp&nbsp"+key+"</button>";
+					if(i>0 && i%2 == 0){
+						tagContent.insertAdjacentHTML('beforeend', '');
+					} 
+					tagContent.insertAdjacentHTML('beforeend', tag);
+					i++;
+				}
+			}else{
+				mui.toast(resultJson.msg);
+			}
+	    }
+	});
+}); 
 
-//标签点击事件
-$('#tagContent button').on('click', function() {  // 这里等同于click()方法
-     var b_val = $(this).val();
-     if(b_val>0 && selected<3){
+function addSelect(value){
+	var clickButton = $("#button"+value);
+	var clickValue = $("#button"+value).val();
+	
+     if(clickValue>0 && selected<3){
      	selected++;
-     	selectTag.push(b_val);
-     	$(this).css({'background-color':'#9299a0'});
-     	$(this).val(-b_val);
-     }else if(b_val<0){
+     	selectTag.push(clickValue);
+     	clickButton.css({'background-color':'#9299a0'});
+     	clickButton.val(-clickValue);
+     }else if(clickValue<0){
      	selected--;
      	var p=0;
      	selectTagTemp = new Array();
      	for(var i=0;i<selectTag.length;i++){
-     		if(selectTag[i] == -b_val){
+     		if(selectTag[i] == -clickValue){
      			continue;
      		}else{
      			selectTagTemp[p] = selectTag[i];
@@ -86,10 +96,10 @@ $('#tagContent button').on('click', function() {  // 这里等同于click()方�
      		}
      	}
      	selectTag = selectTagTemp;
-		$(this).css({'background-color':'#2f3337'});
-		$(this).val(-b_val);
+		clickButton.css({'background-color':'#2f3337'});
+		clickButton.val(-clickValue);
      }
-});
+}
 
 //注册设计师
 function registerDesigner(){
@@ -97,7 +107,7 @@ function registerDesigner(){
 		//将数组转化为字符串上传
 		var tag = "";
 		for(var i=0;i<selectTag.length;i++){
-			tag += ";" + tagArray[selectTag[i]-1];
+			tag += ";" + selectTag[i];
 		}
 		var IPPost = localStorage.getItem("IPPost");
  		var url = IPPost+'AccountController/registerDesigner';

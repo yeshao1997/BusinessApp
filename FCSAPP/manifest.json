@@ -704,7 +704,11 @@
 					"font/mui.ttf",
 					"css/base/mui.min.css",
 					"css/user/userData/changePhone.css",
-					"css/cloth/clothPage.css"
+					"css/cloth/clothPage.css",
+					"img/user/portrait.png",
+					"img/home/unfabulous.png",
+					"js/cloth/clothPage.js",
+					"img/cloth/selected.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -716,9 +720,16 @@
 					"css/base/mui.min.css",
 					"js/base/jquery-3.2.1.min.js",
 					"css/cloth/clothPage.css",
-					"css/costume/costumePage.css"
+					"css/costume/costumePage.css",
+					"img/user/portrait.png",
+					"img/home/unfabulous.png",
+					"js/costume/costume.js",
+					"js/costume/costumePage.js",
+					"img/costume/selected.png"
 				],
-				"refer": [],
+				"refer": [
+					"html/costume/costumeDetail.html"
+				],
 				"priority": 0
 			},
 			"html/home/homePage.html": {
@@ -728,7 +739,12 @@
 					"css/base/mui.min.css",
 					"js/base/jquery-3.2.1.min.js",
 					"css/cloth/clothPage.css",
-					"css/home/homePage.css"
+					"css/home/homePage.css",
+					"img/home/search.png",
+					"html/home/informationPage.html",
+					"js/base/webviewGroup.js",
+					"html/home/designerPage.html",
+					"js/home/homePage.js"
 				],
 				"refer": [],
 				"priority": 0
@@ -740,7 +756,103 @@
 					"css/base/mui.min.css",
 					"js/base/jquery-3.2.1.min.js",
 					"css/cloth/clothPage.css",
-					"css/work/workPage.css"
+					"css/work/workPage.css",
+					"img/user/portrait.png",
+					"img/home/unfabulous.png",
+					"img/work/selected.png",
+					"js/work/workPage.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/home/informationPage.html": {
+				"resources": [
+					"css/base/mui.min.css",
+					"js/base/mui.min.js",
+					"img/home/muwu.jpg",
+					"img/home/yuantiao.jpg",
+					"img/home/cbd.jpg",
+					"img/home/shuijiao.jpg",
+					"js/home/informationPage.js",
+					"js/base/jquery-3.2.1.min.js",
+					"img/user/portrait.png",
+					"css/home/informationPage.css",
+					"font/mui.ttf"
+				],
+				"refer": [
+					"html/home/informationDetail.html"
+				],
+				"priority": 0
+			},
+			"html/home/designerPage.html": {
+				"resources": [
+					"js/base/mui.min.js",
+					"img/home/muwu.jpg",
+					"img/home/yuantiao.jpg",
+					"img/home/cbd.jpg",
+					"img/home/shuijiao.jpg",
+					"css/base/mui.min.css",
+					"font/mui.ttf",
+					"css/base/iconfont.css",
+					"css/sign/register-tag.css",
+					"js/base/jquery-3.2.1.min.js",
+					"js/sign/register-tag.js",
+					"css/home/designerPage.css",
+					"js/home/designerPage.js"
+				],
+				"refer": [
+					"html/home/informationDetail.html",
+					"html/home/designerDetail.html"
+				],
+				"priority": 0
+			},
+			"html/home/informationDetail.html": {
+				"resources": [
+					"css/home/informationDetail.css",
+					"js/base/mui.min.js",
+					"css/base/mui.min.css",
+					"js/base/jquery-3.2.1.min.js",
+					"js/home/informationDetail.js",
+					"img/home/return.png",
+					"img/home/comment.png",
+					"img/home/fabulous.png",
+					"img/home/uncollect.png",
+					"img/home/fabulous .png",
+					"img/home/unfabulous.png",
+					"img/home/collect .png",
+					"img/home/returnBlack.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/home/designerDetail.html": {
+				"resources": [
+					"js/base/mui.min.js",
+					"css/base/mui.min.css",
+					"img/user/personal-background.png",
+					"img/user/portrait.png",
+					"js/base/jquery-3.2.1.min.js",
+					"img/home/returnBlack.png",
+					"img/home/returnWhite.png",
+					"js/home/designerDetail.js",
+					"img/home/unfollow.png",
+					"img/home/follow.png",
+					"css/base/iconfont.css",
+					"img/home/floder.png",
+					"css/home/designerDetail.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/costume/costumeDetail.html": {
+				"resources": [
+					"css/costume/costumeDetail.css",
+					"js/costume/costumeDetail.js",
+					"js/base/mui.min.js",
+					"css/base/mui.min.css",
+					"js/base/jquery-3.2.1.min.js",
+					"img/costume/returnWhite.png",
+					"img/costume/return.png"
 				],
 				"refer": [],
 				"priority": 0

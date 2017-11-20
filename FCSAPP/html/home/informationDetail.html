@@ -1,0 +1,45 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <!-- css start-->
+    <link rel="stylesheet" href="../../css/base/mui.min.css" />
+    <link rel="stylesheet" href="../../css/home/informationDetail.css" />
+    <!-- css end-->
+</head>
+
+<body>
+	<!-- html start-->
+	<div class="mui-content">
+		<div id="statusBar"></div>
+		<div id="informationHead">
+			<img id="returnImg" src="../../img/home/returnBlack.png" onclick="openPage('back')"/>
+			<div id="informationHeadContent">
+				<p id="topic"></p>
+				<div id="aAndT">
+					<p id="author"></p>
+					<p id="time"></p>
+				</div>
+			</div>
+		</div>
+		<div id="informationContent">
+		</div>
+		<div id='informationFool'>
+			<img id='fabulousImg' onclick="fabulous()"/>
+			<p id='fabulousNumber'></p>
+			<img id='commentImg' src='../../img/home/comment.png' onclick="comment()"/>
+			<p id='commentNumber'></p>
+			<img id='collectImg' onclick="collect()"/>
+		</div>
+	</div>
+	<!-- html end-->
+	
+	<!-- javascript start-->
+	<script type="text/javascript" src="../../js/base/mui.min.js" ></script>
+	<script type="text/javascript" src="../../js/base/jquery-3.2.1.min.js" ></script>
+	<script type="text/javascript" src="../../js/home/informationDetail.js" ></script>
+	<!-- javascript end-->
+</body>
+</html>

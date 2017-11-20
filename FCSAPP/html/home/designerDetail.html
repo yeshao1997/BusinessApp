@@ -1,0 +1,51 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <!-- css start-->
+    <link rel="stylesheet" href="../../css/base/iconfont.css" />
+    <link rel="stylesheet" href="../../css/base/mui.min.css" />
+	<link rel="stylesheet" href="../../css/home/designerDetail.css" />
+    <!-- css end-->
+</head>
+
+<body>
+	<!-- html start-->
+	<div id="designerPage-header">
+		<p id="designerName"></p>
+		<img id="designerPage-background-image" src="../../img/user/personal-background.png" />
+		<img id="returnImg" src="../../img/home/returnWhite.png" onclick="openPage('back')"/>
+		<img id="followImg" src="../../img/home/unfollow.png" onclick="setFollow()"/>
+		<div id="portrait-content">
+			<img id="portrait" src="../../img/user/portrait.png"/>
+		</div>
+	</div>
+	
+	<div id="follow-content">
+		<div id="follow">
+			<p id="followText">关注</p>
+			<p id="followNumber"></p>
+		</div>
+		<div id="fans">
+			<p id="fansText">粉丝</p>
+			<p id="fansNumber"></p>
+		</div>
+	</div>
+	
+	<hr id="division" />
+	
+	<div id="album-content">
+		<table id="album-table" >			
+		</table>
+	</div>
+	<!-- html end-->
+	
+	<!-- javascript start-->
+	<script type="text/javascript" src="../../js/base/mui.min.js" ></script>
+	<script type="text/javascript" src="../../js/base/jquery-3.2.1.min.js" ></script>
+	<script type="text/javascript" src="../../js/home/designerDetail.js" ></script>
+	<!-- javascript end-->
+</body>
+</html>
