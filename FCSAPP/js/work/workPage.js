@@ -128,4 +128,11 @@ function buildWork(idArray,imageArray,titleArray,designerArray,fabulousArray){
 
 function openPage(workId){
 	console.log(workId);
+	mui.openWindow({
+	    url: 'workDetail.html',
+	    id: 'workDetail',
+	    extras:{
+	        workId: workId
+	    }
+	});
 }

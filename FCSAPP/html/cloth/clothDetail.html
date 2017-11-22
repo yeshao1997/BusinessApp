@@ -6,7 +6,7 @@
     <title></title>
     <!-- css start-->
     <link rel="stylesheet" href="../../css/base/mui.min.css" />
-    <link rel="stylesheet" href="../../css/costume/costumeDetail.css" />
+    <link rel="stylesheet" href="../../css/cloth/clothDetail.css" />
     <!-- css end-->
 </head>
 <body>
@@ -14,7 +14,7 @@
 	<div id="mui-content">
 		<div id="statusBar"></div>
 		<div id="return" onclick="openPage('back')">
-			<img id="returnImg" src="../../img/costume/return.png" />
+			<img id="returnImg" src="../../img/cloth/return.png" />
 		</div>
 		
 		<!-- 轮播图 -->
@@ -29,93 +29,98 @@
 			</div>
 		</div>
 		
-		<!-- 服装标题 -->
-		<div id="costumeTitleContent">
-			<p id="costumeTitle"></p>
-			<div id="costumeType">
-				<p id="typeText">分类：</p>
-				<p id="typeValue"></p>
-				<img id='collectImg' src="../../img/costume/uncollect.png" onclick="collect()"/>
+		<!-- 布料标题 -->
+		<div id="clothTitleContent">
+			<p id="clothTitle"></p>
+			<div id="clothType">
+				<p id="priceText">价格：</p>
+				<p id="priceValue"></p>
+				<p id="priceCompany">元/米</p>
+				<img id='collectImg' src="../../img/cloth/uncollect.png" onclick="collect()"/>
 			</div>
 		</div>
 
-		<!-- 服装详情 -->
-		<div id="costumeInfoContent">
-			<p id="costumeInfoText">服装信息</p>
-			<table id="costumeInfoTable">
+		<!-- 布料详情 -->
+		<div id="clothInfoContent">
+			<p id="clothInfoText">布料信息</p>
+			<table id="clothInfoTable">
 				<tr>
 					<td>
 						<p id="text">货号：</p>
-						<p id="costumeNo"></p>
+						<p id="clothNo"></p>
 					</td>
 					<td>
-						<p id="text">年份：</p>
-						<p id="costumeAge"></p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<p id="text">款式：</p>
-						<p id="costumeModel"></p>
-					</td>
-					<td>
-						<p id="text">季节：</p>
-						<p id="costumeSeason"></p>
+						<p id="text">有无弹力：</p>
+						<p id="clothElastic"></p>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<p id="text">风格：</p>
-						<p id="costumeStyle"></p>
+						<p id="text">起订量：</p>
+						<p id="clothMoq"></p>
+					</td>
+					<td>
+						<p id="text">Tcx：</p>
+						<p id="clothTcx"></p>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<p id="text">主要颜色：</p>
-						<p id="costumeColor"></p>
+						<p id="text">主要用途：</p>
+						<p id="clothPurpose"></p>
+					</td>
+					<td>
+						<p id="text">Tpx：</p>
+						<p id="clothTpx"></p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p id="text">面料织法：</p>
+						<p id="clothWeave"></p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p id="text">制作工艺：</p>
+						<p id="clothMake"></p>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<p id="text">面料成分：</p>
-						<p id="costumeComponent"></p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<p id="text">织法：</p>
-						<p id="costumeWeave"></p>
+						<p id="clothComponent"></p>
 					</td>
 				</tr>
 			</table>
 			
-			<div id="costumeIntrContent">
-				<p id="costumeIntrText">服装简介：</p>
-				<p id="costumeIntrValue"></p>
+			<div id="clothSupplierContent">
+				<p id="clothSupplierText">供应商：</p>
+				<p id="clothSupplierValue"></p>
 			</div>
 		</div>
 		
 		<!-- 点赞与评论 -->
-		<div id="costumeFCcontent">
-			<img id='fabulousImg' src="../../img/costume/unfabulous.png" onclick="fabulous()"/>
+		<div id="clothFCcontent">
+			<img id='fabulousImg' src="../../img/cloth/unfabulous.png" onclick="fabulous()"/>
 			<p id='fabulousValue'>0</p>
-			<img id='commentImg' src='../../img/costume/comment.png' onclick="comment()"/>
+			<img id='commentImg' src='../../img/cloth/comment.png' onclick="comment()"/>
 			<p id='commentValue'>0</p>
 		</div>
 		
 		<!-- 推荐信息 -->
-		<div id="costumeRecommendContent">
+		<div id="clothRecommendContent">
 			<div id="segmentedControl" class="mui-segmented-control">
 				<a class="mui-control-item mui-active" href="#workRecommend">设计作品</a>
-				<a class="mui-control-item" href="#clothRecommend">布料辅料</a>
+				<a class="mui-control-item" href="#costumeRecommend">品牌服装</a>
 			</div>
 			<div>
 				<div id="workRecommend" class="mui-control-content mui-active">
 					<table id="recommedWorkTable">
 					</table>
 				</div>
-				<div id="clothRecommend" class="mui-control-content">
-					<table id="recommedClothTable">
+				<div id="costumeRecommend" class="mui-control-content">
+					<table id="recommedCostumeTable">
 					
 					</table>
 				</div>
@@ -127,7 +132,7 @@
 	<!-- javascript start-->
     <script type="text/javascript" src="../../js/base/mui.min.js" ></script>
     <script type="text/javascript" src="../../js/base/jquery-3.2.1.min.js" ></script>
-    <script type="text/javascript" src="../../js/costume/costumeDetail.js" ></script>
+    <script type="text/javascript" src="../../js/cloth/clothDetail.js" ></script>
    	<!-- javascript end-->
 </body>
 </html>

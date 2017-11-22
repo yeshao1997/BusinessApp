@@ -1,4 +1,4 @@
-var costumeId;
+var clothId;
 var IPPost;
 var userId;
 var fabulousType = 1; //1为未点赞
@@ -7,18 +7,18 @@ var fabulousNumber = 0;
 
 mui.plusReady(function () {
     var self = plus.webview.currentWebview();
-	costumeId = self.costumeId;
-	getCostumeData();
+	clothId = self.clothId;
+	getClothData();
 });
 
-//获取服装信息
-function getCostumeData(){
+//获取布料信息
+function getClothData(){
 	IPPost = localStorage.getItem("IPPost");
 	userId = localStorage.getItem("userId");
-	var url = IPPost+'CostumeController/getCostumeById';
+	var url = IPPost+'ClothController/getClothById';
 	mui.ajax(url, {
 	    data: {
-	    	costumeId:costumeId,
+	    	clothId:clothId,
 	    	userId: userId
 	    },
 	    type: "POST",
@@ -36,11 +36,11 @@ function getCostumeData(){
 				buildInfor(resultJson.obj1);
 				var obj = resultJson.obj2;
 				var recommedWorkContent = document.getElementById("recommedWorkTable");
-				var recommedClothContent = document.getElementById("recommedClothTable");
+				var recommedCostumeContent = document.getElementById("recommedCostumeTable");
 				
 				
 				buildRecommend(recommedWorkContent,obj.workIdArray,obj.workImageArray,obj.workTitleArray,obj.workAboutArray,obj.workFabulousArray);
-				buildRecommend(recommedClothContent,obj.clothIdArray,obj.clothImageArray,obj.clothTitleArray,obj.clothAboutArray,obj.clothFabulousArray);
+				buildRecommend(recommedCostumeContent,obj.costumeIdArray,obj.costumeImageArray,obj.costumeTitleArray,obj.costumeAboutArray,obj.costumeFabulousArray);
 			}else{
 				mui.toast(resultJson.msg);
 			}
@@ -71,28 +71,29 @@ function buildCarousel(carouse){
 	});
 }
 
-//构建服装信息
 function buildInfor(obj){
-	$("#costumeTitle").text(obj.costumeName);
-	$("#typeValue").text(obj.costumeType);
-	$("#costumeNo").text(obj.costumeNo);
-	$("#costumeAge").text(obj.costumeAge);
-	$("#costumeModel").text(obj.costumeModel);
-	$("#costumeSeason").text(obj.costumeSeason);
-	$("#costumeStyle").text(obj.costumeStyle);
-	$("#costumeColor").text(obj.costumeColor);
-	$("#costumeComponent").text(obj.costumeComponent);
-	$("#costumeWeave").text(obj.costumeWeave);
-	$("#costumeIntrValue").text(obj.costumeIntr);
+	$("#clothTitle").text(obj.clothName);
+	$("#priceValue").text(obj.clothPrice);
+	$("#clothNo").text(obj.clothNo);
+	$("#clothMoq").text(obj.clothMoq);
+	$("#clothComponent").text(obj.clothComponent);
+	$("#clothPurpose").text(obj.clothPurpose);
+	$("#clothWeave").text(obj.clothWeave);
+	$("#clothMake").text(obj.clothMake);
+	$("#clothElastic").text(obj.clothElastic);
+	$("#clothTcx").text(obj.clothTcx);
+	$("#clothTpx").text(obj.clothTpx);
+	$("#clothSupplierValue").text(obj.clothSupplier);
+	
 	fabulousNumber = obj.fabulousNumber
 	$("#fabulousValue").text(fabulousNumber);
 	$("#commentValue").text(obj.collectNumber);
 	if(obj.collectType == "collect"){
-		$("#collectImg").attr('src','../../img/costume/collect.png');
+		$("#collectImg").attr('src','../../img/cloth/collect.png');
 		collectType = 0;
 	}
 	if(obj.fabulousType == "fabulous"){
-		$("#fabulousImg").attr('src','../../img/costume/fabulous.png');
+		$("#fabulousImg").attr('src','../../img/cloth/fabulous.png');
 		fabulousType = 0;
 	}
 }
@@ -137,7 +138,7 @@ function collect(){
 		var url = IPPost+'CollectController/collect';
 		mui.ajax(url, {
 		    data: {
-		    	informationId: costumeId,
+		    	informationId: clothId,
 		    	userId: userId,
 		    	collectType: 4,
 		    	FCType: collectType
@@ -154,7 +155,7 @@ function collect(){
 					if(collectType != 0){
 						collectType = 0;
 						$("#collectImg").attr('src','../../img/costume/collect.png');
-						mui.toast("已收藏此服装");
+						mui.toast("已收藏此布料");
 					}else{
 						collectType = 1;
 						$("#collectImg").attr('src','../../img/costume/uncollect.png');
@@ -176,7 +177,7 @@ function fabulous(){
 		var url = IPPost+'FabulousController/fabulous';
 		mui.ajax(url, {
 		    data: {
-		    	informationId: costumeId,
+		    	informationId: clothId,
 		    	userId: userId,
 		    	FCType: fabulousType
 		    },

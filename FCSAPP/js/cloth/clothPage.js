@@ -128,4 +128,11 @@ function buildCloth(idArray,imageArray,titleArray,timeArray,fabulousArray){
 
 function openPage(clothId){
 	console.log(clothId);
+	mui.openWindow({
+	    url: 'clothDetail.html',
+	    id: 'clothDetail',
+	    extras:{
+	        clothId: clothId
+	    }
+	});
 }

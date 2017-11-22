@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <!-- css start-->
+    <link rel="stylesheet" href="../../css/base/mui.min.css" />
+    <link rel="stylesheet" href="../../css/work/workDetail.css" />
+    <style>
+    	/*状态栏*/
+		#statusBar{
+			width: 100%;
+			height: 25px;
+			position: fixed;
+			background-color: black;
+			z-index: 100;
+		}
+
+    	#workTiltleConten{
+    		width: 100%;
+    		height: 75px;
+			padding-top: 25px;
+			position: relative;
+    	}
+    </style>
+    	
+    <!-- css end-->
+</head>
+<body>
+	<!-- html start-->
+	<div class="mui-content">
+		<div id="statusBar"></div>
+		<div id="workTiltleConten">
+			<img id="returnPage" src="../../img/work/returnBlack.png" onclick="openPage('back')"/>
+			<p workTitle>维度</p>
+			<p workDesigner>张建</p>
+			<img id="colletImg" src="../../img/work/uncollect.png" />
+		</div>
+	</div>
+	<!-- html end-->
+	
+	<!-- javascript start-->
+    <script type="text/javascript" src="../../js/base/mui.min.js" ></script>
+    <script type="text/javascript" src="../../js/base/jquery-3.2.1.min.js" ></script>
+   	<script type="text/javascript" src="../../js/work/workDetail.js" ></script>	
+   	<!-- javascript end-->
+</body>
+</html>

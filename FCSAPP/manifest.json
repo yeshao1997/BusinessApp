@@ -710,7 +710,9 @@
 					"js/cloth/clothPage.js",
 					"img/cloth/selected.png"
 				],
-				"refer": [],
+				"refer": [
+					"html/cloth/clothDetail.html"
+				],
 				"priority": 0
 			},
 			"html/costume/costumePage.html": {
@@ -852,7 +854,51 @@
 					"css/base/mui.min.css",
 					"js/base/jquery-3.2.1.min.js",
 					"img/costume/returnWhite.png",
-					"img/costume/return.png"
+					"img/costume/return.png",
+					"img/home/comment.png",
+					"img/costume/comment.png",
+					"img/costume/uncollect.png",
+					"img/costume/unfabulous.png",
+					"img/user/portrait.png",
+					"img/home/unfabulous.png",
+					"img/home/follow.png",
+					"img/costume/collect .png",
+					"img/costume/collect.png",
+					"img/costume/fabulous.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/cloth/clothDetail.html": {
+				"resources": [
+					"js/base/mui.min.js",
+					"img/cloth/comment.png",
+					"css/base/mui.min.css",
+					"js/cloth/clothDetail.js",
+					"img/cloth/uncollect.png",
+					"js/base/jquery-3.2.1.min.js",
+					"css/cloth/clothDetail.css",
+					"img/cloth/unfabulous.png",
+					"img/cloth/return.png",
+					"img/home/unfabulous.png",
+					"img/costume/fabulous.png",
+					"img/costume/uncollect.png",
+					"img/costume/collect.png",
+					"img/costume/unfabulous.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/work/workDetail.html": {
+				"resources": [
+					"js/base/mui.min.js",
+					"css/work/workDetail.css",
+					"js/work/WorkDetail.js",
+					"css/base/mui.min.css",
+					"img/work/returnBlack.png",
+					"js/base/jquery-3.2.1.min.js",
+					"img/work/uncollect.png",
+					"js/work/workDetail.js"
 				],
 				"refer": [],
 				"priority": 0
