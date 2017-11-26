@@ -1,0 +1,262 @@
+/*状态栏*/
+#statusBar{
+	width: 100%;
+	height: 25px;
+	position: fixed;
+	background-color: black;
+	z-index: 100;
+}
+/*标题*/
+#workTiltleContent{
+	width: 100%;
+	height: 100px;
+	position: relative;
+	top: 25px;
+	background-color: white;
+	box-shadow: 1px 1px 3px gray;
+}
+#returnImg{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 20px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+}
+#workTitle{
+	width: 250px;
+	height: 58px;
+	padding-top: 20px;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 20px;
+	margin: auto;
+	text-align: center;
+	font-size: 34px;
+	color: black;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp:1;
+	-webkit-box-orient: vertical;
+}
+
+#collectImg{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	right: 20px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+}
+
+/*轮播图*/
+#slider{
+	position: absolute;
+	height: 300px; 
+	top: 130px;
+}
+#carouselImage{
+	height: 300px;  
+    width: auto;
+    left:50%;
+    position: absolute;  
+    -webkit-transform: translateX(-50%);  
+    -ms-transform: translateX(-50%);  
+    -moz-transform: translateX(-50%); 
+}
+
+/*作品简介*/
+#workIntrContent{
+	width: 100%;
+	height: 120px;
+	position: relative;
+	top: 333px;
+	background-color: white;
+	box-shadow: 0px 0px 3px gray;
+}
+#intrText{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	font-size: 16px;
+	color: gray;
+}
+#intrValue{
+	width: 100%;
+	height: 75px;
+	padding-left: 20px;
+	padding-right: 20px;
+	position: absolute;
+	top: 38px;
+	left: 10px;
+	line-height: 24px;
+	font-size: 20px;
+	color: black;
+	overflow : hidden;
+}
+
+/*点赞与评论*/
+#workFCcontent{
+	width: 100%;
+	height: 70px;
+	position: relative;
+	top: 330px;
+}
+#fabulousImg{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 10px;
+	right: 160px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+}
+#fabulousValue{
+	width: 40px;
+	height: 20px;
+	font-size: 16px;
+	position: absolute;
+	left: 10px;
+	right: 80px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 5px;
+}
+#commentImg{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 150px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+}
+#commentValue{
+	width: 40px;
+	height: 20px;
+	font-size: 16px;
+	position: absolute;
+	left: 230px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 5px;
+}
+
+/*作品信息*/
+#workInfoContent{
+	width: 100%;
+	height: 250px;
+	position: absolute;
+	top: 615px;
+	background-color: white;
+	box-shadow: 0px 0px 3px gray;
+	padding-top: 15px;
+}
+
+#workInfoText{
+	margin-left: 10px;
+	font-size: 16px;
+	color: gray;
+}
+#workInfoTable{
+	width: 90%;
+	margin: 0 auto;
+	border-collapse:separate;
+	border-spacing:8px;
+}
+
+#workInfoTable p{
+	font-size: 20px;
+	float: left;
+	color: black;
+	text-overflow:ellipsis;
+	overflow:hidden;
+	white-space:nowrap;
+}
+#workInfoContent #text{
+	color: gray;
+}
+
+/*推荐*/
+#workRecommendContent{
+	width: 100%;
+	height: 580px;
+	position: absolute;
+	top: 900px;
+	background-color: white;
+}
+.mui-control-item{
+	height: 50px;
+	font-size: 20px;
+	padding-top: 5px;
+	padding-right: 3px;
+}
+#recommedCostumeTable{
+	margin-left: 3px;
+	border-collapse:separate;
+	border-spacing:8px;
+	table-layout:fixed;
+}
+#recommedClothTable{
+	margin-left: 3px;
+	border-collapse:separate;
+	border-spacing:8px;
+	table-layout:fixed;
+}
+#recommed{
+	width: 200px;
+	height: 250px;
+	position: relative;
+	list-style: none;
+	background-color: white;
+	border: 1px solid #A9A9A9;
+}
+#recommed-image{
+	width: 150px;
+	height: 150px;
+	position: absolute;
+	top: 15px;
+	right: 0px;
+	left: 0px;
+	margin: auto;
+	border: 1px solid #a9a9a9;
+}
+#recommed-name{
+	position: absolute;
+	width: 100%;
+	height: 40px;
+	top: 175px;
+	padding-left: 15px;
+	font-size: 18px;
+	color: black;
+}
+#recommed-about{
+	margin: 0px;
+	position: absolute;
+	bottom: 10px;
+	left: 15px;
+	font-size: 16px;
+}
+#recommed-fabulous{
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	right: 41px;
+	bottom: 10px;
+}
+#recommed-fabulous-number{
+	width: 20px;
+	margin: 0px;
+	position: absolute;
+	right: 20px;
+	bottom: 10px;
+	text-align: left;
+}

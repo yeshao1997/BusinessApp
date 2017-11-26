@@ -13,6 +13,14 @@ function openPage(page){
 		    id: 'userData'
 		});
 	}
+	if(page == "myAlbum"){
+		userDataPage = plus.webview.getWebviewById('userWork/userAlbum.html');
+		mui.fire(userDataPage,'refresh',{});
+		mui.openWindow({
+		    url: 'userWork/userAlbum.html',
+		    id: 'userAlbum'
+		});
+	}
 }
 
 $(document).ready(function(){

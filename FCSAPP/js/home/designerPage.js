@@ -30,7 +30,6 @@ document.addEventListener('plusready', function(){
 		range: '200px',
 		style: 'circle'
 	}, function(){
-		getTagData();
 		chooseSelectType();
 		_self.endPullToRefresh();
 	});
@@ -182,9 +181,9 @@ function buildDesignerList(insertType,idArray,nameArray,portraitArray,workNumber
 						        	"</div>"+
 						        "</a>";
 		
-		if(followType[i] == "followed" && userId != null){
+		if(followType[i] == "followed" && userId != null && idArray[i] != userId){
 			oneDesigner += 		"<button value="+idArray[i]+" onclick=follow(this) style='background-color: white; color: gray; border-color: gray;'>取消关注</button></li>";
-		}else if(followType[i] == "unfollow" && userId != null){
+		}else if(followType[i] == "unfollow" && userId != null && idArray[i] != userId){
 			oneDesigner += 		"<button value="+idArray[i]+" onclick=follow(this)>关注</button></li>";
 		}else{
 			oneDesigner += "</li>";
@@ -234,8 +233,10 @@ function chooseSelectType(){
      if(tag == ""){
      	//将最后的设计师id重置为null;
 		lastDesignerId = null;
+		mui('#designerListContent').pullRefresh().enablePullupToRefresh();
      	getDesignerList();
      }else{
+		mui('#designerListContent').pullRefresh().disablePullupToRefresh();
 	    getDesignerListByTag(tag);
      }
 }

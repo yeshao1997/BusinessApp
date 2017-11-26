@@ -39,8 +39,8 @@ function getCostumeData(){
 				var recommedClothContent = document.getElementById("recommedClothTable");
 				
 				
-				buildRecommend(recommedWorkContent,obj.workIdArray,obj.workImageArray,obj.workTitleArray,obj.workAboutArray,obj.workFabulousArray);
-				buildRecommend(recommedClothContent,obj.clothIdArray,obj.clothImageArray,obj.clothTitleArray,obj.clothAboutArray,obj.clothFabulousArray);
+				buildRecommend(recommedWorkContent,obj.workIdArray,obj.workImageArray,obj.workTitleArray,obj.workAboutArray,obj.workFabulousArray,"wor");
+				buildRecommend(recommedClothContent,obj.clothIdArray,obj.clothImageArray,obj.clothTitleArray,obj.clothAboutArray,obj.clothFabulousArray,"clo");
 			}else{
 				mui.toast(resultJson.msg);
 			}
@@ -98,7 +98,7 @@ function buildInfor(obj){
 }
 
 //构建推荐
-function buildRecommend(recommedContent,idArray,imageArray,titleArray,aboutArray,fabulousArray){
+function buildRecommend(recommedContent,idArray,imageArray,titleArray,aboutArray,fabulousArray,type){
 	var recommedText = "";
 	for(var i=0;i<idArray.length;i++){
 		if(i == 0 && idArray[0]!=null){
@@ -109,9 +109,10 @@ function buildRecommend(recommedContent,idArray,imageArray,titleArray,aboutArray
 			recommedText = "<tr>";
 		}
 		if(idArray[i] != null){
-			var image = IPPost +'image1/'+imageArray[i]
+			var image = IPPost +'image1/'+imageArray[i];
+			var idType = type+idArray[i];
 			recommedText += "<td id='recommed'>"+
-								"<a onclick=openPage('"+idArray[i]+"')>"+
+								"<a onclick=openPage('"+idType+"')>"+
 									"<img id='recommed-image' src="+image+"/>"+
 									"<p id='recommed-name'>"+titleArray[i]+"</p>"+
 									"<p id='recommed-about'>"+aboutArray[i]+"</p>"+
@@ -214,5 +215,28 @@ function openPage(page){
 	if(page == "back"){
 		mui.back();
 	}
-	console.log(page);
+	if(page.substring(0,3) == "wor"){
+		page = page.substring(3,page.length);
+		console.log("设计作品："+page);
+		mui.openWindow({
+		    url: '../work/workDetail.html',
+		    id: 'workDetail',
+		    extras:{
+		        workId: page
+		    },
+		    createNew: true
+		});
+	}
+	if(page.substring(0,3) == "clo"){
+		page = page.substring(3,page.length);
+		console.log("布料辅料："+page);
+		mui.openWindow({
+		    url: '../cloth/clothDetail.html',
+		    id: 'clothDetail',
+		    extras:{
+		        clothId: page
+		    },
+		    createNew: true
+		});
+	}
 }

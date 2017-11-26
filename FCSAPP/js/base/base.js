@@ -1,5 +1,16 @@
+var waitAnima;
 // mui初始化
 mui.init();
+
+function plusReady(){
+	// 弹出系统等待对话框
+	waitAnima = plus.nativeUI.showWaiting( "正在加载..." );
+}
+if(window.plus){
+	plusReady();
+}else{
+	document.addEventListener("plusready",plusReady,false);
+}
 
 //实现双击退出引用，不返还登录界面
 mui.oldback = mui.back;
@@ -68,6 +79,8 @@ if(mui.os.plus){
 			}
 			self.append(sub);
 		}
+		
+		waitAnima = plus.nativeUI.closeWaiting();
 	});
 }else{
 	// 创建iframe代替子页面

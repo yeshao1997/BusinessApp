@@ -7,35 +7,109 @@
     <!-- css start-->
     <link rel="stylesheet" href="../../css/base/mui.min.css" />
     <link rel="stylesheet" href="../../css/work/workDetail.css" />
-    <style>
-    	/*状态栏*/
-		#statusBar{
-			width: 100%;
-			height: 25px;
-			position: fixed;
-			background-color: black;
-			z-index: 100;
-		}
-
-    	#workTiltleConten{
-    		width: 100%;
-    		height: 75px;
-			padding-top: 25px;
-			position: relative;
-    	}
-    </style>
-    	
     <!-- css end-->
 </head>
 <body>
 	<!-- html start-->
 	<div class="mui-content">
 		<div id="statusBar"></div>
-		<div id="workTiltleConten">
-			<img id="returnPage" src="../../img/work/returnBlack.png" onclick="openPage('back')"/>
-			<p workTitle>维度</p>
-			<p workDesigner>张建</p>
-			<img id="colletImg" src="../../img/work/uncollect.png" />
+		
+		<!--作品标题-->
+		<div id="workTiltleContent">
+			<img id="returnImg" src="../../img/work/returnBlack.png" onclick="openPage('back')"/>
+			<p id="workTitle"></p>
+			<img id="collectImg" src="../../img/work/uncollect.png" onclick="collect()"/>
+		</div>
+
+		<!-- 轮播图 -->
+		<div id="slider" class="mui-slider">
+			<div id="carousel-content" class="mui-slider-group mui-slider-loop">				
+			</div>
+			<div class="mui-slider-indicator">
+				<div class="mui-indicator mui-active"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+			</div>
+		</div>
+		
+		<!--作品简介-->
+		<div id="workIntrContent">
+			<p id="intrText">作品简介：</p>
+			<p id="intrValue"></p>
+		</div>
+		
+		<!--点赞与评论-->
+		<div id="workFCcontent">
+			<img id='fabulousImg' src="../../img/work/unfabulous.png" onclick="fabulous()"/>
+			<p id='fabulousValue'>0</p>
+			<img id='commentImg' src='../../img/work/comment.png' onclick="comment()"/>
+			<p id='commentValue'>0</p>
+		</div>
+		
+		<!--作品信息-->
+		<div id="workInfoContent">
+			<p id="workInfoText">作品信息</p>
+			<table id="workInfoTable">
+				<tr>
+					<td>
+						<p id="text">分类：</p>
+						<p id="workType"></p>
+					</td>
+					<td>
+						<p id="text">专辑：</p>
+						<a id="workAlbum" onclick="openPage('album')"></a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p id="text">风格：</p>
+						<p id="workStyle"></p>
+					</td>
+					<td>
+						<p id="text">作者：</p>
+						<a id="workDesigner" onclick="openPage('designer')"></a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p id="text">面料：</p>
+						<p id="workComponent"></p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p id="text">款式：</p>
+						<p id="workModel"></p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p id="text">颜色：</p>
+						<p id="workColor"></p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<!-- 推荐信息 -->
+		<div id="workRecommendContent">
+			<div id="segmentedControl" class="mui-segmented-control">
+				<a class="mui-control-item mui-active" href="#costumeRecommend">品牌服装</a>
+				<a class="mui-control-item" href="#clothRecommend">布料辅料</a>
+			</div>
+			<div>
+				<div id="costumeRecommend" class="mui-control-content mui-active">
+					<table id="recommedCostumeTable">
+					</table>
+				</div>
+				<div id="clothRecommend" class="mui-control-content">
+					<table id="recommedClothTable">
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- html end-->

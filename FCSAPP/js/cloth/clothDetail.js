@@ -39,8 +39,8 @@ function getClothData(){
 				var recommedCostumeContent = document.getElementById("recommedCostumeTable");
 				
 				
-				buildRecommend(recommedWorkContent,obj.workIdArray,obj.workImageArray,obj.workTitleArray,obj.workAboutArray,obj.workFabulousArray);
-				buildRecommend(recommedCostumeContent,obj.costumeIdArray,obj.costumeImageArray,obj.costumeTitleArray,obj.costumeAboutArray,obj.costumeFabulousArray);
+				buildRecommend(recommedWorkContent,obj.workIdArray,obj.workImageArray,obj.workTitleArray,obj.workAboutArray,obj.workFabulousArray,"wor");
+				buildRecommend(recommedCostumeContent,obj.costumeIdArray,obj.costumeImageArray,obj.costumeTitleArray,obj.costumeAboutArray,obj.costumeFabulousArray,"cos");
 			}else{
 				mui.toast(resultJson.msg);
 			}
@@ -99,7 +99,7 @@ function buildInfor(obj){
 }
 
 //构建推荐
-function buildRecommend(recommedContent,idArray,imageArray,titleArray,aboutArray,fabulousArray){
+function buildRecommend(recommedContent,idArray,imageArray,titleArray,aboutArray,fabulousArray,type){
 	var recommedText = "";
 	for(var i=0;i<idArray.length;i++){
 		if(i == 0 && idArray[0]!=null){
@@ -110,9 +110,10 @@ function buildRecommend(recommedContent,idArray,imageArray,titleArray,aboutArray
 			recommedText = "<tr>";
 		}
 		if(idArray[i] != null){
-			var image = IPPost +'image1/'+imageArray[i]
+			var image = IPPost +'image1/'+imageArray[i];
+			var idType = type+idArray[i];
 			recommedText += "<td id='recommed'>"+
-								"<a onclick=openPage('"+idArray[i]+"')>"+
+								"<a onclick=openPage('"+idType+"')>"+
 									"<img id='recommed-image' src="+image+"/>"+
 									"<p id='recommed-name'>"+titleArray[i]+"</p>"+
 									"<p id='recommed-about'>"+aboutArray[i]+"</p>"+
@@ -159,7 +160,7 @@ function collect(){
 					}else{
 						collectType = 1;
 						$("#collectImg").attr('src','../../img/costume/uncollect.png');
-						mui.toast("已取消收藏此服装");
+						mui.toast("已取消收藏此布料");
 					}
 				}else{
 					mui.toast(resultJson.msg);
@@ -215,5 +216,29 @@ function openPage(page){
 	if(page == "back"){
 		mui.back();
 	}
-	console.log(page);
+	if(page.substring(0,3) == "wor"){
+		page = page.substring(3,page.length);
+		console.log("设计作品："+page);
+		console.log(page);
+		mui.openWindow({
+		    url: '../work/workDetail.html',
+		    id: 'workDetail',
+		    extras:{
+		        workId: page
+		    },
+		    createNew: true
+		});
+	}
+	if(page.substring(0,3) == "cos"){
+		page = page.substring(3,page.length);
+		console.log("品牌服装："+page);
+		mui.openWindow({
+		    url: '../costume/costumeDetail.html',
+		    id: 'costumeDetail',
+		    extras:{
+		        costumeId: page
+		    },
+		    createNew: true
+		});
+	}
 }

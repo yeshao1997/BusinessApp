@@ -1,0 +1,110 @@
+#header{
+	height: 75px;
+	background-color:#4d3b3c ;
+	position: relative;
+}
+
+#back{
+	height: 25px;
+	width: 25px;
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 8px;
+	color: white;
+}
+#title{
+	height: 25px;
+	width: 80px;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 8px;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+}
+#addOver{
+	position: absolute;
+	right: 15px;
+	bottom: 5px;
+	font-size: 16px;
+	color: white;
+}
+
+#albumNameContent{
+	width: 90%;
+	height: 100px;
+	margin: 0 auto;
+	position: relative;
+}
+#albumNameText{
+	width: 100px;
+	height: 40px;
+	position: absolute;
+	top: 12px;
+	bottom: 0px;
+	margin: auto;
+	font-size: 20px;
+}
+#albumNameInput{
+	width: 260px;
+	height: 44px;
+	padding-left: 8px;
+	position: absolute;
+	left: 115px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	border: 0px;
+	font-size: 20px;
+	border-radius: 8px;
+}
+#albumPortraitContent{
+	width: 90%;
+	height: 500px;
+	margin: 0 auto;
+	position: relative;
+}
+#albumPortraitText{
+	width: 100px;
+	height: 40px;
+	position: absolute;
+	top: 12px;
+	margin: auto;
+	font-size: 20px;
+}
+#imgContent{
+	width: 180px;
+	height: 180px;
+	position: relative;
+	border: 2px solid #a9a9a9;
+	top: 50px;
+	left: 115px;
+}
+#albumPortrait{
+	width: 90%;
+	height: 160px;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+}
+#changeImgIntro{
+	width: 90%;
+	height: 20px;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	text-align: center;
+}

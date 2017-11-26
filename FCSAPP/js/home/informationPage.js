@@ -1,6 +1,17 @@
 var newInformation = null;
 var oldInformation = null;
 
+//等待动画
+function plusReady(){
+	// 弹出系统等待对话框
+	waitAnima = plus.nativeUI.showWaiting( "正在获取数据..." );
+}
+if(window.plus){
+	plusReady();
+}else{
+	document.addEventListener("plusready",plusReady,false);
+}
+
 mui.init({
     pullRefresh : {
         container:"#information_list_content",//待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
@@ -36,6 +47,8 @@ document.addEventListener('plusready', function(){
 	//自动获取一次数据
 	getCarouselData();
 	getInforListData();
+	//关闭等待动画
+	waitAnima = plus.nativeUI.closeWaiting();
 });
 
 //获取轮播图数据

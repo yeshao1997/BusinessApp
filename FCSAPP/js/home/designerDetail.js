@@ -1,7 +1,9 @@
 var designerId;
 var follow;
 var userId;
-mui.init({  
+var IPPost;
+
+mui.init({
     beforeback: function() { 
 	    var list = plus.webview.currentWebview().opener();  
 	    mui.fire(list, 'refresh');  
@@ -24,7 +26,7 @@ function openPage(page){
 
 document.addEventListener('plusready', function(){
 	plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
-	var IPPost = localStorage.getItem("IPPost");
+	IPPost = localStorage.getItem("IPPost");
 	userId = localStorage.getItem("userId");
 	var url = IPPost+'DesignerController/getDesigner';
 	mui.ajax(url, {
@@ -70,7 +72,7 @@ function buildPage(designerName,designerPortrait,designerFollow,designerFans,fol
 	$("#followNumber").text(designerFollow);
 	//粉丝数
 	$("#fansNumber").text(designerFans);
-	if(userId != null){
+	if(userId != null && designerId != userId ){
 		if(followType == "followed"){
 			follow = 0;
 			$("#followImg").attr('src','../../img/home/follow.png');
@@ -91,31 +93,38 @@ function buildAlbum(albumMsg){
 	var workNumber = albumMsg.workNumber;
 	
 	var albumContent = document.getElementById('album-table');
+	var text="";
 	for(var i=0;i<albumId.length;i++){
-		var text="";
 		if(i==0){
 			text += "<tr>";
 		}else if(i%2 == 0 && i!=0){
 			text += "</tr><tr>";
 		}
 		
+		var defultPortrait;
+		if(albumPortrait[i] != "null" && albumPortrait[i] != ""){
+			defultPortrait = IPPost + "image/" + albumPortrait[i];
+		}else{
+			defultPortrait = "../../img/home/defultPortrait.png";
+		}
+		
 		text += "<td id='album'>"+
 					"<a onclick=openPage('"+albumId[i]+"')>"+
 						"<div id='album-img-content'>"+	
-							"<img id='album-img' src="+albumPortrait[i]+" />"+
+							"<img id='album-img' src="+defultPortrait+" />"+
 				        "</div>"+
 				        "<div id='album-info'>"+
-				        	"<p id='album-name'>"+albumName+"</p>"+
+				        	"<p id='album-name'>"+albumName[i]+"</p>"+
 				        	"<img id='album-work-img' src='../../img/home/floder.png' />"+
-				        	"<p id='album-work-number'>"+workNumber+"</p>"+
+				        	"<p id='album-work-number'>"+workNumber[i]+"</p>"+
 				        "</div>"+
 				    "</a>"+
 				"</td>";
 		
 		if(i==albumId.length-1){
 			text += "</tr>";
-		}
 		albumContent.insertAdjacentHTML('beforeEnd',text);
+		}
 	}
 }
 

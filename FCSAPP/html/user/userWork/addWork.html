@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <!-- css start-->
+    <link rel="stylesheet" href="../../../css/base/mui.min.css" />
+    <link href="../../../css/base/mui.picker.css" rel="stylesheet" />
+	<link href="../../../css/base/mui.poppicker.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../css/user/userWork/addWork.css" />
+    <!-- css end-->
+</head>
+<body>
+	<!-- html start-->
+	<header id="header">
+		<span id="back" class="mui-icon mui-icon-back" onclick="openPage('back')"></span>
+		<div id="title">新建作品</div>
+	</header>
+	<div id="addWorkContent">
+		<div id="workNameContent">
+			<p id="workNameText">作品名：</p>
+			<input id="workNameInput" class="mui-input-clear mui-input" onkeyup="value=value.replace(/\s+/g,'')"/>
+		</div>
+		<hr/>
+		<div id="workColorContnet">
+			<p id="workColorText">颜 色：</p>
+			<input id="workColorInput" class="mui-input-clear mui-input" onkeyup="value=value.replace(/\s+/g,'')"/>
+		</div>
+		<hr />
+		<div id="workTypeContent">
+			<p id="workTypeText">分 类：</p>
+			<p id="workTypeBigText">大</p>
+			<div id="workTypePBigContent">
+				<p id="workTypeBig" class="workType"></p>
+			</div>
+			<p id="workTypeMidText">中</p>
+			<div id="workTypePMidContent">
+				<p id="workTypeMid" class="workType"></p>
+			</div>
+			<p id="workTypeMalText">小</p>
+			<div id="workTypePMalContent">
+				<p id="workTypeMal" class="workType"></p>
+			</div>
+			<button id="workTypeSelect" class="selectButton">选择</button>
+		</div>
+		<hr/>
+		<div id="workComponentContent">
+			<p id="workComponentText">面 料：</p>
+			<p id="workComponentBigText">大</p>
+			<div id="workComponentPBigContent">
+				<p id="workComponentBig" class="workType"></p>
+			</div>
+			<p id="workComponentMalText">小</p>
+			<div id="workComponentPMalContent">
+				<p id="workComponentMal" class="workType"></p>
+			</div>
+			<button id="workComponentSelect" class="selectButton">选择</button>
+		</div>
+		<hr/>
+		<div id="workStyleContent">
+			<p id="workStyleText">风 格：</p>
+			<div id="workStylePContent">
+				<p id="workStyle" class="workType"></p>
+			</div>
+			<button id="workStyleSelect" class="selectButton">选择</button>
+		</div>
+		<hr/>
+		<div id="workModelContent">
+			<p id="workModelText">款 式：</p>
+			<div id="workModelPContent">
+				<p id="workModel" class="workType"></p>
+			</div>
+			<button id="workModelSelect" class="selectButton">选择</button>
+		</div>
+		<hr/>
+		<div id="workIamgeContent">
+			<p id="workImageText">图 片：</p>
+			<div id="imageSelectContnet">
+				<img id="image1" class="workImage" src="../../../img/user/addImage.png" />
+				<img id="image2" class="workImage" src="../../../img/user/addImage.png" />
+				<img id="image3" class="workImage" src="../../../img/user/addImage.png" />
+				<img id="image4" class="workImage" src="../../../img/user/addImage.png" />
+				<img id="image5" class="workImage" src="../../../img/user/addImage.png" />
+				<img id="image6" class="workImage" src="../../../img/user/addImage.png" />
+			</div>
+			<p id="workSelectIntro">请选择6张图片</p>
+		</div>
+		<hr />
+		<div id="workIntroContent">
+			<p id="workIntroText">简 介：</p>
+			<textarea id="workIntro" rows="5"></textarea>
+		</div>
+		
+		<button id="submit" onclick="upload()">完成</button>
+	</div>
+	<!-- html end-->
+	
+	<!-- javascript start-->
+    <script type="text/javascript" src="../../../js/base/mui.min.js" ></script>
+    <script type="text/javascript" src="../../../js/base/jquery-3.2.1.min.js" ></script>
+   	<script type="text/javascript" src="../../../js/base/mui.picker.min.js"></script>
+	<script type="text/javascript" src="../../../js/base/mui.poppicker.js"></script>
+   	<script type="text/javascript" src="../../../js/user/userWork/addWork.js" ></script>	
+   	<!-- javascript end-->
+</body>
+</html>

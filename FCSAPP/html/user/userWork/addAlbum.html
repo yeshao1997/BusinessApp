@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <!-- css start-->
+    <link rel="stylesheet" href="../../../css/base/mui.min.css" />
+    <link rel="stylesheet" href="../../../css/user/userWork/addAlbum.css" />   	
+    <!-- css end-->
+</head>
+<body>
+	<!-- html start-->
+	<header id="header">
+		<span id="back" class="mui-icon mui-icon-back" onclick="openPage('back')"></span>
+		<div id="title">新增专辑</div>
+		<p id="addOver" onclick="upload()">完成</p>
+	</header>
+	<div id="addAlbumContent">
+		<div id="albumNameContent">
+			<p id="albumNameText">专辑名称：</p>
+			<input id="albumNameInput" class="mui-input-clear mui-input"/>
+		</div>
+		<div id="albumPortraitContent">
+			<p id="albumPortraitText">专辑封面：</p>
+			<div id="imgContent">
+				<img id="albumPortrait" src="../../../img/user/defultPortrait.png" />
+			</div>
+			<p id="changeImgIntro">点击更换封面</p>
+		</div>
+	</div>
+	<!-- html end-->
+	
+	<!-- javascript start-->
+    <script type="text/javascript" src="../../../js/base/mui.min.js" ></script>
+    <script type="text/javascript" src="../../../js/base/jquery-3.2.1.min.js" ></script>
+    <script type="text/javascript" src="../../../js/user/userWork/addAlbum.js" ></script>
+   	<!-- javascript end-->
+</body>
+</html>

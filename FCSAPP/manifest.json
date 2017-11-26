@@ -480,7 +480,8 @@
 				"refer": [
 					"html/sign/login.html",
 					"html/user/userData.html",
-					"html/user/userData/userData.html"
+					"html/user/userData/userData.html",
+					"html/user/userWork/userAlbum.html"
 				],
 				"priority": 0
 			},
@@ -764,7 +765,9 @@
 					"img/work/selected.png",
 					"js/work/workPage.js"
 				],
-				"refer": [],
+				"refer": [
+					"html/work/workDetail.html"
+				],
 				"priority": 0
 			},
 			"html/home/informationPage.html": {
@@ -841,7 +844,8 @@
 					"img/home/follow.png",
 					"css/base/iconfont.css",
 					"img/home/floder.png",
-					"css/home/designerDetail.css"
+					"css/home/designerDetail.css",
+					"img/home/defultPortrait.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -866,7 +870,10 @@
 					"img/costume/collect.png",
 					"img/costume/fabulous.png"
 				],
-				"refer": [],
+				"refer": [
+					"html/work/workDetail.html",
+					"html/cloth/clothDetail.html"
+				],
 				"priority": 0
 			},
 			"html/cloth/clothDetail.html": {
@@ -886,7 +893,9 @@
 					"img/costume/collect.png",
 					"img/costume/unfabulous.png"
 				],
-				"refer": [],
+				"refer": [
+					"html/work/workDetail.html"
+				],
 				"priority": 0
 			},
 			"html/work/workDetail.html": {
@@ -898,7 +907,92 @@
 					"img/work/returnBlack.png",
 					"js/base/jquery-3.2.1.min.js",
 					"img/work/uncollect.png",
-					"js/work/workDetail.js"
+					"js/work/workDetail.js",
+					"img/costume/comment.png",
+					"img/costume/unfabulous.png",
+					"img/work/unfabulous.png",
+					"img/work/comment.png",
+					"img/home/unfabulous.png",
+					"img/costume/fabulous.png",
+					"img/costume/uncollect.png",
+					"img/costume/collect.png",
+					"img/work/fabulous.png"
+				],
+				"refer": [
+					"html/costume/costumeDetail.html",
+					"html/cloth/clothDetail.html",
+					"html/home/designerDetail.html"
+				],
+				"priority": 0
+			},
+			"html/user/userWork/userAlbum.html": {
+				"resources": [
+					"font/mui.ttf",
+					"css/user/userWork/userAlbum.css",
+					"css/base/mui.min.css",
+					"js/user/userWork/userAlbum.js",
+					"js/base/mui.min.js",
+					"js/base/jquery-3.2.1.min.js",
+					"img/user/portrait.png",
+					"img/user/floder.png",
+					"img/user/pic.png",
+					"img/user/defultPortrait.png",
+					"js/base/mui.picker.min.js"
+				],
+				"refer": [
+					"html/user/userWork/addAlbum.html",
+					"html/user/userWork/userWork.html"
+				],
+				"priority": 0
+			},
+			"html/user/userWork/addAlbum.html": {
+				"resources": [
+					"js/user/userWork/addAlbum.js",
+					"css/user/userWork/addAlbum.css",
+					"font/mui.ttf",
+					"js/base/mui.min.js",
+					"css/base/mui.min.css",
+					"js/base/jquery-3.2.1.min.js",
+					"img/user/portrait.png",
+					"img/user/defultPortrait.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/user/userWork/userWork.html": {
+				"resources": [
+					"css/user/userWork/userWork.css",
+					"js/user/userWork/userWork.js",
+					"img/user/portrait.png",
+					"img/user/unfabulous.png",
+					"img/user/comment.png",
+					"font/mui.ttf",
+					"js/base/mui.min.js",
+					"css/base/mui.min.css",
+					"js/base/jquery-3.2.1.min.js"
+				],
+				"refer": [
+					"html/user/userWork/addWork.html"
+				],
+				"priority": 0
+			},
+			"html/user/userWork/addWork.html": {
+				"resources": [
+					"css/user/userWork/addWork.css",
+					"font/mui.ttf",
+					"js/base/mui.min.js",
+					"css/base/mui.min.css",
+					"js/base/jquery-3.2.1.min.js",
+					"css/base/mui.picker.css",
+					"css/base/mui.poppicker.css",
+					"js/user/userWork/addWork.js",
+					"js/base/mui.poppicker.js",
+					"js/user/userWork/city.data-3.js",
+					"js/base/mui.picker.min.js",
+					"img/user/portrait.png",
+					"img/user/addImage.png",
+					"js/user/userWork/city.data.js",
+					"js/user/userWork/addwork2.js"
 				],
 				"refer": [],
 				"priority": 0

@@ -17,13 +17,26 @@
 	<!-- javascript start-->
 	<script type="text/javascript" src="js/base/mui.min.js" ></script>
 	<script>
-		var IPPost = 'http://172.16.95.126:8080/';
+		var IPPost = 'http://172.16.41.126:8080/';
 		localStorage.setItem("IPPost",IPPost);
+		var waitAnima;
+		
+		//等待动画
+		function plusReady(){
+			// 弹出系统等待对话框
+			waitAnima = plus.nativeUI.showWaiting( "正在获取数据..." );
+		}
+		if(window.plus){
+			plusReady();
+		}else{
+			document.addEventListener("plusready",plusReady,false);
+		}
 		
 		mui.plusReady(function () {
 			var account = localStorage.getItem("account");
 			var password = localStorage.getItem("password");
 		    if(account == null || password == null){
+		    	waitAnima = plus.nativeUI.closeWaiting();
 		    	mui.openWindow({
 					url: "html/sign/login.html",
 					id: "login"
@@ -40,6 +53,7 @@
 			        success:  function(data){
 			        	var resultJson = JSON.parse(JSON.stringify( data ));
 						if(resultJson.code == 1){
+							waitAnima = plus.nativeUI.closeWaiting();
 							localStorage.setItem("userId",resultJson.obj);
 							localStorage.setItem("account",account);
 							localStorage.setItem("password",password);
@@ -48,6 +62,7 @@
 								id: "base"
 							});
 						}else{
+							waitAnima = plus.nativeUI.closeWaiting();
 							mui.openWindow({
 								url: "html/sign/login.html",
 								id: "login"
@@ -55,6 +70,7 @@
 						}
 			        },
 			        error: function(){
+			        	waitAnima = plus.nativeUI.closeWaiting();
 			        	mui.openWindow({
 							url: "html/sign/login.html",
 							id: "login"

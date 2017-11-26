@@ -1,0 +1,124 @@
+#header{
+	height: 75px;
+	background-color:#4d3b3c ;
+	position: relative;
+}
+
+#back{
+	height: 25px;
+	width: 25px;
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 8px;
+	color: white;
+}
+#title{
+	height: 25px;
+	width: 80px;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 8px;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+}
+#newWork{
+	position: absolute;
+	right: 15px;
+	bottom: 5px;
+	font-size: 16px;
+	color: white;
+}
+#workList{
+	margin: 1px;
+	padding: 0px;
+}
+#work{
+	width: 100%;
+	height: 130px;
+	padding: 0px;
+	background-color: white;
+	position: relative;
+	list-style: none;
+}
+#workImg{
+	width: 120px;
+	height: 120px;
+	padding: 0px;
+	margin-top: 5px;
+	margin-left: 5px;
+	float: left;
+	border: 1px solid darkgray;
+}
+#workTitle{
+	height: 43px;
+	margin-right: 10px;
+	position: absolute;
+	top: 20px;
+	left: 140px;
+	font-size:20px;
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp:2;
+	-webkit-box-orient: vertical;
+}
+#workTime{
+	width: 140px;
+	height: 20px;
+	margin: 0px;
+	position: absolute;
+	left: 140px;
+	bottom: 10px;
+}
+#workFCContent{
+	width: 120px;
+	height: 25px;
+	position: absolute;
+	bottom: 15px;
+	right: 0px;
+}
+#fabulousImg{
+	width: 25px;
+	height: 25px;
+	float: left;
+}
+#fabulousNumber{
+	float: left;
+	margin-top: 8px;
+	margin-left: 3px;
+}
+#commentImg{
+	width: 25px;
+	height: 25px;
+	float: left;
+	margin-left: 10px;
+}
+#commentNumber{
+	float: left;
+	margin-top: 8px;
+	margin-left: 3px;
+}
+#notMessage{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+}
+#notMessage p{
+	width: 120px;
+	height: 40px;
+	position: absolute;
+	top: 0px;
+	bottom: 200px;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	font-size: 26px;
+}
