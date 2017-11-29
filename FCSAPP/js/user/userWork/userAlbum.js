@@ -3,17 +3,14 @@ var userId;
 
 mui.init({
   gestureConfig:{
-    longtap: true, //默认为false
-    release:true,
-    hold:true
+    longtap: true
   }
 });
 
 function openPage(page){
 	if(page == "back"){
 		mui.back();
-	}
-	if(page == "addAlbum"){
+	}else if(page == "addAlbum"){
 		mui.openWindow({
 		    url: 'addAlbum.html',
 		    id: 'addAlbum',
@@ -21,14 +18,15 @@ function openPage(page){
 		        albumId: "null"
 		    }
 		});
+	}else{
+		mui.openWindow({
+		    url: 'userWork.html',
+		    id: 'userWork',
+		    extras:{
+		        albumId: page
+		    }
+		});
 	}
-	mui.openWindow({
-	    url: 'userWork.html',
-	    id: 'userWork',
-	    extras:{
-	        albumId: page
-	    }
-	});
 }
 
 //监听刷新页面
@@ -61,7 +59,8 @@ function getMyAlbum(){
 					
 					mui('body').on('longtap','a',function(){
 						var value = this.getAttribute("value");
-						setAlbum(value);
+						var title = this.getAttribute("value2");
+						setAlbum(value,title);
 					},false);
 				}else{
 					mui.toast(resultJson.msg);
@@ -87,7 +86,7 @@ function buildAlbum(obj){
 		
 		var defultPortrait;
 		if(albumPortrait[i] != "null" && albumPortrait[i] != ""){
-			defultPortrait = IPPost + "image/" + albumPortrait[i];
+			defultPortrait = IPPost + "image1/" + albumPortrait[i];
 		}else{
 			defultPortrait = "../../../img/user/defultPortrait.png";
 		}
@@ -99,7 +98,7 @@ function buildAlbum(obj){
 		}
 		
 		text += "<td id='album'>"+
-							"<a id='albumClick' value="+defultId+" onclick=openPage('"+albumId[i]+"')>"+
+							"<a id='albumClick' value="+defultId+" value2="+albumName[i]+" onclick=openPage('"+albumId[i]+"')>"+
 								"<div id='album-img-content'>"+	
 									"<img id='album-img' src="+defultPortrait+" />"+
 						        "</div>"+
@@ -118,12 +117,12 @@ function buildAlbum(obj){
 	}
 }
 
-function setAlbum(value){
+function setAlbum(value,title){
 	if(value != "-1"){
 		if (mui.os.plus) { 
 			var a = [{title: "修改专辑"}, {title: "删除专辑"}]; 
 			plus.nativeUI.actionSheet({ 
-				title: "我的专辑", 
+				title: title, 
 				cancel: "取消",
 				buttons: a 
 			}, function(b) { 

@@ -29,13 +29,6 @@
 	color: white;
 	font-size: 20px;
 }
-#newWork{
-	position: absolute;
-	right: 15px;
-	bottom: 5px;
-	font-size: 16px;
-	color: white;
-}
 #workList{
 	margin: 1px;
 	padding: 0px;
@@ -112,7 +105,7 @@
 	position: fixed;
 }
 #notMessage p{
-	width: 200px;
+	width: 120px;
 	height: 40px;
 	position: absolute;
 	top: 0px;

@@ -249,7 +249,9 @@
 			"html/user/setting.html",
 			"html/user/userData.html",
 			"html/user/userData/userData.html",
-			"html/user/userWork/userAlbum.html"
+			"html/user/userWork/userAlbum.html",
+			"html/user/userPurchase/userPurchase.html",
+			"html/user/userSell/userSell.html"
 		]
 	},
 	"html/user/setting.html": {
@@ -592,6 +594,9 @@
 			"img/home/floder.png",
 			"css/home/designerDetail.css",
 			"img/home/defultPortrait.png"
+		],
+		"refer": [
+			"html/home/designerDetailWork.html"
 		]
 	},
 	"html/costume/costumeDetail.html": {
@@ -663,7 +668,9 @@
 		"refer": [
 			"html/costume/costumeDetail.html",
 			"html/cloth/clothDetail.html",
-			"html/home/designerDetail.html"
+			"html/home/designerDetail.html",
+			"html/home/designerDetailWork.html",
+			"html/work/workPurchase.html"
 		]
 	},
 	"html/user/userWork/userAlbum.html": {
@@ -710,7 +717,8 @@
 			"js/base/jquery-3.2.1.min.js"
 		],
 		"refer": [
-			"html/user/userWork/addWork.html"
+			"html/user/userWork/addWork.html",
+			"html/work/workDetail.html"
 		]
 	},
 	"html/user/userWork/addWork.html": {
@@ -730,6 +738,86 @@
 			"img/user/addImage.png",
 			"js/user/userWork/city.data.js",
 			"js/user/userWork/addwork2.js"
+		]
+	},
+	"html/home/designerDetailWork.html": {
+		"resources": [
+			"css/home/designerDetailWork.css",
+			"font/mui.ttf",
+			"js/home/designerDetailWork.js",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js",
+			"img/home/comment.png",
+			"img/home/unfabulous.png"
+		],
+		"refer": [
+			"html/work/workDetail.html"
+		]
+	},
+	"html/user/userPurchase/userPurchase.html": {
+		"resources": [
+			"js/user/userPurchase/userPurchase.js",
+			"font/mui.ttf",
+			"css/user/userPurchase/userPurchase.css",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js"
+		],
+		"refer": [
+			"html/user/userPurchase/userPurchaseDeatil.html"
+		]
+	},
+	"html/work/workPurchase.html": {
+		"resources": [
+			"font/mui.ttf",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js",
+			"css/work/workPurchase.css",
+			"js/work/workPurchase.js"
+		]
+	},
+	"html/user/userPurchase/userPurchaseDeatil.html": {
+		"resources": [
+			"css/user/userPurchase/userPurchaseDeatil.css",
+			"js/user/userPurchase/userPurchaseDeatil.js",
+			"font/mui.ttf",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js"
+		],
+		"refer": [
+			"html/home/designerDetail.html",
+			"html/work/workDetail.html"
+		]
+	},
+	"html/user/userSell/userSell.html": {
+		"resources": [
+			"font/mui.ttf",
+			"js/user/userSell/userSell.js",
+			"css/user/userSell/userSell.css",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js"
+		],
+		"refer": [
+			"html/user/userSell/userSellDetail.html"
+		]
+	},
+	"html/user/userSell/userSellDetail.html": {
+		"resources": [
+			"css/user/userPurchase/userPurchaseDeatil.css",
+			"js/user/userPurchase/userPurchaseDeatil.js",
+			"css/user/userSell/userSellDetail.css",
+			"font/mui.ttf",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js",
+			"js/user/userSell/userSellDetail.js"
+		],
+		"refer": [
+			"html/work/workDetail.html"
 		]
 	}
 }

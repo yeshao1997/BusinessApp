@@ -1,0 +1,168 @@
+#header{
+	height: 75px;
+	background-color:#4d3b3c ;
+	position: relative;
+}
+
+#back{
+	height: 25px;
+	width: 25px;
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 8px;
+	color: white;
+}
+#title{
+	height: 25px;
+	width: 80px;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 8px;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+}
+#delete{
+	position: absolute;
+	right: 15px;
+	bottom: 5px;
+	font-size: 16px;
+	color: white;
+}
+#purchaseInfo{
+	height: 70px;
+	position: relative;
+}
+#designerContent{
+	width: 200px;
+	height: 30px;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 30px;
+	margin: auto;
+}
+
+#designerText{
+	color: black;
+	float: left;
+	font-size: 18px;
+}
+#designer{
+	width: 100px;
+	height: 22px;
+	float: left;
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	font-size: 20px;
+}
+#work{
+	width: 100px;
+	height: 22px;
+	float: left;
+	display: -webkit-box;
+	text-overflow: ellipsis;
+	overflow : hidden;
+	-webkit-box-orient: vertical;
+	font-size: 20px;
+	
+}
+#workContent{
+	width: 200px;
+	height: 30px;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	margin: auto;
+}
+#workText{
+	color: black;
+	float: left;
+	font-size: 18px;
+}
+#purchaseRequestContnet{
+	width: 90%;
+	height: 232px;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	padding: 10px 15px;
+	background-color: white;
+	border: 1px solid rgba(0,0,0,.2);
+}
+#purchaseRequest{
+	width: 90%;
+	height: 210px;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	line-height: 21px;
+	font-size: 17px;
+	color: black;
+}
+#buyerInfoContent{
+	width: 90%;
+	height: 300px;
+	position: relative;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	top: 260px;
+}
+#buyerInfoText{
+	height: 35px;
+	position: absolute;
+	font-size: 18px;
+}
+#buyerInfo{
+	position: absolute;
+	top: 40px;
+}
+#buyerInfo p{
+	font-size: 20px;
+}
+#buyerNameContent{
+	width: 300px;
+	position: absolute;
+	top: 15px;
+}
+#buyerPhoneContent{
+	width: 300px;
+	position: absolute;
+	top: 50px;
+}
+#buyerMailContent{
+	width: 300px;
+	position: absolute;
+	top: 90px;
+}
+#buyerNameText{
+	float: left;
+}
+#buyerPhoneText{
+	float: left;
+}
+#buyerMailText{
+	float: left;
+}
+#buyerName{
+	float: left;
+}
+#buyerPhone{
+	float: left;
+}
+#buyerMail{
+	float: left;
+}

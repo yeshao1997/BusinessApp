@@ -1,0 +1,117 @@
+#header{
+	height: 75px;
+	background-color:#4d3b3c ;
+	position: relative;
+}
+
+#back{
+	height: 25px;
+	width: 25px;
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 8px;
+	color: white;
+}
+#title{
+	height: 25px;
+	width: 80px;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	padding-top: 8px;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+}
+#deleteAll{
+	position: absolute;
+	right: 15px;
+	bottom: 5px;
+	font-size: 16px;
+	color: white;
+}
+#sellList{
+	margin: 0px;
+	padding: 0px;
+}
+#sell{
+	width: 100%;
+	height: 120px;
+	margin: 0px;
+	padding: 0px;
+	position: relative;   		
+}
+#clickA{
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+#prompt{
+	height: 10px;
+	width: 10px;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	border-radius: 50%;
+}
+#workName{
+	height: 60px;
+	font-size: 32px;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 30px;
+	margin: auto;
+}
+#time{
+	position: absolute;
+	bottom: 20px;
+	left: 30px;
+	font-size: 16px;
+}
+#buyerName{
+	width: 175px;
+	height: 30px;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	right: 60px;
+	margin: auto;
+	text-align: right;
+	font-size: 20px;
+	overflow: hidden;
+}
+#rightIcon{
+	height: 10px;
+	height: 30px;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	right: 20px;
+	margin: auto;
+	
+}
+#notMessage{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+}
+#notMessage p{
+	width: 200px;
+	height: 40px;
+	text-align: center;
+	position: absolute;
+	top: 0px;
+	bottom: 200px;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	font-size: 26px;
+}

@@ -17,11 +17,18 @@ mui.plusReady(function () {
 	designerId = self.designerId;
 });
 
-function openPage(page){
+function openPage(page,value){
 	if(page == "back"){
 		mui.back();
+	}else if(page == "album"){
+		mui.openWindow({
+		    url: 'designerDetailWork.html',
+		    id: 'designerDetailWork',
+		    extras:{
+		        albumId: value
+		    }
+		});
 	}
-	console.log(page);
 }
 
 document.addEventListener('plusready', function(){
@@ -103,13 +110,12 @@ function buildAlbum(albumMsg){
 		
 		var defultPortrait;
 		if(albumPortrait[i] != "null" && albumPortrait[i] != ""){
-			defultPortrait = IPPost + "image/" + albumPortrait[i];
+			defultPortrait = IPPost + "image1/" + albumPortrait[i];
 		}else{
 			defultPortrait = "../../img/home/defultPortrait.png";
 		}
-		
 		text += "<td id='album'>"+
-					"<a onclick=openPage('"+albumId[i]+"')>"+
+					"<a onclick=openPage("+'"album"'+",'"+albumId[i]+"')>"+
 						"<div id='album-img-content'>"+	
 							"<img id='album-img' src="+defultPortrait+" />"+
 				        "</div>"+

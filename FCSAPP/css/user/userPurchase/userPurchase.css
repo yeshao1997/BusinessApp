@@ -29,82 +29,78 @@
 	color: white;
 	font-size: 20px;
 }
-#newWork{
+#deleteAll{
 	position: absolute;
 	right: 15px;
 	bottom: 5px;
 	font-size: 16px;
 	color: white;
 }
-#workList{
-	margin: 1px;
+#purchaseList{
+	margin: 0px;
 	padding: 0px;
 }
-#work{
+#purchase{
 	width: 100%;
-	height: 130px;
-	padding: 0px;
-	background-color: white;
-	position: relative;
-	list-style: none;
-}
-#workImg{
-	width: 120px;
 	height: 120px;
+	margin: 0px;
 	padding: 0px;
-	margin-top: 5px;
-	margin-left: 5px;
-	float: left;
-	border: 1px solid darkgray;
+	position: relative;   		
 }
-#workTitle{
-	height: 43px;
-	margin-right: 10px;
+#clickA{
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+#image{
+	width: 100px;
+	height: 100px;
 	position: absolute;
-	top: 20px;
-	left: 140px;
-	font-size:20px;
+	top: 0px;
+	bottom: 0px;
+	left: 10px;
+	margin: auto;
+}
+#purchaseInfo{
+	width: 300px;
+	height: 100px;
+	position: absolute;
+	left: 130px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+}
+#workName{
+	width: 220px;
+	height: 50px;
+	font-size: 22px;
+	margin-top: 10px;
 	overflow : hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
-	-webkit-line-clamp:2;
 	-webkit-box-orient: vertical;
 }
-#workTime{
-	width: 140px;
-	height: 20px;
-	margin: 0px;
+#workDesigner{
+	margin-top: 10px;
+	float: left;
+	font-size: 16px;
+}
+#purchaseTime{
+	margin-top: 10px;
+	margin-left: 40px;
+	float: left;
+	font-size: 16px;
+}
+#rightIcon{
+	height: 30px;
+	height: 30px;
 	position: absolute;
-	left: 140px;
-	bottom: 10px;
-}
-#workFCContent{
-	width: 120px;
-	height: 25px;
-	position: absolute;
-	bottom: 15px;
-	right: 0px;
-}
-#fabulousImg{
-	width: 25px;
-	height: 25px;
-	float: left;
-}
-#fabulousNumber{
-	float: left;
-	margin-top: 8px;
-	margin-left: 3px;
-}
-#commentImg{
-	width: 25px;
-	height: 25px;
-	float: left;
-	margin-left: 10px;
-}
-#commentNumber{
-	float: left;
-	margin-top: 8px;
-	margin-left: 3px;
+	top: 0px;
+	bottom: 0px;
+	right: 20px;
+	margin: auto;
+	
 }
 #notMessage{
 	width: 100%;
@@ -114,6 +110,7 @@
 #notMessage p{
 	width: 200px;
 	height: 40px;
+	text-align: center;
 	position: absolute;
 	top: 0px;
 	bottom: 200px;

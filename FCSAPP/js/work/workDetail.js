@@ -1,7 +1,9 @@
 var IPPost;
 var userId;
 var workId;
+var workName;
 var designerId;
+var designerName;
 var albumId;
 var fabulousType = 1; //1为未点赞
 var collectType = 1; //1未未收藏
@@ -71,7 +73,8 @@ function buildCarousel(carouse){
 	});
 }
 function buildInfor(obj){
-	$("#workTitle").text(obj.workName);
+	workName = obj.workName;
+	$("#workTitle").text(workName);
 	$("#intrValue").text(obj.workIntro);
 	$("#workType").text(obj.workType);
 	$("#workStyle").text(obj.workStyle);
@@ -81,7 +84,8 @@ function buildInfor(obj){
 	
 	$("#workAlbum").text(obj.workAlbum);
 	albumId = obj.workAlbumId;
-	$("#workDesigner").text(obj.workDesigner);
+	designerName = obj.workDesigner;
+	$("#workDesigner").text(designerName);
 	designerId = obj.workDesignerId;
 	
 	fabulousNumber = obj.fabulousNumber
@@ -132,7 +136,11 @@ function buildRecommend(recommedContent,idArray,imageArray,titleArray,aboutArray
 }
 
 function collect(){
-	if(userId != null){
+	if(userId == null){
+		mui.toast("登录后才能收藏");
+	}else if(userId == designerId){
+		mui.toast("不能收藏自己的作品");
+	}else{
 		var IPPost = localStorage.getItem("IPPost");
 		var url = IPPost+'CollectController/collect';
 		mui.ajax(url, {
@@ -165,13 +173,15 @@ function collect(){
 				}
 		    }
 		});	
-	}else{
-		mui.toast("登录后才能进行收藏");
 	}
 }
 
 function fabulous(){
-	if(userId != null){
+	if(userId == null){
+		mui.toast("登录后才能点赞");
+	}else if(userId == designerId){
+		mui.toast("不能点赞自己的作品");
+	}else{
 		var IPPost = localStorage.getItem("IPPost");
 		var url = IPPost+'FabulousController/fabulous';
 		mui.ajax(url, {
@@ -205,19 +215,21 @@ function fabulous(){
 				}
 		    }
 		});
-	}else{
-		mui.toast("登录后才能点赞");
 	}
 }
 
 function openPage(page){
 	if(page == "back"){
 		mui.back();
-	}
-	if(page == "album"){
-		console.log(albumId);
-	}
-	if(page == "designer"){
+	}else if(page == "album"){
+		mui.openWindow({
+		    url: '../home/designerDetailWork.html',
+		    id: 'designerDetailWork',
+		    extras:{
+		        albumId: albumId
+		    }
+		});
+	}else if(page == "designer"){
 		mui.openWindow({
 		    url: '../home/designerDetail.html',
 		    id: 'designerDetail',
@@ -225,8 +237,24 @@ function openPage(page){
 		        designerId: designerId
 		    }
 		});
-	}
-	if(page.substring(0,3) == "cos"){
+	}else if(page == "purchase"){
+		if(userId == null){
+			mui.toast("登录后才能购买");
+		}else if(userId == designerId){
+			mui.toast("不能购买自己的作品");
+		}else{
+			mui.openWindow({
+			    url: 'workPurchase.html',
+			    id: 'workPurchase',
+			    extras:{
+			        workId: workId,
+			        designerId: designerId,
+			        workName: workName,
+			        designerName: designerName
+			    }
+			});
+		}
+	}else if(page.substring(0,3) == "cos"){
 		page = page.substring(3,page.length);
 		console.log("品牌服装："+page);
 		mui.openWindow({
@@ -237,8 +265,7 @@ function openPage(page){
 		    },
 		    createNew: true
 		});
-	}
-	if(page.substring(0,3) == "clo"){
+	}else if(page.substring(0,3) == "clo"){
 		page = page.substring(3,page.length);
 		console.log("布料辅料："+page);
 		mui.openWindow({

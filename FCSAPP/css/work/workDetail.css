@@ -10,10 +10,11 @@
 #workTiltleContent{
 	width: 100%;
 	height: 100px;
-	position: relative;
+	position: fixed;
 	top: 25px;
 	background-color: white;
 	box-shadow: 1px 1px 3px gray;
+	z-index: 100;
 }
 #returnImg{
 	width: 30px;
@@ -26,7 +27,7 @@
 }
 #workTitle{
 	width: 250px;
-	height: 58px;
+	height: 49px;
 	padding-top: 20px;
 	position: absolute;
 	left: 0px;
@@ -35,11 +36,9 @@
 	margin: auto;
 	text-align: center;
 	font-size: 34px;
+	line-height: 30px;
 	color: black;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-line-clamp:1;
-	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 #collectImg{
@@ -73,7 +72,7 @@
 	width: 100%;
 	height: 120px;
 	position: relative;
-	top: 333px;
+	top: 433px;
 	background-color: white;
 	box-shadow: 0px 0px 3px gray;
 }
@@ -91,7 +90,6 @@
 	padding-right: 20px;
 	position: absolute;
 	top: 38px;
-	left: 10px;
 	line-height: 24px;
 	font-size: 20px;
 	color: black;
@@ -103,7 +101,7 @@
 	width: 100%;
 	height: 70px;
 	position: relative;
-	top: 330px;
+	top: 430px;
 }
 #fabulousImg{
 	width: 30px;
@@ -162,7 +160,7 @@
 }
 
 #workInfoText{
-	margin-left: 10px;
+	padding-left: 10px;
 	font-size: 16px;
 	color: gray;
 }
@@ -185,12 +183,28 @@
 	color: gray;
 }
 
+/*购买按钮*/
+#buyButton{
+	display: block;
+	background-color: #ef812a;
+	height: 40px;
+	width: 200px;
+	color: white;
+	font-size: 18px;
+	position: absolute;
+	top: 900px;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	
+}
+
 /*推荐*/
 #workRecommendContent{
 	width: 100%;
 	height: 580px;
 	position: absolute;
-	top: 900px;
+	top: 1000px;
 	background-color: white;
 }
 .mui-control-item{
@@ -200,13 +214,13 @@
 	padding-right: 3px;
 }
 #recommedCostumeTable{
-	margin-left: 3px;
+	padding-left: 3px;
 	border-collapse:separate;
 	border-spacing:8px;
 	table-layout:fixed;
 }
 #recommedClothTable{
-	margin-left: 3px;
+	padding-left: 3px;
 	border-collapse:separate;
 	border-spacing:8px;
 	table-layout:fixed;

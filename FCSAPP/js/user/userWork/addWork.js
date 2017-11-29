@@ -1,3 +1,4 @@
+var workId;
 var albumId;
 var workName;
 var workColor;
@@ -36,107 +37,106 @@ function openPage(page){
 mui.plusReady(function () {
     var self = plus.webview.currentWebview();
 	albumId = self.albumId;
+	workId = null;
 	var pageType = self.pageType;
-	if(pageType != "add"){
+	if(pageType == "add"){
+		$("#title").text("新建作品");
+	}else{
 		$("#title").text("修改作品");
+		workId = self.workId;
+		getWorkData();
 	}
-	getCostumeTypeData();
+	getPickerData();
 });
 
 function _getParam(obj, param) {
 	return obj[param] || '';
 }
 
-function getCostumeTypeData(){
-	var url = IPPost+'DictDataController/getCostumeType';
+function getWorkData(){
+	var url = IPPost+'WorkController/getWorkToUpdate';
+	mui.ajax(url, {
+	    data: {
+	    	workId: workId
+	    },
+	    type: "POST",
+	    timeout: 3000,
+	    traditional: true,
+	    error: function(){
+	    	mui.toast("获取作品信息失败，网络错误");
+	    },
+	    success: function(data){
+	    	var resultJson = JSON.parse(JSON.stringify( data ));
+			if(resultJson.code == 1){
+				updataUI(resultJson.obj);				
+			}else{
+				mui.toast(resultJson.msg);
+			}
+	    }
+	});
+}
+
+function getPickerData(){
+	var url = IPPost+'DictDataController/getWorkPickerData';
 	mui.ajax(url, {
 	    data: {},
 	    type: "POST",
 	    timeout: 3000,
 	    traditional: true,
 	    error: function(){
-	    	mui.toast("获取分类数据失败，网络错误");
-	    	console.log("获取分类数据失败，网络错误");
+	    	mui.toast("获取数据失败，网络错误");
+	    	console.log("获取数据失败，网络错误");
 	    },
 	    success: function(data){
 	    	var resultJson = JSON.parse(JSON.stringify( data ));
 			if(resultJson.code == 1){
 				typeArray = resultJson.obj;
-				getComponentData();
-			}else{
-				mui.toast(resultJson.msg);
-			}
-	    }
-	});
-}
-
-function getComponentData(){
-	var url = IPPost+'DictDataController/getComponent';
-	mui.ajax(url, {
-	    data: {},
-	    type: "POST",
-	    timeout: 3000,
-	    traditional: true,
-	    error: function(){
-	    	mui.toast("获取面料数据失败，网络错误");
-	    	console.log("获取面料数据失败，网络错误");
-	    },
-	    success: function(data){
-	    	var resultJson = JSON.parse(JSON.stringify( data ));
-			if(resultJson.code == 1){
-				componentArray = resultJson.obj;
-				getStyleData();
-			}else{
-				mui.toast(resultJson.msg);
-			}
-	    }
-	});
-}
-
-function getStyleData(){
-	var url = IPPost+'DictDataController/getStyle';
-	mui.ajax(url, {
-	    data: {},
-	    type: "POST",
-	    timeout: 3000,
-	    traditional: true,
-	    error: function(){
-	    	mui.toast("获取风格数据失败，网络错误");
-	    	console.log("获取风格数据失败，网络错误");
-	    },
-	    success: function(data){
-	    	var resultJson = JSON.parse(JSON.stringify( data ));
-			if(resultJson.code == 1){
-				styleArray = resultJson.obj;
-				getModelData();
-			}else{
-				mui.toast(resultJson.msg);
-			}
-	    }
-	});
-}
-
-function getModelData(){
-	var url = IPPost+'DictDataController/getModel';
-	mui.ajax(url, {
-	    data: {},
-	    type: "POST",
-	    timeout: 3000,
-	    traditional: true,
-	    error: function(){
-	    	mui.toast("获取款式数据失败，网络错误");
-	    	console.log("获取款式数据失败，网络错误");
-	    },
-	    success: function(data){
-	    	var resultJson = JSON.parse(JSON.stringify( data ));
-			if(resultJson.code == 1){
-				modelArray = resultJson.obj;
+				componentArray = resultJson.obj1;
+				styleArray = resultJson.obj2;
+				modelArray = resultJson.obj3;
 				setData();
 			}else{
 				mui.toast(resultJson.msg);
 			}
 	    }
 	});
+}
+
+function updataUI(obj){
+	$("#workNameInput").val(obj.workName);
+	$("#workColorInput").val(obj.workColor);
+	$("#workIntro").val(obj.workIntro);
+	
+	$("#workTypeBig").text(obj.costumeTypeBig);
+	$("#workTypeMid").text(obj.costumeTypeMid);
+	$("#workTypeMal").text(obj.costumeTypeMal);
+	
+	$("#workComponentBig").text(obj.componentBig);
+	$("#workComponentMal").text(obj.componentMal);
+	
+	$("#workStyle").text(obj.workStyle);
+	$("#workModel").text(obj.workModel);
+	
+	workType = obj.costumeTypeMalValue;
+	workComponent = obj.componentMalValue;
+	workStyle = obj.workStyleValue;
+	workModel = obj.workModelValue;
+	
+	image1.src = IPPost + "image1/" +obj.workPicture1;
+	image2.src = IPPost + "image1/" +obj.workPicture2;
+	image3.src = IPPost + "image1/" +obj.workPicture3;
+	image4.src = IPPost + "image1/" +obj.workPicture4;
+	image5.src = IPPost + "image1/" +obj.workPicture5;
+	image6.src = IPPost + "image1/" +obj.workPicture6;
+	
+	workImageArray[0] = obj.workPicture1;
+	workImageArray[1] = obj.workPicture2;
+	workImageArray[2] = obj.workPicture3;
+	workImageArray[3] = obj.workPicture4;
+	workImageArray[4] = obj.workPicture5;
+	workImageArray[5] = obj.workPicture6;
+	
+	workImageSelected = 6;
 }
 
 function setData(){
@@ -222,38 +222,83 @@ function upload(){
 	}else if(workIntro == null || workIntro == ""){
 		mui.toast("作品简介不能为空");
 	}else{
-		var url = IPPost+'WorkController/addWork';
-		mui.ajax(url, {
-		    data: {
-		    	albumId: albumId,
-		    	designerId: userId,
-		    	workName: workName,
-		    	workColor: workColor,
-		    	workType: workType,
-		    	workComponent: workComponent,
-		    	workStyle: workStyle,
-		    	workModel: workModel,
-		    	workIntro: workIntro,
-		    	workImage: workImageArray
-		    },
-		    type: "POST",
-		    timeout: 3000,
-		    traditional: true,
-		    error: function(){
-		    	mui.toast("上传数据失败，网络错误");
-		    	console.log("上传数据失败，网络错误");
-		    },
-		    success: function(data){
-		    	var resultJson = JSON.parse(JSON.stringify( data ));
-				if(resultJson.code == 1){
-					console.log("上传成功");
-					openPage('back');
-				}else{
-					mui.toast(resultJson.msg);
-				}
-		    }
-		});
+		if(workId != null){
+			upLoadUpdateWork();
+		}else{
+			upLoadAddWork();
+		}
+		
 	}
+}
+
+
+function upLoadAddWork(){
+	var url = IPPost+'WorkController/addWork';
+	mui.ajax(url, {
+	    data: {
+	    	albumId: albumId,
+	    	designerId: userId,
+	    	workName: workName,
+	    	workColor: workColor,
+	    	workType: workType,
+	    	workComponent: workComponent,
+	    	workStyle: workStyle,
+	    	workModel: workModel,
+	    	workIntro: workIntro,
+	    	workImage: workImageArray
+	    },
+	    type: "POST",
+	    timeout: 3000,
+	    traditional: true,
+	    error: function(){
+	    	mui.toast("上传数据失败，网络错误");
+	    	console.log("上传数据失败，网络错误");
+	    },
+	    success: function(data){
+	    	var resultJson = JSON.parse(JSON.stringify( data ));
+			if(resultJson.code == 1){
+				console.log("上传成功");
+				openPage('back');
+			}else{
+				mui.toast(resultJson.msg);
+			}
+	    }
+	});
+}
+
+function upLoadUpdateWork(){
+	var url = IPPost+'WorkController/updateWork';
+	mui.ajax(url, {
+	    data: {
+	    	workId: workId,
+	    	albumId: albumId,
+	    	designerId: userId,
+	    	workName: workName,
+	    	workColor: workColor,
+	    	workType: workType,
+	    	workComponent: workComponent,
+	    	workStyle: workStyle,
+	    	workModel: workModel,
+	    	workIntro: workIntro,
+	    	workImage: workImageArray
+	    },
+	    type: "POST",
+	    timeout: 3000,
+	    traditional: true,
+	    error: function(){
+	    	mui.toast("更新数据失败，网络错误");
+	    	console.log("更新数据失败，网络错误");
+	    },
+	    success: function(data){
+	    	var resultJson = JSON.parse(JSON.stringify( data ));
+			if(resultJson.code == 1){
+				console.log("更新数据成功");
+				openPage('back');
+			}else{
+				mui.toast(resultJson.msg);
+			}
+	    }
+	});
 }
 
 function getBase64Image(img){

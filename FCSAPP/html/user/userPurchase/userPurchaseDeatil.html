@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <!-- css start-->
+    <link rel="stylesheet" href="../../../css/base/mui.min.css" />
+    <link rel="stylesheet" href="../../../css/user/userPurchase/userPurchaseDeatil.css" />
+    	
+    <!-- css end-->
+</head>
+<body>
+	<!-- html start-->
+	<header id="header">
+		<span id="back" class="mui-icon mui-icon-back" onclick="openPage('back')"></span>
+		<div id="title">购买详情</div>
+		<p id="delete" onclick="deletePurchase()">删除</p>
+	</header>
+	<div id="mui-content">
+		<div id="purchaseInfo">
+			<div id="designerContent">
+				<p id="designerText">设计师：</p>
+				<a id="designer" onclick="openPage('designer')">null</a>
+			</div>
+			<div id="workContent">
+				<p id="workText">作品：</p>
+				<a id="work" onclick="openPage('work')">null</a>
+			</div>
+		</div>
+		<div id="purchaseRequestContnet">
+			<p id="purchaseRequest"></p>
+		</div>
+		<div id="buyerInfoContent">
+			<p id="buyerInfoText">联系方式：</p>
+			<div id="buyerInfo">
+				<div id="buyerNameContent">
+					<p id="buyerNameText">姓名：</p>
+					<p id="buyerName"></p>
+				</div>
+				<div id="buyerPhoneContent">
+					<p id="buyerPhoneText">电话：</p>
+					<p id="buyerPhone"></p>
+				</div>
+				<div id="buyerMailContent">
+					<p id="buyerMailText">邮箱：</p>
+					<p id="buyerMail"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- html end-->
+	
+	<!-- javascript start-->
+    <script type="text/javascript" src="../../../js/base/mui.min.js" ></script>
+    <script type="text/javascript" src="../../../js/base/jquery-3.2.1.min.js" ></script>
+    <script type="text/javascript" src="../../../js/user/userPurchase/userPurchaseDeatil.js"></script>
+   	<!-- javascript end-->
+</body>
+</html>

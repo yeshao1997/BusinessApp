@@ -4,24 +4,41 @@ function openPage(page){
 		    url: 'setting.html',
 		    id: 'setting'
 		});
-	}
-	if(page == "myData"){
+	}else if(page == "myData"){
 		userDataPage = plus.webview.getWebviewById('userData/userData.html');
 		mui.fire(userDataPage,'refresh',{});
 		mui.openWindow({
 		    url: 'userData/userData.html',
 		    id: 'userData'
 		});
-	}
-	if(page == "myAlbum"){
+	}else if(page == "myAlbum"){
 		userDataPage = plus.webview.getWebviewById('userWork/userAlbum.html');
 		mui.fire(userDataPage,'refresh',{});
 		mui.openWindow({
 		    url: 'userWork/userAlbum.html',
 		    id: 'userAlbum'
 		});
+	}else if(page == "myPurchase"){
+		userDataPage = plus.webview.getWebviewById('userWork/userAlbum.html');
+		mui.fire(userDataPage,'refresh',{});
+		mui.openWindow({
+		    url: 'userPurchase/userPurchase.html',
+		    id: 'userPurchase'
+		});
+	}else if(page == "mySell"){
+		userDataPage = plus.webview.getWebviewById('userWork/userAlbum.html');
+		mui.fire(userDataPage,'refresh',{});
+		mui.openWindow({
+		    url: 'userSell/userSell.html',
+		    id: 'userSell'
+		});
 	}
 }
+
+//监听刷新页面
+window.addEventListener('getUnRead', function(e) {
+    getUnRead();
+})
 
 $(document).ready(function(){
 	userId = localStorage.getItem("userId");
@@ -57,6 +74,7 @@ $(document).ready(function(){
 					if(userType == "1"){
 						$("#myAlbum").css({'display':'inline-block'});
 						$("#mySell").css({'display':'inline-block'});
+						getUnRead();
 					}
 				}else{
 					mui.toast(resultJson.msg);
@@ -137,4 +155,34 @@ function uploadimg(data) {
 			return true;
         }
     });
+}
+
+function getUnRead(){
+	var IPPost = localStorage.getItem("IPPost");
+	var userId = localStorage.getItem("userId");
+	var url = IPPost+'PurchaseController/getUnRead';
+	mui.ajax(url, {
+	    data: {
+	    	userId: userId
+	    },
+	    type: "POST",
+	    timeout: 3000,
+	    traditional: true,
+	    error: function(){
+	    	mui.toast("网络错误");
+	    	console.log("获取设计师未读购买意愿失败");
+	    },
+	    success: function(data){
+	    	var resultJson = JSON.parse(JSON.stringify( data ));
+			if(resultJson.code == 1){
+				if(resultJson.obj > 0){
+					$("#prompt").css("display","block");
+				}else{
+					$("#prompt").css("display","none");
+				}
+			}else{
+				mui.toast(resultJson.msg);
+			}
+	    }
+	});
 }

@@ -43,7 +43,7 @@ function getAlbum(){
 	    	var resultJson = JSON.parse(JSON.stringify( data ));
 			if(resultJson.code == 1){
 				$("#albumNameInput").val(resultJson.obj.albumName);
-				portrait.src = IPPost + "image/" + resultJson.obj.albumImage;
+				portrait.src = IPPost + "image1/" + resultJson.obj.albumImage;
 			}else{
 				mui.toast(resultJson.msg);
 			}
