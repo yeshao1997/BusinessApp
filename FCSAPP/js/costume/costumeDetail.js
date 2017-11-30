@@ -5,10 +5,24 @@ var fabulousType = 1; //1为未点赞
 var collectType = 1; //1未未收藏
 var fabulousNumber = 0;
 
+mui.init({
+    beforeback: function() { 
+	    var opener = plus.webview.currentWebview().opener();  
+	    mui.fire(opener, 'refreshCollect');  
+	    return true;  
+    }
+});
+
+//监听刷新页面
+window.addEventListener('refreshComment', function(e) {
+	getCommentNumber();
+})
+
 mui.plusReady(function () {
     var self = plus.webview.currentWebview();
 	costumeId = self.costumeId;
 	getCostumeData();
+	getCommentNumber();
 });
 
 //获取服装信息
@@ -18,7 +32,7 @@ function getCostumeData(){
 	var url = IPPost+'CostumeController/getCostumeById';
 	mui.ajax(url, {
 	    data: {
-	    	costumeId:costumeId,
+	    	costumeId: costumeId,
 	    	userId: userId
 	    },
 	    type: "POST",
@@ -239,4 +253,38 @@ function openPage(page){
 		    createNew: true
 		});
 	}
+}
+
+function getCommentNumber(){
+	var url = IPPost+'CommentController/getCommentNumber';
+	mui.ajax(url, {
+	    data: {
+	    	informationId: costumeId
+	    },
+	    type: "POST",
+	    timeout: 3000,
+	    traditional: true,
+	    error: function(){
+	    	mui.toast("获取评论数量失败，网络错误");
+	    },
+	    success: function(data){
+	    	var resultJson = JSON.parse(JSON.stringify( data ));
+			if(resultJson.code == 1){
+				$("#commentValue").text(resultJson.obj);
+			}else{
+				mui.toast(resultJson.msg);
+			}
+	    }
+	});
+}
+
+function comment(){
+	mui.openWindow({
+	    url: '../other/comment.html',
+	    id: 'comment',
+	    extras:{
+	        informationId: costumeId,
+	        informationType: 4
+	    }
+	});
 }

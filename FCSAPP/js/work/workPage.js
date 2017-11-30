@@ -1,5 +1,6 @@
 var page = 0;
 var sortType = "fabulous";
+var IPPost;
 
 mui.init({
     pullRefresh : {
@@ -28,9 +29,11 @@ document.addEventListener('plusready', function(){
 		getWorkList();
 		_self.endPullToRefresh();
 	});
+	_self.setPullToRefresh(false);
 	
 	//自动获取一次数据
 	getWorkList();
+//	setScreen();
 });
 
 function setSortType(type){
@@ -49,7 +52,7 @@ function setSortType(type){
 }
 
 function getWorkList(){
-	var IPPost = localStorage.getItem("IPPost");
+	IPPost = localStorage.getItem("IPPost");
 	var url = "";
 	if(sortType == "fabulous"){
 		url = IPPost+'WorkController/getWorkByFabulous';
@@ -133,6 +136,47 @@ function openPage(workId){
 	    id: 'workDetail',
 	    extras:{
 	        workId: workId
+	    }
+	});
+}
+
+function setScreen(){
+	var url = IPPost+'DictDataController/getWorkPickerData';
+	mui.ajax(url, {
+	    data: {},
+	    type: "POST",
+	    timeout: 3000,
+	    traditional: true,
+	    error: function(){
+	    	mui.toast("获取数据失败，网络错误");
+	    	console.log("获取数据失败，网络错误");
+	    },
+	    success: function(data){
+	    	var resultJson = JSON.parse(JSON.stringify( data ));
+			if(resultJson.code == 1){
+				typeArray = resultJson.obj;
+				(function($, doc) {
+					$.init();
+					$.ready(function() {
+						var typePicker = new $.PopPicker({ layer: 3 });
+						
+						var showTypePickerButton = doc.getElementById('screen');
+						
+						typePicker.setData(typeArray);
+						
+						showTypePickerButton.addEventListener('tap', function(event) {
+							typePicker.show(function(items) {
+								jQuery("#workTypeBig").text(_getParam(items[0], 'text'));
+								jQuery("#workTypeMid").text(_getParam(items[1], 'text'));
+								jQuery("#workTypeMal").text(_getParam(items[2], 'text'));
+								workType = _getParam(items[2], 'value');
+							});
+						}, false);
+					})
+				})(mui, document);
+			}else{
+				mui.toast(resultJson.msg);
+			}
 	    }
 	});
 }

@@ -127,7 +127,6 @@ function buildCostume(idArray,imageArray,titleArray,timeArray,fabulousArray){
 }
 
 function openPage(costumeId){
-	console.log(costumeId);
 	mui.openWindow({
 	    url: 'costumeDetail.html',
 	    id: 'costumeDetail',

@@ -1,24 +1,28 @@
 var informationId;
+var IPPost;
 var fabulousType = 1;//默认未点赞
 var collectType = 1;//默认未收藏
 var fabulousNumber = 0;
-mui.init();
+
+mui.init({
+    beforeback: function() { 
+	    var opener = plus.webview.currentWebview().opener();  
+	    mui.fire(opener, 'refreshCollect');  
+	    return true;  
+    }
+});
+
+//监听刷新页面
+window.addEventListener('refreshComment', function(e) {
+	getCommentNumber();
+})
 
 //获取上个界面传递的值
 mui.plusReady(function () {
     var self = plus.webview.currentWebview();
 	informationId = self.informationId;
-});
-
-function openPage(page){
-	if(page == "back"){
-		mui.back();
-	}
-}
-
-document.addEventListener('plusready', function(){
 	plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
-	var IPPost = localStorage.getItem("IPPost");
+	IPPost = localStorage.getItem("IPPost");
 	var userId = localStorage.getItem("userId");
 	var url = IPPost+'InformationController/getInformation';
 	mui.ajax(url, {
@@ -50,7 +54,14 @@ document.addEventListener('plusready', function(){
 			}
 	    }
 	});
+	getCommentNumber();
 });
+
+function openPage(page){
+	if(page == "back"){
+		mui.back();
+	}
+}
 
 //构建资讯标题等
 function buildPage(informationTopic,informationAuthor,informationReltime,informationFabulous){
@@ -196,5 +207,35 @@ function collect(){
 }
 
 function comment(){
-	console.log(informationId);
+	mui.openWindow({
+	    url: '../other/comment.html',
+	    id: 'comment',
+	    extras:{
+	        informationId: informationId,
+	        informationType: 1
+	    }
+	});
+}
+
+function getCommentNumber(){
+	var url = IPPost+'CommentController/getCommentNumber';
+	mui.ajax(url, {
+	    data: {
+	    	informationId: informationId
+	    },
+	    type: "POST",
+	    timeout: 3000,
+	    traditional: true,
+	    error: function(){
+	    	mui.toast("获取评论数量失败，网络错误");
+	    },
+	    success: function(data){
+	    	var resultJson = JSON.parse(JSON.stringify( data ));
+			if(resultJson.code == 1){
+				$("#commentNumber").text(resultJson.obj);
+			}else{
+				mui.toast(resultJson.msg);
+			}
+	    }
+	});
 }

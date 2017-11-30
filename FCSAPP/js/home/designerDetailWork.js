@@ -65,7 +65,7 @@ function buildWorkList(obj){
 		var workContnet = document.getElementById('workList');
 		for(var i=0;i<idArray.length;i++){
 			var imagePath = IPPost + "image1/" + imgArray[i];
-			var workText = "<li id='work' onclick=openPage('"+idArray[i]+"') class='mui-table-view-cell'>"+
+			var workText = "<li id='work' onclick=openPage('"+idArray[i]+"')>"+
 								"<img id='workImg' src="+imagePath+" />"+
 								"<p id='workTitle'>"+titleArray[i]+"</p>"+
 								"<p id='workTime'>"+timeArray[i]+"</p>"+

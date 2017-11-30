@@ -32,6 +32,20 @@ function openPage(page){
 		    url: 'userSell/userSell.html',
 		    id: 'userSell'
 		});
+	}else if(page == "myCollect"){
+		userDataPage = plus.webview.getWebviewById('userWork/userAlbum.html');
+		mui.fire(userDataPage,'refresh',{});
+		mui.openWindow({
+		    url: 'userCollect/userCollect.html',
+		    id: 'userCollect'
+		});
+	}else if(page == "myComment"){
+		userDataPage = plus.webview.getWebviewById('userWork/userAlbum.html');
+		mui.fire(userDataPage,'refresh',{});
+		mui.openWindow({
+		    url: 'userComment/userComment.html',
+		    id: 'userComment'
+		});
 	}
 }
 

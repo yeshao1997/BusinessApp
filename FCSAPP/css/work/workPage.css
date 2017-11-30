@@ -91,6 +91,18 @@
 	margin: auto;
 }
 
+#screen{
+	width: 100px;
+	height: 55px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	border-bottom: none;
+	border-top: none;
+	font-size: 18px;
+	border-radius: 0px;
+	background-color: white;
+}
 table{
 	margin-top: 138px;
 	margin-left: 3px;
@@ -104,7 +116,9 @@ table{
 	position: relative;
 	list-style: none;
 	background-color: white;
+	border-radius: 5px;
 	border: 1px solid #A9A9A9;
+	box-shadow: -1px 0px 6px gainsboro;
 }
 #work-image{
 	width: 150px;
@@ -115,6 +129,7 @@ table{
 	left: 0px;
 	margin: auto;
 	border: 1px solid #a9a9a9;
+	border-radius: 5px;
 }
 #work-name{
 	position: absolute;

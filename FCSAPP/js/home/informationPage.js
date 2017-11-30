@@ -218,10 +218,8 @@ function buildInformationList(insertType,informationId,informationImage,informat
 	var informationList = document.getElementById('information_list');
 	for(var i=0;i<informationId.length;i++){
 		if("" != informationImage[i] && informationImage[i] != null){
-			var oneInformation = "<li id='information' class='mui-table-view-cell' onclick=openPage('"+informationId[i]+"')>"+
-								"<div id='img-content'>"+
-									"<img id='information_image' src="+informationImage[i]+">"+
-								"</div>"+
+			var oneInformation = "<li id='information' onclick=openPage('"+informationId[i]+"')>"+
+								"<img id='information_image' src="+informationImage[i]+">"+
 								"<div id='infor-content'>"+
 									"<p id='information_title'>"+informationTitle[i]+"</p>"+
 									"<p id='information_time'>"+informationTime[i]+"</p>"+
@@ -229,10 +227,8 @@ function buildInformationList(insertType,informationId,informationImage,informat
 							"</li>";
 			informationList.insertAdjacentHTML(insertType, oneInformation);
 		}else{
-			var oneInformation = "<li id='information' class='mui-table-view-cell' onclick=openPage('"+informationId[i]+"')>"+
-								"<div id='img-content' style='display: none;'>"+
-									"<img id='information_image'>"+
-								"</div>"+
+			var oneInformation = "<li id='information' onclick=openPage('"+informationId[i]+"')>"+
+									"<img id='information_image' style='display: none;'>"+
 								"<div id='infor-content' style='left: 20px;'>"+
 									"<p id='information_title'>"+informationTitle[i]+"</p>"+
 									"<p id='information_time'>"+informationTime[i]+"</p>"+

@@ -1,7 +1,10 @@
 #header{
+	width: 100%;
 	height: 75px;
+	position: fixed;
+	top: 0px;
 	background-color:#4d3b3c ;
-	position: relative;
+    z-index: 100;
 }
 
 #back{
@@ -39,31 +42,39 @@
 #workList{
 	margin: 1px;
 	padding: 0px;
+	margin-top: 82px;
 }
 #work{
-	width: 100%;
-	height: 130px;
-	padding: 0px;
-	background-color: white;
+	width: 97%;
+	height: 120px;
 	position: relative;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	margin-top: 7px;
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 1px 3px 3px gainsboro;
 	list-style: none;
 }
 #workImg{
-	width: 120px;
-	height: 120px;
-	padding: 0px;
-	margin-top: 5px;
-	margin-left: 5px;
-	float: left;
-	border: 1px solid darkgray;
+	width: 110px;
+	height: 110px;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 5px;
+	margin: auto;
+	border-radius: 5px;
+	border: 1px solid gainsboro;
 }
 #workTitle{
-	height: 43px;
-	margin-right: 10px;
+	height: 50px;
 	position: absolute;
-	top: 20px;
+	top: 25px;
 	left: 140px;
-	font-size:20px;
+	font-size:26px;
+	color: black;
 	overflow : hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
@@ -99,7 +110,7 @@
 	width: 25px;
 	height: 25px;
 	float: left;
-	margin-left: 10px;
+	margin-left: 20px;
 }
 #commentNumber{
 	float: left;
@@ -114,6 +125,7 @@
 #notMessage p{
 	width: 200px;
 	height: 40px;
+	text-align: center;
 	position: absolute;
 	top: 0px;
 	bottom: 200px;

@@ -167,11 +167,9 @@ function buildDesignerList(insertType,idArray,nameArray,portraitArray,workNumber
 	for(var i=0;i<idArray.length;i++){
 		var IPPost = localStorage.getItem("IPPost");
 		portraitArray[i] = IPPost + 'image/' + portraitArray[i];
-		var oneDesigner = "<li id='designer' class='mui-table-view-cell'>"+
+		var oneDesigner = "<li id='designer'>"+
 						        "<a id='designer-content' onclick=openPage('"+idArray[i]+"')>"+
-						        	"<div id='img-contnet'>"+
-						        		"<img id='designer-img' src="+portraitArray[i]+"/>"+
-						        	"</div>"+
+						        	"<img id='designer-img' src="+portraitArray[i]+"/>"+
 						        	"<div id='designer-info'>"+
 						        		"<p id='designer-name'>"+nameArray[i]+"</p>"+
 						        		"<div id='work-number-content'>"+

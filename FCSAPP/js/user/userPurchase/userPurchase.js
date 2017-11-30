@@ -72,7 +72,7 @@ function buildPurchaseList(obj){
 		var purchaseContent = document.getElementById('purchaseList');
 		for(var i=0;i<idArray.length;i++){
 			var imageDefult = IPPost + "image1/" + imageArray[i];
-			var purchase = "<li id='purchase' class='mui-table-view-cell mui-media'>"+
+			var purchase = "<li id='purchase'>"+
 					            "<a id='clickA' value="+idArray[i]+" value2="+titleArray[i]+" onclick=openPage("+'"purchaseDetail"'+",'"+idArray[i]+"')>"+
 					                "<img id='image' src="+imageDefult+">"+
 					                "<div id='purchaseInfo' class='mui-media-body mui-pull-left'>"+

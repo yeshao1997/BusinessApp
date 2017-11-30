@@ -76,7 +76,7 @@ function buildSellList(obj){
 		var sellContent = document.getElementById('sellList');
 		for(var i=0;i<idArray.length;i++){
 			if(statusArray[i] == 0){
-				sell = "<li id='sell' class='mui-table-view-cell mui-media'>"+
+				sell = "<li id='sell' >"+
 				            "<a id='clickA' value="+idArray[i]+" value2="+titleArray[i]+" onclick=openPage("+'"sellDetail"'+",'"+idArray[i]+"')>"+
 				                "<span id='prompt' class='mui-badge-red'></span>"+
 				                "<p id='workName'>"+titleArray[i]+"</p>"+

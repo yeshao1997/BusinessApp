@@ -251,7 +251,8 @@
 			"html/user/userData/userData.html",
 			"html/user/userWork/userAlbum.html",
 			"html/user/userPurchase/userPurchase.html",
-			"html/user/userSell/userSell.html"
+			"html/user/userSell/userSell.html",
+			"html/user/userCollect/userCollect.html"
 		]
 	},
 	"html/user/setting.html": {
@@ -516,7 +517,11 @@
 			"img/user/portrait.png",
 			"img/home/unfabulous.png",
 			"img/work/selected.png",
-			"js/work/workPage.js"
+			"js/work/workPage.js",
+			"js/base/mui.poppicker.js",
+			"js/base/mui.picker.min.js",
+			"css/base/mui.picker.css",
+			"css/base/mui.poppicker.css"
 		],
 		"refer": [
 			"html/work/workDetail.html"
@@ -576,6 +581,9 @@
 			"img/home/unfabulous.png",
 			"img/home/collect .png",
 			"img/home/returnBlack.png"
+		],
+		"refer": [
+			"html/other/comment.html"
 		]
 	},
 	"html/home/designerDetail.html": {
@@ -621,7 +629,8 @@
 		],
 		"refer": [
 			"html/work/workDetail.html",
-			"html/cloth/clothDetail.html"
+			"html/cloth/clothDetail.html",
+			"html/other/comment.html"
 		]
 	},
 	"html/cloth/clothDetail.html": {
@@ -639,10 +648,13 @@
 			"img/costume/fabulous.png",
 			"img/costume/uncollect.png",
 			"img/costume/collect.png",
-			"img/costume/unfabulous.png"
+			"img/costume/unfabulous.png",
+			"img/cloth/collect.png",
+			"img/cloth/fabulous.png"
 		],
 		"refer": [
-			"html/work/workDetail.html"
+			"html/work/workDetail.html",
+			"html/other/comment.html"
 		]
 	},
 	"html/work/workDetail.html": {
@@ -663,14 +675,16 @@
 			"img/costume/fabulous.png",
 			"img/costume/uncollect.png",
 			"img/costume/collect.png",
-			"img/work/fabulous.png"
+			"img/work/fabulous.png",
+			"img/work/collect.png"
 		],
 		"refer": [
 			"html/costume/costumeDetail.html",
 			"html/cloth/clothDetail.html",
 			"html/home/designerDetail.html",
 			"html/home/designerDetailWork.html",
-			"html/work/workPurchase.html"
+			"html/work/workPurchase.html",
+			"html/other/comment.html"
 		]
 	},
 	"html/user/userWork/userAlbum.html": {
@@ -818,6 +832,89 @@
 		],
 		"refer": [
 			"html/work/workDetail.html"
+		]
+	},
+	"html/user/userCollect/userCollect.html": {
+		"resources": [
+			"font/mui.ttf",
+			"img/user/cloth.jpg",
+			"js/user/userCollect/userCollect.js",
+			"css/user/userCollect/userCollect.css",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js",
+			"img/user/information .jpg",
+			"img/user/costume.jpg",
+			"img/user/work.jpg"
+		],
+		"refer": [
+			"html/user/userCollect/userCollectDetail.html"
+		]
+	},
+	"html/user/userCollect/userCollectDetail.html": {
+		"resources": [
+			"font/mui.ttf",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js",
+			"css/user/userCollect/userCollectDetail.css",
+			"js/user/userCollect/userCollectDetail.js",
+			"img/user/selected.png",
+			"img/user/portrait.png"
+		],
+		"refer": [
+			"html/home/informationDetail.html",
+			"html/costume/costumeDetail.html",
+			"html/work/workDetail.html",
+			"html/cloth/clothDetail.html"
+		]
+	},
+	"html/other/comment.html": {
+		"resources": [
+			"font/mui.ttf",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js",
+			"img/other/unfabulous.png",
+			"js/other/comment.js",
+			"css/other/comment.css",
+			"img/other/fabulous.png"
+		],
+		"refer": [
+			"html/other/commentDetail.html"
+		]
+	},
+	"html/other/commentDetail.html": {
+		"resources": [
+			"js/other/commentDetail.js",
+			"css/other/commentDetail.css",
+			"font/mui.ttf",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js"
+		]
+	},
+	"html/user/userComment/userComment.html": {
+		"resources": [
+			"font/mui.ttf",
+			"css/user/userComment/userComment.css",
+			"js/user/userComment/userComment.js",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js"
+		],
+		"refer": [
+			"html/work/workDetail.html",
+			"html/costume/costumeDetail.html",
+			"html/cloth/clothDetail.html",
+			"html/home/informationDetail.html",
+			"html/user/userComment/userCommentDetail.html"
+		]
+	},
+	"html/user/userComment/userCommentDetail.html": {
+		"resources": [
+			"js/user/userComment/userCommentDetail.js",
+			"css/user/userComment/userCommentDetail.css"
 		]
 	}
 }
