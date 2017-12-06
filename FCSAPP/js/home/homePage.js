@@ -85,3 +85,7 @@ mui('.mui-bar-tab').on('tap', 'a', function(e) {
 	//更改当前活跃的选项卡
 	activeTab = targetTab;
 });
+
+mui('body').on('tap','#search',function(){
+	mui.openWindow("../other/search.html");
+},false);

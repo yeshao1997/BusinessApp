@@ -28,6 +28,15 @@ function openPage(page,value){
 		        albumId: value
 		    }
 		});
+	}else if(page == "designerFollow"){
+		mui.openWindow({
+		    url: 'designerFollow.html',
+		    id: 'designerFollow',
+		    extras:{
+		        designerId: designerId
+		    },
+		    createNew: true
+		});
 	}
 }
 

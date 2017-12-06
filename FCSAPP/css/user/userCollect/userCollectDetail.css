@@ -145,12 +145,12 @@ a{
 	border-radius: 5px;
 }
 #collectText{
-	width: 250px;
 	height: 42px;
 	position: absolute;
 	top: 20px;
 	left: 130px;
 	text-align: left;
+	margin-right: 20px;
 	font-size: 22px;
 	color: black;
 	overflow : hidden;

@@ -35,6 +35,7 @@ window.addEventListener('refresh', function(e) {
 })
 
 document.addEventListener('plusready', function(){
+	plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
 	getMyAlbum();
 });
 

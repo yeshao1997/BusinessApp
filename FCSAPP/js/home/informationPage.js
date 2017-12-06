@@ -4,7 +4,8 @@ var oldInformation = null;
 //等待动画
 function plusReady(){
 	// 弹出系统等待对话框
-	waitAnima = plus.nativeUI.showWaiting( "正在获取数据..." );
+	waitAnima = plus.nativeUI.showWaiting( "正在获取数据..." );plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
+	plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
 }
 if(window.plus){
 	plusReady();

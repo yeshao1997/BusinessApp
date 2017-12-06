@@ -20,6 +20,7 @@ window.addEventListener('refresh', function(e) {
 })
 
 mui.plusReady(function () {
+	plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
     var self = plus.webview.currentWebview();
 	albumId = self.albumId;
 	getWorkList();

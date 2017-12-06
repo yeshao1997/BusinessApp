@@ -10,6 +10,12 @@ var workIntro;
 var workImageArray = new Array();
 
 var workImageSelected = 0;
+var image1S = 0;
+var image2S = 0;
+var image3S = 0;
+var image4S = 0;
+var image5S = 0;
+var image6S = 0;
 
 var typeArray;
 var componentArray;
@@ -35,6 +41,7 @@ function openPage(page){
 }
 
 mui.plusReady(function () {
+	plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
     var self = plus.webview.currentWebview();
 	albumId = self.albumId;
 	workId = null;
@@ -103,6 +110,8 @@ function getPickerData(){
 }
 
 function updataUI(obj){
+	workImageSelected = 0;
+	
 	$("#workNameInput").val(obj.workName);
 	$("#workColorInput").val(obj.workColor);
 	$("#workIntro").val(obj.workIntro);
@@ -129,14 +138,49 @@ function updataUI(obj){
 	image5.src = IPPost + "image1/" +obj.workPicture5;
 	image6.src = IPPost + "image1/" +obj.workPicture6;
 	
-	workImageArray[0] = obj.workPicture1;
-	workImageArray[1] = obj.workPicture2;
-	workImageArray[2] = obj.workPicture3;
-	workImageArray[3] = obj.workPicture4;
-	workImageArray[4] = obj.workPicture5;
-	workImageArray[5] = obj.workPicture6;
 	
-	workImageSelected = 6;
+	if(obj.workPicture1 != ""){
+		image1.src = IPPost + "image1/" +obj.workPicture1;
+		workImageArray[0] = obj.workPicture1;
+		image1S = 1;
+	}else{
+		image1.src = "../../../img/user/addImage1.png";
+	}
+	if(obj.workPicture2 != ""){
+		image2.src = IPPost + "image1/" +obj.workPicture2;
+		workImageArray[1] = obj.workPicture2;
+		image2S = 1;
+	}else{
+		image2.src = "../../../img/user/addImage2.png";
+	}
+	if(obj.workPicture3 != ""){
+		image3.src = IPPost + "image1/" +obj.workPicture3;
+		workImageArray[2] = obj.workPicture3;
+		image3S = 1;
+	}else{
+		image3.src = "../../../img/user/addImage3.png";
+	}
+	if(obj.workPicture4 != ""){
+		image4.src = IPPost + "image1/" +obj.workPicture4;
+		workImageArray[3] = obj.workPicture4;
+		image4S = 1;
+	}else{
+		image4.src = "../../../img/user/addImage4.png";
+	}
+	if(obj.workPicture5 != ""){
+		image5.src = IPPost + "image1/" +obj.workPicture5;
+		workImageArray[4] = obj.workPicture5;
+		image5S = 1;
+	}else{
+		image5.src = "../../../img/user/addImage5.png";
+	}
+	if(obj.workPicture6 != ""){
+		image6.src = IPPost + "image1/" +obj.workPicture6;
+		workImageArray[5] = obj.workPicture6;
+		image6S = 1;
+	}else{
+		image6.src = "../../../img/user/addImage6.png";
+	}
 }
 
 function setData(){
@@ -196,15 +240,65 @@ function setData(){
 }
 
 function upload(){
-	workImageArray[0] = getBase64Image(image1);
-	workImageArray[1] = getBase64Image(image2);
-	workImageArray[2] = getBase64Image(image3);
-	workImageArray[3] = getBase64Image(image4);
-	workImageArray[4] = getBase64Image(image5);
-	workImageArray[5] = getBase64Image(image6);
 	workName = $("#workNameInput").val();
 	workColor = $("#workColorInput").val();
 	workIntro = $("#workIntro").val();
+	var i = 0;
+	if(image1S == 1){
+		var base64Image = getBase64Image(image1,1);
+		if(base64Image != null){
+			workImageArray[i] = base64Image;
+			i++;
+		}else{
+			return;
+		}
+	}
+	if(image2S == 1){
+		var base64Image = getBase64Image(image2,2);
+		if(base64Image != null){
+			workImageArray[i] = base64Image;
+			i++;
+		}else{
+			return;
+		}
+	}
+	if(image3S == 1){
+		var base64Image = getBase64Image(image3,3);
+		if(base64Image != null){
+			workImageArray[i] = base64Image;
+			i++;
+		}else{
+			return;
+		}
+	}
+	if(image4S == 1){
+		var base64Image = getBase64Image(image4,4);
+		if(base64Image != null){
+			workImageArray[i] = base64Image;
+			i++;
+		}else{
+			return;
+		}
+	}
+	if(image5S == 1){
+		var base64Image = getBase64Image(image5,5);
+		if(base64Image != null){
+			workImageArray[i] = base64Image;
+			i++;
+		}else{
+			return;
+		}
+	}
+	if(image6S == 1){
+		var base64Image = getBase64Image(image6,6);
+		if(base64Image != null){
+			workImageArray[i] = base64Image;
+			i++;
+		}else{
+			return;
+		}
+	}
+	workImageSelected = i;
 	if(workName == null || workName == ""){
 		mui.toast("作品名不能为空");
 	}else if(workColor == null || workColor == ""){
@@ -217,8 +311,8 @@ function upload(){
 		mui.toast("作品风格不能为空");
 	}else if(workModel == null || workModel == ""){
 		mui.toast("作品款式不能为空");
-	}else if(workImageSelected != 6){
-		mui.toast("需要6张图片，已添加"+workImageSelected+"图片");
+	}else if(workImageSelected < 3){
+		mui.toast("至少需要3张图片，已添加"+workImageSelected+"图片");
 	}else if(workIntro == null || workIntro == ""){
 		mui.toast("作品简介不能为空");
 	}else{
@@ -301,7 +395,7 @@ function upLoadUpdateWork(){
 	});
 }
 
-function getBase64Image(img){
+function getBase64Image(img,imageLocation){
     var canvas=document.createElement("canvas");
     var width=img.width;
     var height=img.height;
@@ -309,69 +403,63 @@ function getBase64Image(img){
     canvas.width=width;
     canvas.height=height;
     var ctx=canvas.getContext('2d');
-    ctx.drawImage(img,0,0,width,height);
+    try{
+    	ctx.drawImage(img,0,0,width,height);
+    	var dataUrl=canvas.toDataURL('image/png',0.8);
+    	return dataUrl.replace('data:image/png:base64,','');
+    }catch(e){
+    	mui.toast("图片"+imageLocation+"解析失败，请重新选择图片");
+    	return null;
+    }
 
-    var dataUrl=canvas.toDataURL('image/png',0.8);
-    return dataUrl.replace('data:image/png:base64,','');
+    
 }
 
 image1.addEventListener('tap', function() {
 	plus.gallery.pick(
         function(path) {
-        	if(workImageArray[0] == null){
-        		workImageSelected++;
-        	}
             image1.src = path;
+            image1S = 1;
         }
     );
 });
 image2.addEventListener('tap', function() {
 	plus.gallery.pick(
         function(path) {
-        	if(workImageArray[1] == null){
-        		workImageSelected++;
-        	}
             image2.src = path;
+            image2S = 1;
         }
     );
 });
 image3.addEventListener('tap', function() {
 	plus.gallery.pick(
         function(path) {
-        	if(workImageArray[2] == null){
-        		workImageSelected++;
-        	}
             image3.src = path;
+            image3S = 1;
         }
     );
 });
 image4.addEventListener('tap', function() {
 	plus.gallery.pick(
         function(path) {
-        	if(workImageArray[3] == null){
-        		workImageSelected++;
-        	}
             image4.src = path;
+            image4S = 1;
         }
     );
 });
 image5.addEventListener('tap', function() {
 	plus.gallery.pick(
         function(path) {
-        	if(workImageArray[4] == null){
-        		workImageSelected++;
-        	}
             image5.src = path;
+            image5S = 1;
         }
     );
 });
 image6.addEventListener('tap', function() {
 	plus.gallery.pick(
         function(path) {
-        	if(workImageArray[5] == null){
-        		workImageSelected++;
-        	}
             image6.src = path;
+            image6S = 1;
         }
     );
 });

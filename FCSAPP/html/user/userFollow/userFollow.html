@@ -5,17 +5,29 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title></title>
     <!-- css start-->
-    <link rel="stylesheet" href="../../css/base/mui.min.css" />
-    <link rel="stylesheet" href="../../css/costume/costumePage.css" />
+    <link rel="stylesheet" href="../../../css/base/mui.min.css" />
+    <link rel="stylesheet" href="../../../css/user/userFollow/userFollow.css" />
     <!-- css end-->
 </head>
 <body>
 	<!-- html start-->
+	<header id="header">
+		<span id="back" class="mui-icon mui-icon-back" onclick="openPage('back','')"></span>
+		<div id="title">我的关注</div>
+	</header>
+	<div class="mui-content">
+	    <ul id="followList">
+	    </ul>
+	</div>
+	<div id="notMessage" style="display: none;">
+		<p>无关注记录</p>
+	</div>
 	<!-- html end-->
 	
 	<!-- javascript start-->
-    <script type="text/javascript" src="../../js/base/mui.min.js" ></script>
-    <script type="text/javascript" src="../../js/base/jquery-3.2.1.min.js" ></script>
+    <script type="text/javascript" src="../../../js/base/mui.min.js" ></script>
+    <script type="text/javascript" src="../../../js/base/jquery-3.2.1.min.js" ></script>
+    <script type="text/javascript" src="../../../js/user/userFollow/userFollow.js" ></script>
    	<!-- javascript end-->
 </body>
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <!-- css start-->
+    <link rel="stylesheet" href="../../css/base/mui.min.css" />
+    <link rel="stylesheet" href="../../css/other/search.css" />
+    <!-- css end-->
+</head>
+<body>
+	<!-- html start-->
+	<header id="header">
+		<span id="back" class="mui-icon mui-icon-back" onclick="openPage('back','')"></span>
+		<div id="title">搜索</div>
+	</header>
+	<div id="mui-content">
+		<div id="serachInputContent">
+			<div id="selectContnet">
+				<select id="searchSelect" class="mui-btn mui-btn-block">
+					<option value="information">资讯信息</option>
+					<option value="designer">设计师</option>
+					<option value="work">设计作品</option>
+					<option value="costume">品牌服装</option>
+					<option value="cloth">布料辅料</option>
+				</select>
+			</div>
+			<input id="searchInput" />
+			<button id="searchButton" onclick="getSearchMsg()">搜索</button
+		</div>
+	</div>
+	
+    <div id="searchResultContent">
+    	<ul id="resultList">
+    	</ul>
+	</div>
+	<div id="notMessage" style="display: none;">
+		<p>暂无搜索结果</p>
+	</div>
+	
+	<!-- html end-->
+	
+	<!-- javascript start-->
+    <script type="text/javascript" src="../../js/base/mui.min.js" ></script>
+    <script type="text/javascript" src="../../js/base/jquery-3.2.1.min.js" ></script>
+    <script type="text/javascript" src="../../js/other/search.js"></script>
+   	<!-- javascript end-->
+</body>
+</html>

@@ -252,7 +252,11 @@
 			"html/user/userWork/userAlbum.html",
 			"html/user/userPurchase/userPurchase.html",
 			"html/user/userSell/userSell.html",
-			"html/user/userCollect/userCollect.html"
+			"html/user/userCollect/userCollect.html",
+			"html/user/userComment/userComment.html",
+			"html/user/userFollow/userFollow.html",
+			"html/user/userFans/userFans.html",
+			"html/user/userSetting/setting.html"
 		]
 	},
 	"html/user/setting.html": {
@@ -463,10 +467,16 @@
 			"img/user/portrait.png",
 			"img/home/unfabulous.png",
 			"js/cloth/clothPage.js",
-			"img/cloth/selected.png"
+			"img/cloth/selected.png",
+			"js/base/mui.poppicker.js",
+			"js/base/mui.picker.min.js",
+			"css/base/mui.picker.css",
+			"css/base/mui.poppicker.css",
+			"img/cloth/search.png"
 		],
 		"refer": [
-			"html/cloth/clothDetail.html"
+			"html/cloth/clothDetail.html",
+			"html/other/search.html"
 		]
 	},
 	"html/costume/costumePage.html": {
@@ -481,7 +491,12 @@
 			"img/home/unfabulous.png",
 			"js/costume/costume.js",
 			"js/costume/costumePage.js",
-			"img/costume/selected.png"
+			"img/costume/selected.png",
+			"js/base/mui.poppicker.js",
+			"js/base/mui.picker.min.js",
+			"css/base/mui.picker.css",
+			"css/base/mui.poppicker.css",
+			"img/costume/search.png"
 		],
 		"refer": [
 			"html/costume/costumeDetail.html"
@@ -499,11 +514,13 @@
 			"html/home/informationPage.html",
 			"js/base/webviewGroup.js",
 			"html/home/designerPage.html",
-			"js/home/homePage.js"
+			"js/home/homePage.js",
+			"img/home/search1.png"
 		],
 		"refer": [
 			"html/home/informationPage.html",
-			"html/home/designerPage.html"
+			"html/home/designerPage.html",
+			"html/other/search.html"
 		]
 	},
 	"html/work/workPage.html": {
@@ -521,10 +538,12 @@
 			"js/base/mui.poppicker.js",
 			"js/base/mui.picker.min.js",
 			"css/base/mui.picker.css",
-			"css/base/mui.poppicker.css"
+			"css/base/mui.poppicker.css",
+			"img/work/search.png"
 		],
 		"refer": [
-			"html/work/workDetail.html"
+			"html/work/workDetail.html",
+			"html/work/offcanvas-drag-left-plus-menu.html"
 		]
 	},
 	"html/home/informationPage.html": {
@@ -604,7 +623,8 @@
 			"img/home/defultPortrait.png"
 		],
 		"refer": [
-			"html/home/designerDetailWork.html"
+			"html/home/designerDetailWork.html",
+			"html/home/designerFollow.html"
 		]
 	},
 	"html/costume/costumeDetail.html": {
@@ -751,7 +771,14 @@
 			"img/user/portrait.png",
 			"img/user/addImage.png",
 			"js/user/userWork/city.data.js",
-			"js/user/userWork/addwork2.js"
+			"js/user/userWork/addwork2.js",
+			"img/user/cehngyiImage.png",
+			"img/user/addImage2.png",
+			"img/user/addImage1.png",
+			"img/user/addImage3.png",
+			"img/user/addImage6.png",
+			"img/user/addImage4.png",
+			"img/user/addImage5.png"
 		]
 	},
 	"html/home/designerDetailWork.html": {
@@ -914,7 +941,108 @@
 	"html/user/userComment/userCommentDetail.html": {
 		"resources": [
 			"js/user/userComment/userCommentDetail.js",
-			"css/user/userComment/userCommentDetail.css"
+			"css/user/userComment/userCommentDetail.css",
+			"font/mui.ttf",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js"
+		]
+	},
+	"html/user/userFollow/userFollow.html": {
+		"resources": [
+			"font/mui.ttf",
+			"js/user/userFollow/userFollow.js",
+			"css/user/userFollow/userFollow.css",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js",
+			"img/user/portrait.png"
+		],
+		"refer": [
+			"html/home/designerDetail.html"
+		]
+	},
+	"html/user/userFans/userFans.html": {
+		"resources": [
+			"js/user/userFans/userFans.js",
+			"css/user/userFans/userFans.css",
+			"font/mui.ttf",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js"
+		]
+	},
+	"html/home/designerFollow.html": {
+		"resources": [
+			"font/mui.ttf",
+			"css/home/designerFollow.css",
+			"js/home/designerFollow.js",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js"
+		],
+		"refer": [
+			"html/home/designerDetail.html"
+		]
+	},
+	"html/user/userSetting/setting.html": {
+		"resources": [
+			"font/mui.ttf",
+			"css/user/userSetting/setting.css",
+			"js/user/userSetting/setting.js",
+			"css/base/mui.css",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js",
+			"html/user/userSetting/aboutApp.html",
+			"html/user/userSetting/feedback.html"
+		],
+		"refer": [
+			"html/user/userSetting/aboutApp.html",
+			"html/user/userSetting/feedback.html",
+			"html/sign/login.html"
+		]
+	},
+	"html/user/userSetting/aboutApp.html": {
+		"resources": [
+			"js/user/userSetting/aboutAPP.js",
+			"css/user/userSetting/aboutApp.css",
+			"html/user/userSetting/setting.html"
+		],
+		"refer": [
+			"html/user/userSetting/setting.html"
+		]
+	},
+	"html/user/userSetting/feedback.html": {
+		"resources": [
+			"js/user/userSetting/feedback.js",
+			"css/user/userSetting/feedback.css",
+			"font/mui.ttf",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js",
+			"html/user/userSetting/setting.html"
+		],
+		"refer": [
+			"html/user/userSetting/setting.html"
+		]
+	},
+	"html/other/search.html": {
+		"resources": [
+			"css/other/search.css",
+			"js/other/search.js",
+			"font/mui.ttf",
+			"js/base/mui.min.js",
+			"css/base/mui.min.css",
+			"js/base/jquery-3.2.1.min.js",
+			"img/user/portrait.png"
+		],
+		"refer": [
+			"html/home/informationDetail.html",
+			"html/costume/costumeDetail.html",
+			"html/cloth/clothDetail.html",
+			"html/work/workDetail.html",
+			"html/home/designerDetail.html"
 		]
 	}
 }

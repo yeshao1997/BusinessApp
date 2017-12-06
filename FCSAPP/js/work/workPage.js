@@ -1,6 +1,22 @@
 var page = 0;
 var sortType = "fabulous";
+var typeArray;
 var IPPost;
+var screenType = -1;
+
+function openPage(workId){
+	mui.openWindow({
+	    url: 'workDetail.html',
+	    id: 'workDetail',
+	    extras:{
+	        workId: workId
+	    }
+	});
+}
+
+mui('body').on('tap','#search',function(){
+	mui.openWindow("../other/search.html");
+},false);
 
 mui.init({
     pullRefresh : {
@@ -15,25 +31,11 @@ mui.init({
     }
 });
 
-document.addEventListener('plusready', function(){
-	plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
-	//实现下拉刷新轮播图和资讯列表
-	_self = plus.webview.currentWebview();
-	_self.setPullToRefresh({
-		support: true,
-		height: '50px',
-		range: '200px',
-		style: 'circle'
-	}, function(){
-		page = 0;
-		getWorkList();
-		_self.endPullToRefresh();
-	});
-	_self.setPullToRefresh(false);
-	
+mui.plusReady(function() { 
 	//自动获取一次数据
+	plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
 	getWorkList();
-//	setScreen();
+	getScreen();
 });
 
 function setSortType(type){
@@ -62,7 +64,8 @@ function getWorkList(){
 	
 	mui.ajax(url, {
 	    data: {
-	    	page: page
+	    	page: page,
+	    	screen: screenType
 	    },
 	    type: "POST",
 	    timeout: 3000,
@@ -74,14 +77,20 @@ function getWorkList(){
 	    success: function(data){
 	    	var resultJson = JSON.parse(JSON.stringify( data ));
 			if(resultJson.code == 1){
+				mui('#workContent').pullRefresh().endPullupToRefresh();
 				var idArray = resultJson.obj.id;
 				var imageArray = resultJson.obj.image;
 				var titleArray = resultJson.obj.title;
 				var designerArray = resultJson.obj.designer;
 				var fabulousArray = resultJson.obj.fabulous;
 				
+				for(var i=0;i<idArray.length;i++){
+					if(idArray[i] == null){
+						mui('#workContent').pullRefresh().disablePullupToRefresh();
+						break;
+					}
+				}
 				buildWork(idArray,imageArray,titleArray,designerArray,fabulousArray);
-				mui('#workContent').pullRefresh().endPullupToRefresh();
 			}else{
 				mui.toast(resultJson.msg);
 				mui('#workContent').pullRefresh().endPullupToRefresh();
@@ -129,19 +138,12 @@ function buildWork(idArray,imageArray,titleArray,designerArray,fabulousArray){
 	}
 }
 
-function openPage(workId){
-	console.log(workId);
-	mui.openWindow({
-	    url: 'workDetail.html',
-	    id: 'workDetail',
-	    extras:{
-	        workId: workId
-	    }
-	});
+function _getParam(obj, param) {
+	return obj[param] || '';
 }
 
-function setScreen(){
-	var url = IPPost+'DictDataController/getWorkPickerData';
+function getScreen(){
+	var url = IPPost+'DictDataController/getScreenCostumeType';
 	mui.ajax(url, {
 	    data: {},
 	    type: "POST",
@@ -155,28 +157,37 @@ function setScreen(){
 	    	var resultJson = JSON.parse(JSON.stringify( data ));
 			if(resultJson.code == 1){
 				typeArray = resultJson.obj;
-				(function($, doc) {
-					$.init();
-					$.ready(function() {
-						var typePicker = new $.PopPicker({ layer: 3 });
-						
-						var showTypePickerButton = doc.getElementById('screen');
-						
-						typePicker.setData(typeArray);
-						
-						showTypePickerButton.addEventListener('tap', function(event) {
-							typePicker.show(function(items) {
-								jQuery("#workTypeBig").text(_getParam(items[0], 'text'));
-								jQuery("#workTypeMid").text(_getParam(items[1], 'text'));
-								jQuery("#workTypeMal").text(_getParam(items[2], 'text'));
-								workType = _getParam(items[2], 'value');
-							});
-						}, false);
-					})
-				})(mui, document);
+				setScreen();
 			}else{
 				mui.toast(resultJson.msg);
 			}
 	    }
 	});
+}
+
+function setScreen(){
+	(function($, doc) {
+		$.init();
+		$.ready(function() {
+			var typePicker = new $.PopPicker({ layer: 3 });
+			
+			var showTypePickerButton = doc.getElementById('screen');
+			
+			typePicker.setData(typeArray);
+			
+			showTypePickerButton.addEventListener('tap', function(event) {
+				typePicker.show(function(items) {
+					workType = _getParam(items[2], 'value');
+					getWorkByType(workType);
+				});
+			}, false);
+		});
+	})(mui, document);
+}
+
+function getWorkByType(value){
+	screenType = value;
+	page = 0;
+	mui('#workContent').pullRefresh().enablePullupToRefresh();
+	getWorkList();
 }

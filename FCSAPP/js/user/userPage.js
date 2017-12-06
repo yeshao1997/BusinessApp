@@ -1,7 +1,7 @@
 function openPage(page){
 	if(page == "setting"){
 		mui.openWindow({
-		    url: 'setting.html',
+		    url: 'userSetting/setting.html',
 		    id: 'setting'
 		});
 	}else if(page == "myData"){
@@ -19,32 +19,34 @@ function openPage(page){
 		    id: 'userAlbum'
 		});
 	}else if(page == "myPurchase"){
-		userDataPage = plus.webview.getWebviewById('userWork/userAlbum.html');
-		mui.fire(userDataPage,'refresh',{});
 		mui.openWindow({
 		    url: 'userPurchase/userPurchase.html',
 		    id: 'userPurchase'
 		});
 	}else if(page == "mySell"){
-		userDataPage = plus.webview.getWebviewById('userWork/userAlbum.html');
-		mui.fire(userDataPage,'refresh',{});
 		mui.openWindow({
 		    url: 'userSell/userSell.html',
 		    id: 'userSell'
 		});
 	}else if(page == "myCollect"){
-		userDataPage = plus.webview.getWebviewById('userWork/userAlbum.html');
-		mui.fire(userDataPage,'refresh',{});
 		mui.openWindow({
 		    url: 'userCollect/userCollect.html',
 		    id: 'userCollect'
 		});
 	}else if(page == "myComment"){
-		userDataPage = plus.webview.getWebviewById('userWork/userAlbum.html');
-		mui.fire(userDataPage,'refresh',{});
 		mui.openWindow({
 		    url: 'userComment/userComment.html',
 		    id: 'userComment'
+		});
+	}else if(page == "myFollow"){
+		mui.openWindow({
+		    url: 'userFollow/userFollow.html',
+		    id: 'userFollow'
+		});
+	}else if(page == "myFans"){
+		mui.openWindow({
+		    url: 'userFans/userFans.html',
+		    id: 'userFans'
 		});
 	}
 }

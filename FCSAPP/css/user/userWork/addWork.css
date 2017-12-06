@@ -29,9 +29,12 @@ hr{
 }
 
 #header{
+	width: 100%;
 	height: 75px;
+	position: fixed;
+	top: 0px;
 	background-color:#4d3b3c ;
-	position: relative;
+    z-index: 100;
 }
 
 #back{
@@ -62,7 +65,7 @@ hr{
 #workNameContent{
 	width: 90%;
 	height: 60px;
-	margin-top: 10px;
+	margin-top: 83px;
 	margin-left: 20px;
 	position: relative;
 }
@@ -308,7 +311,7 @@ hr{
 }
 #workSelectIntro{
 	height: 20px;
-	width: 100px;
+	width: 120px;
 	position: absolute;
 	left: 0px;
 	right: 0px;

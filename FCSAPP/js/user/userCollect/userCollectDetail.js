@@ -47,6 +47,7 @@ window.addEventListener('refreshCollect', function(e) {
 })
 
 mui.plusReady(function () {
+	plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
     var self = plus.webview.currentWebview();
 	type = self.type;
 	if(type == 1){
@@ -118,10 +119,15 @@ function buildList(idArray,imageArray,titleArray,timeArray){
 	$("#collectList").empty();
 	for(var i=0;i<idArray.length;i++){
 		if(idArray[i] != ""){
-			var imagePath = IPPost + "image1/" + imageArray[i];
+			var imagePath;
+			if(type != 1){
+				imagePath = IPPost + "image1/" + imageArray[i];
+			}else{
+				imagePath = imageArray[i];
+			}
 			var collectText = "<li id='collect'>"+
 								"<a onclick=openPage('"+idArray[i]+"')>"+
-									"<img id='collectImg' src="+imagePath+"/>"+
+									"<img id='collectImg' src="+imagePath+" />"+
 									"<p id='collectText'>"+titleArray[i]+"</p>"+
 									"<p id='collectTime'>"+timeArray[i]+"</p>"+
 								"</a>"+

@@ -49,7 +49,16 @@ function getWorkData(){
 			if(resultJson.code == 1){
 				var carouse = resultJson.obj.carouse;
 				
-				buildCarousel(carouse);
+				var imageArray = new Array();
+				var imageLength = 0;
+				for(var i=0;i<carouse.length;i++){
+					if(carouse[i] != ""){
+						imageArray[imageLength] = carouse[i];
+						imageLength++;
+					}
+				}
+				
+				buildCarousel(imageArray);
 				buildInfor(resultJson.obj1);
 				var obj = resultJson.obj2;
 				var recommedClothContent = document.getElementById("recommedClothTable");
@@ -66,19 +75,42 @@ function getWorkData(){
 
 //构建轮播图
 function buildCarousel(carouse){
-	var orderArray = new Array(5,0,1,2,3,4,5,0);
 	var carouselContent = document.getElementById('carousel-content');
+	var carouselIndicator = document.getElementById('carousel-indicator');
 	
 	//构建轮播图 
-	for(var i=0;i<orderArray.length;i++){
-		var imageSrc = IPPost + "image1/" + carouse[orderArray[i]];
+	var firstImageSrc = IPPost + "image1/" + carouse[carouse.length-1];
+	var firstCarous = "<div class='mui-slider-item mui-slider-item-duplicate'>"+
+								"<a>"+
+									"<img id='carouselImage' src="+firstImageSrc+">"+
+								"</a>"+
+							"</div>";
+	carouselContent.insertAdjacentHTML('beforeend', firstCarous);
+	
+	for(var i=0;i<carouse.length;i++){
+		var imageSrc = IPPost + "image1/" + carouse[i];
 		var oneCarouse = "<div class='mui-slider-item mui-slider-item-duplicate'>"+
 								"<a>"+
 									"<img id='carouselImage' src="+imageSrc+">"+
 								"</a>"+
 							"</div>";
 		carouselContent.insertAdjacentHTML('beforeend', oneCarouse);
+		
+		if(i==0){
+			var indicator = "<div class='mui-indicator mui-active'></div>"
+		}else{
+			var indicator = "<div class='mui-indicator'></div>"
+		}
+		carouselIndicator.insertAdjacentHTML('beforeend', indicator);
 	}
+	
+	var lastImageSrc = IPPost + "image1/" + carouse[0];
+	var lastCarous = "<div class='mui-slider-item mui-slider-item-duplicate'>"+
+								"<a>"+
+									"<img id='carouselImage' src="+lastImageSrc+">"+
+								"</a>"+
+							"</div>";
+	carouselContent.insertAdjacentHTML('beforeend', lastCarous);
 	
 	//为轮播图添加自动滑动时间
 	var slider = mui("#slider");

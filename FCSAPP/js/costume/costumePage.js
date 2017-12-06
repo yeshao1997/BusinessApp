@@ -1,5 +1,22 @@
 var page = 0;
 var sortType = "fabulous";
+var IPPost;
+var typeArray;
+var screenType = -1;
+
+function openPage(costumeId){
+	mui.openWindow({
+	    url: 'costumeDetail.html',
+	    id: 'costumeDetail',
+	    extras:{
+	        costumeId: costumeId
+	    }
+	});
+}
+
+mui('body').on('tap','#search',function(){
+	mui.openWindow("../other/search.html");
+},false);
 
 mui.init({
     pullRefresh : {
@@ -14,23 +31,11 @@ mui.init({
     }
 });
 
-document.addEventListener('plusready', function(){
-	plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
-	//实现下拉刷新轮播图和资讯列表
-	_self = plus.webview.currentWebview();
-	_self.setPullToRefresh({
-		support: true,
-		height: '50px',
-		range: '200px',
-		style: 'circle'
-	}, function(){
-		page = 0;
-		getCostumeList();
-		_self.endPullToRefresh();
-	});
-	
+mui.plusReady(function() { 
 	//自动获取一次数据
+	plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
 	getCostumeList();
+	getScreen();
 });
 
 function setSortType(type){
@@ -49,7 +54,7 @@ function setSortType(type){
 }
 
 function getCostumeList(){
-	var IPPost = localStorage.getItem("IPPost");
+	IPPost = localStorage.getItem("IPPost");
 	var url = "";
 	if(sortType == "fabulous"){
 		url = IPPost+'CostumeController/getCostumeByFabulous';
@@ -59,7 +64,8 @@ function getCostumeList(){
 	
 	mui.ajax(url, {
 	    data: {
-	    	page: page
+	    	page: page,
+	    	screen: screenType
 	    },
 	    type: "POST",
 	    timeout: 3000,
@@ -71,14 +77,20 @@ function getCostumeList(){
 	    success: function(data){
 	    	var resultJson = JSON.parse(JSON.stringify( data ));
 			if(resultJson.code == 1){
+				mui('#costumeContent').pullRefresh().endPullupToRefresh();
 				var idArray = resultJson.obj.id;
 				var imageArray = resultJson.obj.image;
 				var titleArray = resultJson.obj.title;
 				var timeArray = resultJson.obj.time;
 				var fabulousArray = resultJson.obj.fabulous;
 				
+				for(var i=0;i<idArray.length;i++){
+					if(idArray[i] == null){
+						mui('#costumeContent').pullRefresh().disablePullupToRefresh();
+						break;
+					}
+				}
 				buildCostume(idArray,imageArray,titleArray,timeArray,fabulousArray);
-				mui('#costumeContent').pullRefresh().endPullupToRefresh();
 			}else{
 				mui.toast(resultJson.msg);
 				mui('#costumeContent').pullRefresh().endPullupToRefresh();
@@ -103,7 +115,6 @@ function buildCostume(idArray,imageArray,titleArray,timeArray,fabulousArray){
 			costumeText = "<tr>";
 		}
 		if(idArray[i] != null){
-			var IPPost = localStorage.getItem("IPPost");
 			var image = IPPost +'image1/'+imageArray[i]
 			costumeText += "<td id='costume'>"+
 								"<a onclick=openPage('"+idArray[i]+"')>"+
@@ -126,12 +137,55 @@ function buildCostume(idArray,imageArray,titleArray,timeArray,fabulousArray){
 	}
 }
 
-function openPage(costumeId){
-	mui.openWindow({
-	    url: 'costumeDetail.html',
-	    id: 'costumeDetail',
-	    extras:{
-	        costumeId: costumeId
+function _getParam(obj, param) {
+	return obj[param] || '';
+}
+
+function getScreen(){
+	var url = IPPost+'DictDataController/getScreenCostumeType';
+	mui.ajax(url, {
+	    data: {},
+	    type: "POST",
+	    timeout: 3000,
+	    traditional: true,
+	    error: function(){
+	    	mui.toast("获取数据失败，网络错误");
+	    	console.log("获取数据失败，网络错误");
+	    },
+	    success: function(data){
+	    	var resultJson = JSON.parse(JSON.stringify( data ));
+			if(resultJson.code == 1){
+				typeArray = resultJson.obj;
+				setScreen();
+			}else{
+				mui.toast(resultJson.msg);
+			}
 	    }
 	});
+}
+
+function setScreen(){
+	(function($, doc) {
+		$.init();
+		$.ready(function() {
+			var typePicker = new $.PopPicker({ layer: 3 });
+			
+			var showTypePickerButton = doc.getElementById('screen');
+			
+			typePicker.setData(typeArray);
+			
+			showTypePickerButton.addEventListener('tap', function(event) {
+				typePicker.show(function(items) {
+					workType = _getParam(items[2], 'value');
+					getCostumeByType(workType);
+				});
+			}, false);
+		});
+	})(mui, document);
+}
+function getCostumeByType(value){
+	screenType = value;
+	page = 0;
+	mui('#costumeContent').pullRefresh().enablePullupToRefresh();
+	getCostumeList();
 }

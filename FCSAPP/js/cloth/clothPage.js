@@ -1,5 +1,22 @@
 var page = 0;
 var sortType = "fabulous";
+var IPPost;
+var componentArray;
+var screenType = -1;
+
+function openPage(clothId){
+	mui.openWindow({
+	    url: 'clothDetail.html',
+	    id: 'clothDetail',
+	    extras:{
+	        clothId: clothId
+	    }
+	});
+}
+
+mui('body').on('tap','#search',function(){
+	mui.openWindow("../other/search.html");
+},false);
 
 mui.init({
     pullRefresh : {
@@ -14,23 +31,11 @@ mui.init({
     }
 });
 
-document.addEventListener('plusready', function(){
-	plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
-	//实现下拉刷新轮播图和资讯列表
-	_self = plus.webview.currentWebview();
-	_self.setPullToRefresh({
-		support: true,
-		height: '50px',
-		range: '200px',
-		style: 'circle'
-	}, function(){
-		page = 0;
-		getClothList();
-		_self.endPullToRefresh();
-	});
-	
+mui.plusReady(function() { 
 	//自动获取一次数据
+	plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
 	getClothList();
+	getScreen();
 });
 
 function setSortType(type){
@@ -49,7 +54,7 @@ function setSortType(type){
 }
 
 function getClothList(){
-	var IPPost = localStorage.getItem("IPPost");
+	IPPost = localStorage.getItem("IPPost");
 	var url = "";
 	if(sortType == "fabulous"){
 		url = IPPost+'ClothController/getClothByFabulous';
@@ -59,7 +64,8 @@ function getClothList(){
 	
 	mui.ajax(url, {
 	    data: {
-	    	page: page
+	    	page: page,
+	    	screen: screenType
 	    },
 	    type: "POST",
 	    timeout: 3000,
@@ -71,14 +77,22 @@ function getClothList(){
 	    success: function(data){
 	    	var resultJson = JSON.parse(JSON.stringify( data ));
 			if(resultJson.code == 1){
+				mui('#clothContent').pullRefresh().endPullupToRefresh();
 				var idArray = resultJson.obj.id;
 				var imageArray = resultJson.obj.image;
 				var titleArray = resultJson.obj.title;
 				var timeArray = resultJson.obj.time;
 				var fabulousArray = resultJson.obj.fabulous;
 				
+				for(var i=0;i<idArray.length;i++){
+					if(idArray[i] == null){
+						mui('#clothContent').pullRefresh().disablePullupToRefresh();
+						break;
+					}
+				}
+				
 				buildCloth(idArray,imageArray,titleArray,timeArray,fabulousArray);
-				mui('#clothContent').pullRefresh().endPullupToRefresh();
+			
 			}else{
 				mui.toast(resultJson.msg);
 				mui('#clothContent').pullRefresh().endPullupToRefresh();
@@ -103,7 +117,6 @@ function buildCloth(idArray,imageArray,titleArray,timeArray,fabulousArray){
 			clothText = "<tr>";
 		}
 		if(idArray[i] != null){
-			var IPPost = localStorage.getItem("IPPost");
 			var image = IPPost +'image1/'+imageArray[i]
 			clothText += "<td id='cloth'>"+
 								"<a onclick=openPage('"+idArray[i]+"')>"+
@@ -126,12 +139,56 @@ function buildCloth(idArray,imageArray,titleArray,timeArray,fabulousArray){
 	}
 }
 
-function openPage(clothId){
-	mui.openWindow({
-	    url: 'clothDetail.html',
-	    id: 'clothDetail',
-	    extras:{
-	        clothId: clothId
+function _getParam(obj, param) {
+	return obj[param] || '';
+}
+
+function getScreen(){
+	var url = IPPost+'DictDataController/getScreenComponent';
+	mui.ajax(url, {
+	    data: {},
+	    type: "POST",
+	    timeout: 3000,
+	    traditional: true,
+	    error: function(){
+	    	mui.toast("获取数据失败，网络错误");
+	    	console.log("获取数据失败，网络错误");
+	    },
+	    success: function(data){
+	    	var resultJson = JSON.parse(JSON.stringify( data ));
+			if(resultJson.code == 1){
+				componentArray = resultJson.obj;
+				setScreen();
+			}else{
+				mui.toast(resultJson.msg);
+			}
 	    }
 	});
+}
+
+function setScreen(){
+	(function($, doc) {
+		$.init();
+		$.ready(function() {
+			var componentPicker = new $.PopPicker({ layer: 2 });
+			
+			var showComponentPickerButton = doc.getElementById('screen');
+			
+			componentPicker.setData(componentArray);
+			
+			showComponentPickerButton.addEventListener('tap', function(event) {
+				componentPicker.show(function(items) {
+					clothcComponent = _getParam(items[1], 'value');
+					getClothByComponent(clothcComponent);
+				});
+			}, false);
+		});
+	})(mui, document);
+}
+
+function getClothByComponent(value){
+	screenType = value;
+	page = 0;
+	mui('#clothContent').pullRefresh().enablePullupToRefresh();
+	getClothList();
 }
