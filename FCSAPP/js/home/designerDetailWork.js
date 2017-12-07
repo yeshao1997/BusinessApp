@@ -19,7 +19,8 @@ function openPage(page){
 		    id: 'workDetail',
 		    extras:{
 		        workId: page
-		    }
+		    },
+		    createNew: true
 		});
 	}
 }

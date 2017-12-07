@@ -793,7 +793,8 @@
 				],
 				"refer": [
 					"html/work/workDetail.html",
-					"html/work/offcanvas-drag-left-plus-menu.html"
+					"html/work/offcanvas-drag-left-plus-menu.html",
+					"html/other/search.html"
 				],
 				"priority": 0
 			},
@@ -1289,7 +1290,12 @@
 				"resources": [
 					"js/user/userSetting/aboutAPP.js",
 					"css/user/userSetting/aboutApp.css",
-					"html/user/userSetting/setting.html"
+					"html/user/userSetting/setting.html",
+					"img/user/bg2.png",
+					"font/mui.ttf",
+					"js/base/mui.min.js",
+					"css/base/mui.min.css",
+					"js/base/jquery-3.2.1.min.js"
 				],
 				"refer": [],
 				"priority": 0
