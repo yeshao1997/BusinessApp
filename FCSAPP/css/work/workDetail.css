@@ -28,7 +28,7 @@
 #workTitle{
 	width: 250px;
 	height: 49px;
-	padding-top: 20px;
+	padding-top: 17px;
 	position: absolute;
 	left: 0px;
 	right: 0px;
@@ -55,7 +55,7 @@
 #slider{
 	position: absolute;
 	height: 300px; 
-	top: 130px;
+	top: 128px;
 }
 #carouselImage{
 	height: 300px;  

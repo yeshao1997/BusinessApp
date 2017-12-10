@@ -35,7 +35,7 @@ function next(){
 	
 	if(account == ""){
 		mui.toast("用户名不能为空");
-	}else if(account.length < 3){
+	}else if(account.length < 2){
 		mui.toast("用户名长度不能小于2");
 	}else if(password == ""){
 		mui.toast("密码不能为空");

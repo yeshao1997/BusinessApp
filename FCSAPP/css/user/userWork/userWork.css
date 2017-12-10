@@ -73,6 +73,7 @@
 	position: absolute;
 	top: 25px;
 	left: 140px;
+	padding-top: 3px;
 	font-size:26px;
 	color: black;
 	overflow : hidden;

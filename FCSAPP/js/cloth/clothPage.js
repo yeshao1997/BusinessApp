@@ -3,6 +3,8 @@ var sortType = "fabulous";
 var IPPost;
 var componentArray;
 var screenType = -1;
+var displayType = 0;
+var changeDisplay = 0;
 
 function openPage(clothId){
 	mui.openWindow({
@@ -90,9 +92,19 @@ function getClothList(){
 						break;
 					}
 				}
-				
-				buildCloth(idArray,imageArray,titleArray,timeArray,fabulousArray);
-			
+				if(changeDisplay == 1){
+					if(displayType == 1){
+						displayType = 0;
+					}else{
+						displayType = 1;
+					}
+					changeDisplay = 0;
+				}
+				if(displayType == 0){
+					buildClothTable(idArray,imageArray,titleArray,timeArray,fabulousArray);
+				}else{
+					buildClothList(idArray,imageArray,titleArray,timeArray,fabulousArray);
+				}
 			}else{
 				mui.toast(resultJson.msg);
 				mui('#clothContent').pullRefresh().endPullupToRefresh();
@@ -101,7 +113,7 @@ function getClothList(){
 	});
 }
 
-function buildCloth(idArray,imageArray,titleArray,timeArray,fabulousArray){
+function buildClothTable(idArray,imageArray,titleArray,timeArray,fabulousArray){
 	if(page == 0){
 		$("#clothTable").empty();
 	}
@@ -137,6 +149,33 @@ function buildCloth(idArray,imageArray,titleArray,timeArray,fabulousArray){
 			break;
 		}
 	}
+}
+
+function buildClothList(idArray,imageArray,titleArray,timeArray,fabulousArray){
+	if(page == 0){
+		$("#clothList").empty();
+	}
+	var clothContent = document.getElementById("clothList");
+	for(var i=0;i<idArray.length;i++){
+		if(i==0 && idArray[i] == null){
+			mui.toast("已无更多数据");
+		}
+		if(idArray[i] == null){
+			break;
+		}
+		var image = IPPost +'image1/'+imageArray[i];
+		var clothText = "<li id='clothL'>"+
+								"<a id='clothLA' onclick=openPage('"+idArray[i]+"')>"+
+									"<img id='clothImageL' src="+image+"/>"+
+									"<p id='clothNameL'>"+titleArray[i]+"</p>"+
+									"<p id='clothTime'>"+timeArray[i]+"</p>"+
+									"<img id='clothFabulousL' src='../../img/home/unfabulous.png'/>"+
+									"<p id='clothFabulousNumberL'>"+fabulousArray[i]+"</p>"+
+								"</a>"+
+							"</li>";
+		clothContent.insertAdjacentHTML('beforeEnd',clothText);
+	}
+	page++;
 }
 
 function _getParam(obj, param) {
@@ -192,3 +231,19 @@ function getClothByComponent(value){
 	mui('#clothContent').pullRefresh().enablePullupToRefresh();
 	getClothList();
 }
+
+mui('body').on('tap','#displayType',function(){
+	if(displayType == 0){
+		page = 0;
+		$("#clothTable").css("display","none");
+		$("#clothList").css("display","block");
+		changeDisplay = 1;
+		getClothList();
+	}else{
+		page = 0;
+		$("#clothList").css("display","none");
+		$("#clothTable").css("display","block");
+		changeDisplay = 1;
+		getClothList();
+	}
+},false);

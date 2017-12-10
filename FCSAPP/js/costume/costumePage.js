@@ -3,6 +3,8 @@ var sortType = "fabulous";
 var IPPost;
 var typeArray;
 var screenType = -1;
+var displayType = 0;
+var changeDisplay = 0;
 
 function openPage(costumeId){
 	mui.openWindow({
@@ -90,7 +92,19 @@ function getCostumeList(){
 						break;
 					}
 				}
-				buildCostume(idArray,imageArray,titleArray,timeArray,fabulousArray);
+				if(changeDisplay == 1){
+					if(displayType == 1){
+						displayType = 0;
+					}else{
+						displayType = 1;
+					}
+					changeDisplay = 0;
+				}
+				if(displayType == 0){
+					buildCostumeTable(idArray,imageArray,titleArray,timeArray,fabulousArray);
+				}else{
+					buildCostumeList(idArray,imageArray,titleArray,timeArray,fabulousArray);
+				}
 			}else{
 				mui.toast(resultJson.msg);
 				mui('#costumeContent').pullRefresh().endPullupToRefresh();
@@ -99,11 +113,10 @@ function getCostumeList(){
 	});
 }
 
-function buildCostume(idArray,imageArray,titleArray,timeArray,fabulousArray){
+function buildCostumeTable(idArray,imageArray,titleArray,timeArray,fabulousArray){
 	if(page == 0){
 		$("#costumeTable").empty();
 	}
-	page++;
 	var costumeContent = document.getElementById("costumeTable");
 	var costumeText = "";
 	for(var i=0;i<idArray.length;i++){
@@ -115,7 +128,7 @@ function buildCostume(idArray,imageArray,titleArray,timeArray,fabulousArray){
 			costumeText = "<tr>";
 		}
 		if(idArray[i] != null){
-			var image = IPPost +'image1/'+imageArray[i]
+			var image = IPPost +'image1/'+imageArray[i];
 			costumeText += "<td id='costume'>"+
 								"<a onclick=openPage('"+idArray[i]+"')>"+
 									"<img id='costume-image' src="+image+"/>"+
@@ -135,6 +148,34 @@ function buildCostume(idArray,imageArray,titleArray,timeArray,fabulousArray){
 			break;
 		}
 	}
+	page++;
+}
+
+function buildCostumeList(idArray,imageArray,titleArray,timeArray,fabulousArray){
+	if(page == 0){
+		$("#costumeList").empty();
+	}
+	var costumeContent = document.getElementById("costumeList");
+	for(var i=0;i<idArray.length;i++){
+		if(i==0 && idArray[i] == null){
+			mui.toast("已无更多数据");
+		}
+		if(idArray[i] == null){
+			break;
+		}
+		var image = IPPost +'image1/'+imageArray[i];
+		var costumeText = "<li id='costumeL'>"+
+								"<a id='constumeLA' onclick=openPage('"+idArray[i]+"')>"+
+									"<img id='costumeImageL' src="+image+"/>"+
+									"<p id='costumeNameL'>"+titleArray[i]+"</p>"+
+									"<p id='costumeTime'>"+timeArray[i]+"</p>"+
+									"<img id='costumeFabulousL' src='../../img/home/unfabulous.png'/>"+
+									"<p id='costumeFabulousNumberL'>"+fabulousArray[i]+"</p>"+
+								"</a>"+
+							"</li>";
+		costumeContent.insertAdjacentHTML('beforeEnd',costumeText);
+	}
+	page++;
 }
 
 function _getParam(obj, param) {
@@ -183,9 +224,26 @@ function setScreen(){
 		});
 	})(mui, document);
 }
+
 function getCostumeByType(value){
 	screenType = value;
 	page = 0;
 	mui('#costumeContent').pullRefresh().enablePullupToRefresh();
 	getCostumeList();
 }
+
+mui('body').on('tap','#displayType',function(){
+	if(displayType == 0){
+		page = 0;
+		$("#costumeTable").css("display","none");
+		$("#costumeList").css("display","block");
+		changeDisplay = 1;
+		getCostumeList();
+	}else{
+		page = 0;
+		$("#costumeList").css("display","none");
+		$("#costumeTable").css("display","block");
+		changeDisplay = 1;
+		getCostumeList();
+	}
+},false);

@@ -721,7 +721,11 @@
 					"js/base/mui.picker.min.js",
 					"css/base/mui.picker.css",
 					"css/base/mui.poppicker.css",
-					"img/cloth/search.png"
+					"img/cloth/search.png",
+					"img/costume/displayType.png",
+					"img/costume/selectType.png",
+					"img/cloth/selectType.png",
+					"img/cloth/displayType.png"
 				],
 				"refer": [
 					"html/cloth/clothDetail.html",
@@ -746,10 +750,16 @@
 					"js/base/mui.picker.min.js",
 					"css/base/mui.picker.css",
 					"css/base/mui.poppicker.css",
-					"img/costume/search.png"
+					"img/costume/search.png",
+					"img/costume/displayType.png",
+					"img/costume/selectType.png",
+					"img/costume/displayType2.png",
+					"img/costume/selectType2.png",
+					"img/costume/displayType3.png"
 				],
 				"refer": [
-					"html/costume/costumeDetail.html"
+					"html/costume/costumeDetail.html",
+					"html/other/search.html"
 				],
 				"priority": 0
 			},
@@ -789,7 +799,9 @@
 					"js/base/mui.picker.min.js",
 					"css/base/mui.picker.css",
 					"css/base/mui.poppicker.css",
-					"img/work/search.png"
+					"img/work/search.png",
+					"img/cloth/selectType.png",
+					"img/cloth/displayType.png"
 				],
 				"refer": [
 					"html/work/workDetail.html",

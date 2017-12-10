@@ -74,7 +74,7 @@ function buildCommentList(obj){
 	
 	var commentContent = document.getElementById('commentList');
 	for(var i=0;i<idArray.length;i++){
-		var floor = "#"+i;
+		var floor = "#"+(i+1);
 		if(fabulousType[i] == "fabulous"){
 			var imageText = "<img id='commentFabulous' src='../../img/other/fabulous.png' value="+idArray[i]+" value2="+0+"></img>"
 		}else{

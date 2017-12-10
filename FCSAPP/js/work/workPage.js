@@ -3,6 +3,8 @@ var sortType = "fabulous";
 var typeArray;
 var IPPost;
 var screenType = -1;
+var displayType = 0;
+var changeDisplay = 0;
 
 function openPage(workId){
 	mui.openWindow({
@@ -90,7 +92,20 @@ function getWorkList(){
 						break;
 					}
 				}
-				buildWork(idArray,imageArray,titleArray,designerArray,fabulousArray);
+				
+				if(changeDisplay == 1){
+					if(displayType == 1){
+						displayType = 0;
+					}else{
+						displayType = 1;
+					}
+					changeDisplay = 0;
+				}
+				if(displayType == 0){
+					buildWorkTable(idArray,imageArray,titleArray,designerArray,fabulousArray);
+				}else{
+					buildWorkList(idArray,imageArray,titleArray,designerArray,fabulousArray);
+				}
 			}else{
 				mui.toast(resultJson.msg);
 				mui('#workContent').pullRefresh().endPullupToRefresh();
@@ -99,7 +114,7 @@ function getWorkList(){
 	});
 }
 
-function buildWork(idArray,imageArray,titleArray,designerArray,fabulousArray){
+function buildWorkTable(idArray,imageArray,titleArray,designerArray,fabulousArray){
 	if(page == 0){
 		$("#workTable").empty();
 	}
@@ -115,7 +130,6 @@ function buildWork(idArray,imageArray,titleArray,designerArray,fabulousArray){
 			workText = "<tr>";
 		}
 		if(idArray[i] != null){
-			var IPPost = localStorage.getItem("IPPost");
 			var image = IPPost +'image1/'+imageArray[i]
 			workText += "<td id='work'>"+
 								"<a onclick=openPage('"+idArray[i]+"')>"+
@@ -136,6 +150,33 @@ function buildWork(idArray,imageArray,titleArray,designerArray,fabulousArray){
 			break;
 		}
 	}
+}
+
+function buildWorkList(idArray,imageArray,titleArray,designerArray,fabulousArray){
+	if(page == 0){
+		$("#workList").empty();
+	}
+	var workContent = document.getElementById("workList");
+	for(var i=0;i<idArray.length;i++){
+		if(i==0 && idArray[i] == null){
+			mui.toast("已无更多数据");
+		}
+		if(idArray[i] == null){
+			break;
+		}
+		var image = IPPost +'image1/'+imageArray[i];
+		var workText = "<li id='workL'>"+
+								"<a id='workLA' onclick=openPage('"+idArray[i]+"')>"+
+									"<img id='workImageL' src="+image+"/>"+
+									"<p id='workNameL'>"+titleArray[i]+"</p>"+
+									"<p id='workDesignerL'>"+designerArray[i]+"</p>"+
+									"<img id='workFabulousL' src='../../img/home/unfabulous.png'/>"+
+									"<p id='workFabulousNumberL'>"+fabulousArray[i]+"</p>"+
+								"</a>"+
+							"</li>";
+		workContent.insertAdjacentHTML('beforeEnd',workText);
+	}
+	page++;
 }
 
 function _getParam(obj, param) {
@@ -191,3 +232,19 @@ function getWorkByType(value){
 	mui('#workContent').pullRefresh().enablePullupToRefresh();
 	getWorkList();
 }
+
+mui('body').on('tap','#displayType',function(){
+	if(displayType == 0){
+		page = 0;
+		$("#workTable").css("display","none");
+		$("#workList").css("display","block");
+		changeDisplay = 1;
+		getWorkList();
+	}else{
+		page = 0;
+		$("#workList").css("display","none");
+		$("#workTable").css("display","block");
+		changeDisplay = 1;
+		getWorkList();
+	}
+},false);

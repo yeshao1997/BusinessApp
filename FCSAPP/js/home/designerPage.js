@@ -1,7 +1,7 @@
 var userId;
 var selectTag = new Array();
 var selected = 0;
-var lastDesignerId = null;
+var page = 0;
 
 mui.init({
     pullRefresh : {
@@ -67,7 +67,7 @@ function getTagData(){
 //获取所有设计师列表
 function getDesignerList(){
 	//清空原有设计师列表
-	if(lastDesignerId == null){
+	if(page == 0){
 		$("#designer_list").empty();
 	}
 	
@@ -77,7 +77,7 @@ function getDesignerList(){
 	mui.ajax(url, {
 	    data: {
 	    	userId: userId,
-	    	lastDesignerId: lastDesignerId
+	    	page: page
 	    },
 	    type: "POST",
 	    timeout: 3000,
@@ -85,6 +85,7 @@ function getDesignerList(){
 	    error: function(){
 	    	mui.toast("获取设计师列表失败，网络错误");
 	    	mui('#designerListContent').pullRefresh().endPullupToRefresh();
+	    	mui('#designerListContent').pullRefresh().disablePullupToRefresh();
 	    },
 	    success: function(data){
 	    	var resultJson = JSON.parse(JSON.stringify( data ));
@@ -95,14 +96,17 @@ function getDesignerList(){
 				var workNumber = resultJson.obj.number;
 				var followType = resultJson.obj.follow;
 				
-				//保存最后的设计师id
-				lastDesignerId = idArray[idArray.length-1];
+				page++;
 				//构建设计师列表
-				buildDesignerList('beforeEnd',idArray,nameArray,portraitArray,workNumber,followType);
 				mui('#designerListContent').pullRefresh().endPullupToRefresh();
+				if(idArray.length<6){
+					mui('#designerListContent').pullRefresh().disablePullupToRefresh();
+				}
+				buildDesignerList('beforeEnd',idArray,nameArray,portraitArray,workNumber,followType);
 			}else{
 				mui.toast(resultJson.msg);
 				mui('#designerListContent').pullRefresh().endPullupToRefresh();
+				mui('#designerListContent').pullRefresh().disablePullupToRefresh();
 			}
 	    }
 	});
@@ -230,7 +234,7 @@ function chooseSelectType(){
      }
      if(tag == ""){
      	//将最后的设计师id重置为null;
-		lastDesignerId = null;
+     	page = 0;
 		mui('#designerListContent').pullRefresh().enablePullupToRefresh();
      	getDesignerList();
      }else{
