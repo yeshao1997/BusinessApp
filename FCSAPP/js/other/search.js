@@ -142,10 +142,12 @@ function buildSearch(obj){
 		var resultContent = document.getElementById('resultList');
 		for(var i=0;i<idArray.length;i++){
 			var image;
-			if(searchType != "information"){
-				image = IPPost + "image1/" + imageArray[i];
-			}else{
+			if(searchType == "information"){
 				image = imageArray[i];
+			}else if(searchType == "designer"){
+				image = IPPost + "image/" + imageArray[i];
+			}else{
+				image = IPPost + "image1/" + imageArray[i];
 			}
 			var result = "<li id='result' value="+idArray[i]+">"+
 			    			"<a>"+
